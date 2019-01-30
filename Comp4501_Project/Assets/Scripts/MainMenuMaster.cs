@@ -12,7 +12,7 @@ public class MainMenuMaster : MonoBehaviour {
     }
 
     public void Settings() {
-
+        Debug.Log("Settings");
     }
 
     public void Quit() {
