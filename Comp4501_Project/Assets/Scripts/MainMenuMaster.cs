@@ -7,8 +7,12 @@ public class MainMenuMaster : MonoBehaviour {
 
     public SceneMaster sceneMaster;
 
-    public void Play() {
+    public void StartGame() {
         sceneMaster.SceneToLoad(SceneMaster.game);
+    }
+
+    public void HowToPlay() {
+        Debug.Log("HowToPlay");
     }
 
     public void Settings() {
