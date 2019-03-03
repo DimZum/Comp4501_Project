@@ -35,9 +35,22 @@ public class ShipDesign : MonoBehaviour
         ConstructionTime = Tcost;
     }
 
-    public Ship ToShip(Player P, int i){
-       Ship s = new Ship(i, P, mgc,mgn,sgc,sgn,trp,AA,armor,speed,HitPoints);
+    public Ship ToShip(Player P){
+       Ship s = new Ship(P.getNextShipID(), P, mgc,mgn,sgc,sgn,trp,AA,armor,speed,HitPoints);
         return s;
+    }
+
+    public float getIronCost()
+    {
+        return IronCost;
+    }
+    public float getMPCost()
+    {
+        return ManCost;
+    }
+    public float getTimeCost()
+    {
+        return ConstructionTime;
     }
 
     // Update is called once per frame

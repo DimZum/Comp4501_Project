@@ -22,4 +22,5 @@ public class Constants : MonoBehaviour
                                          400,600,800,1000,1200,
                                          1500,1800,2000,2500,3000,3500};
     public static int trpweight = 50;
+    public static int MAX_BUILD_QUEUE;
 }
