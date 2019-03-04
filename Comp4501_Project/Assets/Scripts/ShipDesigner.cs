@@ -82,7 +82,7 @@ public class ShipDesigner : MonoBehaviour
             mgc = Constants.MAX_CALIBER;
         }
     }
-    void red_mgc()
+    void red_mgc()//red is short for reduce.
     {
         mgc--;
         if (mgc < Constants.MIN_CALIBER)
