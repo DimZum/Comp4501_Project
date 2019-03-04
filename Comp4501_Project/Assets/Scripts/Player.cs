@@ -10,6 +10,19 @@ public class Player : MonoBehaviour
     ShipDesign[] SavedDesign;
     ShipYard ShipYards;
     Ship[] Ships;
+
+    public Player(int I,int d)
+    {
+        ID = I;
+        next_ship_id = 0;
+        Iron = Constants.DEF_START_IRON + d * 1000;
+        ManPower = Constants.DEF_START_MP + d * 200;
+        Exp = Constants.DEF_START_EXP + d * 50;
+        SavedDesign = new ShipDesign[Constants.MAX_DESIGN_NUM];
+        ShipYards = new ShipYard(this);
+        Ships = new Ship[32];
+    }
+
     // Start is called before the first frame update
     void buildShip(ShipDesign d)
     {

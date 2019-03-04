@@ -200,7 +200,7 @@ public class ShipDesigner : MonoBehaviour
         }
         int weightdif = MaxWeight - totalWeight;
         if (weightdif < 0) weightdif = 1;
-        HitPoints = (int)Mathf.Log((weightdif),1.6f)+((int)ShipClass+1)*((int)ShipClass+1)*10;
+        HitPoints = (int)((1+4.0*weightdif/MaxWeight)*((int)ShipClass+1)*((int)ShipClass+1)*10);
         IronCost = armor * armor * 10 * (int)ShipClass + engine * 5 * (int)ShipClass + trp * 20 + mgc * mgc * mgn+sgc*sgc*sgn;
         ConstructionTime =(totalWeight / 200+IronCost/100)/5+10;
         if (totalWeight > MaxWeight)

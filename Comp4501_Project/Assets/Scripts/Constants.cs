@@ -15,12 +15,16 @@ public class Constants : MonoBehaviour
     public static int MIN_ARMOR = 1;
     public static int MIN_ENGINE = 1;
     public static int[] ClassToCapacity = { 2000, 5000, 8000, 20000, 35000, 50000 };
-    public static int[] ClassToWeight = { 200, 500, 800, 2000, 3500, 5000 };
+    public static int[] ClassToWeight = { 100, 300, 600, 1500, 2000, 4000 };
     public static float[] ClassToDrag = { 0.55f, 0.8f, 1.2f, 1.8f, 2.3f, 3.5f};
-    public static int[] CannonWeight = { 0,0,10,20,30,
-                                         40,75,100,200,300,
-                                         400,600,800,1000,1200,
-                                         1500,1800,2000,2500,3000,3500};
+    public static int[] CannonWeight = { 0,0,10,20,35,
+                                         50,80,120,200,350,
+                                         500,700,950,1200,1500,
+                                         1800,2100,2400,2700,3100,3500};
     public static int trpweight = 50;
-    public static int MAX_BUILD_QUEUE;
+    public static int MAX_BUILD_QUEUE = 10;
+    public static int DEF_START_IRON = 2500;
+    public static int DEF_START_MP = 500;
+    public static int DEF_START_EXP = 100;
+    public static int MAX_DESIGN_NUM = 64;
 }

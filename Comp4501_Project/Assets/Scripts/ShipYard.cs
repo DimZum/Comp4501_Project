@@ -9,15 +9,15 @@ public class ShipYard : MonoBehaviour
     int YardAvaliable;
     Ship[] ShipInConstruction;
     float[] ShipConstructionTime;
-    ShipYard(Player p)
+    public ShipYard(Player p)
     {
         Owner = p;
         BuildingQueue = new Queue<ShipDesign>();
         ShipInConstruction = new Ship[Constants.MAX_BUILD_QUEUE];
         ShipConstructionTime = new float[Constants.MAX_BUILD_QUEUE];
-        //
+        YardAvaliable = 2;
     }
-    void BuildShip(ShipDesign d)
+    public void BuildShip(ShipDesign d)
     {
         BuildingQueue.Enqueue(d);
     }
@@ -53,6 +53,7 @@ public class ShipYard : MonoBehaviour
             }else{
                 if (ShipInConstruction[i] != null)
                 {
+                    //Construction is finished and the ship should be added to player
                     Owner.AddShip(ShipInConstruction[i]);
                     ShipInConstruction[i] = null;
                 }
