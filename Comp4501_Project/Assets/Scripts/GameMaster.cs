@@ -10,11 +10,14 @@ public class GameMaster : MonoBehaviour {
 
     public static bool isGameOver;
     public static bool isGamePaused;
+    public static Player player,enemy;
 
     // Start is called before the first frame update
     void Start() {
         isGameOver = false;
         isGamePaused = false;
+        player = new Player(0, 4);
+        enemy = new Player(1, 0);
     }
 
     // Update is called once per frame

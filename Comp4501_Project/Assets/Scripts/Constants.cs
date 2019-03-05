@@ -27,4 +27,5 @@ public class Constants : MonoBehaviour
     public static int DEF_START_MP = 500;
     public static int DEF_START_EXP = 100;
     public static int MAX_DESIGN_NUM = 64;
+    public static int SHIPARRAYLENGTH_START = 32;
 }

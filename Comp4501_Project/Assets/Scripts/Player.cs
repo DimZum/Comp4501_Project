@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
         Exp = Constants.DEF_START_EXP + d * 50;
         SavedDesign = new ShipDesign[Constants.MAX_DESIGN_NUM];
         ShipYards = new ShipYard(this);
-        Ships = new Ship[32];
+        Ships = new Ship[Constants.SHIPARRAYLENGTH_START];
     }
 
     // Start is called before the first frame update
@@ -39,6 +39,11 @@ public class Player : MonoBehaviour
     }
 
     public void AddShip(Ship s)
+    {
+
+    }
+
+    public void AddDesign(ShipDesign d)
     {
 
     }
