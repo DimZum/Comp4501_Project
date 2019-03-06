@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ShipDesigner : MonoBehaviour
 {
     Constants.ShipClass ShipClass;
-    public int mgc = 3, mgn = 1, sgc = 2, sgn = 0, trp = 0, AA;
+    public int mgc = 3, mgn = 1, sgc = 2, sgn = 0, trp = 0, AA = 0; 
     public int armor = 1, engine = 1;
     public int weight_fp, weight_de;
     public bool bulge;
@@ -27,8 +28,7 @@ public class ShipDesigner : MonoBehaviour
     Button armor_inc, armor_dec;
     Button engine_inc, engine_dec;
     Toggle trp_bulge;
-    Button confirm;
-    Button cancel;
+    Button confirm,cancel,To_Shipyard;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +58,9 @@ public class ShipDesigner : MonoBehaviour
         totalw = GameObject.Find("Weight and Capacity").GetComponent<Text>();
         description = GameObject.Find("Description").GetComponent<Text>();
         ShipClass = (Constants.ShipClass)Sclass.value;
+        confirm = GameObject.Find("Confirm").GetComponent<Button>();
+        cancel = GameObject.Find("Cancel").GetComponent<Button>();
+        To_Shipyard = GameObject.Find("To_ShipYard").GetComponent<Button>();
         mgc_inc.onClick.AddListener(add_mgc);
         mgc_dec.onClick.AddListener(red_mgc);
         mgn_inc.onClick.AddListener(add_mgn);
@@ -72,6 +75,9 @@ public class ShipDesigner : MonoBehaviour
         armor_dec.onClick.AddListener(red_armor);
         engine_inc.onClick.AddListener(add_engine);
         engine_dec.onClick.AddListener(red_engine);
+        confirm.onClick.AddListener(Confirm);
+        cancel.onClick.AddListener(Cancel);
+        To_Shipyard.onClick.AddListener(goShipyard);
     }
 
     void add_mgc()
@@ -192,7 +198,7 @@ public class ShipDesigner : MonoBehaviour
         ShipClass = (Constants.ShipClass)Sclass.value;
         MaxWeight = Constants.ClassToCapacity[(int)ShipClass];
         weight_fp = Constants.CannonWeight[mgc] * mgn + Constants.CannonWeight[sgc] * sgn + trp * Constants.trpweight;
-        weight_de = (int)(armor*armor * (mgn * mgc + sgn * sgc + trp + engine + (int)ShipClass)/2.5f) + Mathf.RoundToInt((engine*engine/2.0f)*Mathf.Log((armor*armor+weight_fp+1),3.65f)*Constants.ClassToDrag[(int)ShipClass]);
+        weight_de = (int)((armor+1)* (armor + 1) * (armor + 1) + (mgn * mgc + sgn * sgc + trp + engine + (int)ShipClass)/2.5f) + Mathf.RoundToInt((engine*engine/2.0f)*Mathf.Log((armor*armor+weight_fp+1),3.63f)*Constants.ClassToDrag[(int)ShipClass]);
         totalWeight = weight_de + weight_fp+Constants.ClassToWeight[(int)ShipClass];
         if (trp_bulge.isOn)
         {
@@ -202,6 +208,7 @@ public class ShipDesigner : MonoBehaviour
         if (weightdif < 0) weightdif = 1;
         HitPoints = (int)((1+4.0*weightdif/MaxWeight)*((int)ShipClass+1)*((int)ShipClass+1)*10);
         IronCost = armor * armor * 10 * (int)ShipClass + engine * 5 * (int)ShipClass + trp * 20 + mgc * mgc * mgn+sgc*sgc*sgn;
+        ManCost = Mathf.Max(totalWeight - 500, 0)/25 + mgc * mgn + sgc * sgn +engine;
         ConstructionTime =(totalWeight / 200+IronCost/100)/5+10;
         if (totalWeight > MaxWeight)
         {
@@ -212,8 +219,43 @@ public class ShipDesigner : MonoBehaviour
             confirm.interactable = true;
         }
     }
+
+    void Cancel()
+    {
+        //Testing
+        Debug.Log(GameMaster.player.getNextShipID());
+    }
+
+    void Confirm()
+    {
+        //ShipDesign(int maingc, int maingn, int subgc, int subgn, int trpdo, int A, int arm, int eng
+        //              , bool bulge, int tweight, int HP,int Icost,int Mcost, int Tcost)
+        Debug.Log("Trying to save design " + Sname.text);
+        GameMaster.player.AddDesign(
+            new ShipDesign(Sname.text, (Constants.ShipClass)Sclass.value,mgc, mgn, sgc, sgn, trp, AA, armor, engine, bulge, totalWeight, HitPoints,IronCost, ManCost, ConstructionTime));
+    }
+
+    void goShipyard()
+    {
+        SceneManager.LoadSceneAsync("ConstructionPage");
+    }
+
+    bool is_vowel()
+    {
+        char[] s = Sname.text.ToLower().ToCharArray();
+        if (s.Length == 0)
+        {
+            return false;
+        }
+        return (s[0].Equals('a') || s[0].Equals('o') || s[0].Equals('e') || s[0].Equals('i') || s[0].Equals('u'));
+    }
+
     void display_value()
     {
+        if (Sname.text.Equals(""))
+        {
+            Sname.text = "Nameless";
+        }
         fpvalue.text = mgc + "\n" + mgn + "\n"+sgc+"\n"+sgn+"\n"+trp;
         devalue.text = armor + "\n" + engine + "\n";
         fpw.text = weight_fp + " tons";
@@ -221,12 +263,22 @@ public class ShipDesigner : MonoBehaviour
         totalw.text = "Total weight " + totalWeight + "\nMax Capacity " + MaxWeight;
         int not_used_weight = MaxWeight - totalWeight;
         if (not_used_weight < 0) not_used_weight = 0;
-        description.text = "A " + Sname.text + " class " + ShipClass.ToString()
+        if (is_vowel())
+        {
+            description.text = "An ";
+        }
+        else
+        {
+            description.text = "A ";
+        }
+
+        description.text += Sname.text + " class " + ShipClass.ToString()
             + "\nEquiped with " + mgc
             + " inch Cannon\n" + trp
             + " torpedo tube(s)\nArmor enough to stop " + armor + " inch shell\nMax speed " + engine + " Knots"
             + "\nTotal hitpoints: " + HitPoints
             + "\nIron Cost:" + IronCost
+            + "\nOperate Manpower" + ManCost
             + "\nConstruction Time: " + ConstructionTime;
     }
     // Update is called once per frame

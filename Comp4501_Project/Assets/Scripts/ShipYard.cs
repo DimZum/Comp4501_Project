@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipYard : MonoBehaviour
+public class ShipYard
 {
     Player Owner;
     Queue<ShipDesign>BuildingQueue;

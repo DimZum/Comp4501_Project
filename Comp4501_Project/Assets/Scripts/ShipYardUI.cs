@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ShipYardUI : MonoBehaviour
 {
     Button Design1, Design2, Design3, Design4,PrevPage,NextPage;
-    Button ExitButton;
+    Button ExitButton, ToDesign;
     Image[] YardIcons;
     Text YardName;
     Text YardStat;
@@ -33,6 +34,7 @@ public class ShipYardUI : MonoBehaviour
         YardTime = GameObject.Find("ShipYardTime").GetComponent<Text>();
         YardShip = GameObject.Find("ConstructionName").GetComponent<Text>();
         YardPage = GameObject.Find("Page_Text").GetComponent<Text>();
+        ToDesign = GameObject.Find("To_Designer").GetComponent<Button>();
         YardIcons = new Image[10];
         for (int i = 0; i < 10; i++)
         {
@@ -43,6 +45,7 @@ public class ShipYardUI : MonoBehaviour
 
         PrevPage.onClick.AddListener(Ppage);
         NextPage.onClick.AddListener(Npage);
+        ToDesign.onClick.AddListener(Tdesign);
     }
 
     void Ppage()
@@ -60,6 +63,11 @@ public class ShipYardUI : MonoBehaviour
         {
             CurPage = MaxPage;
         }
+    }
+
+    void Tdesign()
+    {
+        SceneManager.LoadSceneAsync("ShipDesign");
     }
 
     void TextUpdate()

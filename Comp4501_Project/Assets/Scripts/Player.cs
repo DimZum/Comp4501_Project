@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player
 {
     int ID;
-    int next_ship_id;
+    int next_ship_id,next_design_id;
     float Iron, ManPower, Exp;
     ShipDesign[] SavedDesign;
     ShipYard ShipYards;
@@ -15,12 +15,13 @@ public class Player : MonoBehaviour
     {
         ID = I;
         next_ship_id = 0;
+        next_design_id = 0;
         Iron = Constants.DEF_START_IRON + d * 1000;
         ManPower = Constants.DEF_START_MP + d * 200;
         Exp = Constants.DEF_START_EXP + d * 50;
+        Ships = new Ship[Constants.SHIPARRAYLENGTH_START];
         SavedDesign = new ShipDesign[Constants.MAX_DESIGN_NUM];
         ShipYards = new ShipYard(this);
-        Ships = new Ship[Constants.SHIPARRAYLENGTH_START];
     }
 
     // Start is called before the first frame update
@@ -40,12 +41,25 @@ public class Player : MonoBehaviour
 
     public void AddShip(Ship s)
     {
-
+        if (next_ship_id >= Ships.Length)
+        {
+            extend_ship_array();
+        }
+        Ships[next_ship_id] = s;
+        next_ship_id++;
     }
 
     public void AddDesign(ShipDesign d)
     {
-
+        if (next_design_id >= SavedDesign.Length)
+        {
+            Debug.Log("Error, design full");
+            //Should extend the array to store more design, but for now just return;
+            return;
+        }
+        SavedDesign[next_design_id] = d;
+        Debug.Log("Received design of " + SavedDesign[next_design_id].getName());
+        next_design_id++;
     }
 
     void extend_ship_array()

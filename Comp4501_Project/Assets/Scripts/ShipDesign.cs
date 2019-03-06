@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipDesign : MonoBehaviour
+public class ShipDesign
 {
+    string Classname;
     Constants.ShipClass ShipClass;
-    int ID;//The id of ship design, not the ship.
+ //   int ID;//The id of ship design, not the ship.
     int mgc, mgn, sgc, sgn, trp, AA;
     int armor, speed;
     bool hasbulge;
@@ -15,10 +16,11 @@ public class ShipDesign : MonoBehaviour
     float ManCost;
     float ConstructionTime;
     
-    ShipDesign(int i, int maingc, int maingn, int subgc, int subgn, int trpdo, int A, int arm, int eng
-                , bool bulge, int tweight, int HP ,int Icost,int Mcost, int Tcost)
+    public ShipDesign(string name, Constants.ShipClass c, int maingc, int maingn, int subgc, int subgn, int trpdo, int A, int arm, int eng
+                , bool bulge, int tweight, int HP , float Icost, float Mcost, float Tcost)
     {
-        ID = i;
+        Classname = name;
+        ShipClass = c;
         mgc = maingc;
         mgn = maingn;
         sgc = subgc;
@@ -40,6 +42,16 @@ public class ShipDesign : MonoBehaviour
         return s;
     }
 
+    public string getName()
+    {
+        return Classname;
+    }
+
+    public Constants.ShipClass getClass()
+    {
+        return ShipClass;
+    }
+
     public float getIronCost()
     {
         return IronCost;
@@ -52,8 +64,7 @@ public class ShipDesign : MonoBehaviour
     {
         return ConstructionTime;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         
