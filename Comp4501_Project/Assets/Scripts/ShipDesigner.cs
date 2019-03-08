@@ -7,60 +7,31 @@ using UnityEngine.UI;
 public class ShipDesigner : MonoBehaviour
 {
     Constants.ShipClass ShipClass;
-    public int mgc = 3, mgn = 1, sgc = 2, sgn = 0, trp = 0, AA = 0; 
-    public int armor = 1, engine = 1;
-    public int weight_fp, weight_de;
-    public bool bulge;
+    int mgc = 3, mgn = 1, sgc = 2, sgn = 0, trp = 0, AA = 0; 
+    int armor = 1, engine = 1;
+    int weight_fp, weight_de;
+    bool bulge;
     int totalWeight;
     int MaxWeight;
     int HitPoints;
     float IronCost;
     float ManCost;
     float ConstructionTime;
-    Dropdown Sclass;
-    InputField Sname;
-    Text fpvalue, devalue,fpw,dew,totalw,description;
-    Button mgc_inc, mgc_dec;
-    Button mgn_inc, mgn_dec;
-    Button sgc_inc, sgc_dec;
-    Button sgn_inc, sgn_dec;
-    Button trp_inc, trp_dec;
-    Button armor_inc, armor_dec;
-    Button engine_inc, engine_dec;
-    Toggle trp_bulge;
-    Button confirm,cancel,To_Shipyard;
+    public Dropdown Sclass;
+    public InputField Sname;
+    public Text fpvalue, devalue,fpw,dew,totalw,description;
+    public Button mgc_inc, mgc_dec;
+    public Button mgn_inc, mgn_dec;
+    public Button sgc_inc, sgc_dec;
+    public Button sgn_inc, sgn_dec;
+    public Button trp_inc, trp_dec;
+    public Button armor_inc, armor_dec;
+    public Button engine_inc, engine_dec;
+    public Toggle trp_bulge;
+    public Button confirm,cancel,To_Shipyard;
     // Start is called before the first frame update
     void Start()
     {
-        Sclass = GameObject.Find("ShipClass").GetComponent<Dropdown>();
-        Sname = GameObject.Find("ShipName").GetComponent<InputField>();
-        mgc_inc = GameObject.Find("Add_caliber_main").GetComponent<Button>();
-        mgc_dec = GameObject.Find("Reduce_caliber_main").GetComponent<Button>();
-        mgn_inc = GameObject.Find("Add_turret_main").GetComponent<Button>();
-        mgn_dec = GameObject.Find("Reduce_turret_main").GetComponent<Button>();
-        sgc_inc = GameObject.Find("Add_caliber_sub").GetComponent<Button>();
-        sgc_dec = GameObject.Find("Reduce_caliber_sub").GetComponent<Button>();
-        sgn_inc = GameObject.Find("Add_turret_sub").GetComponent<Button>();
-        sgn_dec = GameObject.Find("Reduce_turret_sub").GetComponent<Button>();
-        trp_inc = GameObject.Find("Add_torpedo").GetComponent<Button>();
-        trp_dec = GameObject.Find("Reduce_torpedo").GetComponent<Button>();
-        armor_inc = GameObject.Find("Add_armor").GetComponent<Button>();
-        armor_dec = GameObject.Find("Reduce_armor").GetComponent<Button>();
-        engine_inc = GameObject.Find("Add_engine").GetComponent<Button>();
-        engine_dec = GameObject.Find("Reduce_engine").GetComponent<Button>();
-        trp_bulge = GameObject.Find("Torpedo_bulge").GetComponent<Toggle>();
-        confirm = GameObject.Find("Confirm").GetComponent<Button>();
-        cancel = GameObject.Find("Cancel").GetComponent<Button>();
-        fpvalue = GameObject.Find("FP_Values").GetComponent<Text>();
-        devalue = GameObject.Find("DE_Values").GetComponent<Text>();
-        fpw = GameObject.Find("Weapon_weight").GetComponent<Text>();
-        dew = GameObject.Find("Defense_weight").GetComponent<Text>();
-        totalw = GameObject.Find("Weight and Capacity").GetComponent<Text>();
-        description = GameObject.Find("Description").GetComponent<Text>();
-        ShipClass = (Constants.ShipClass)Sclass.value;
-        confirm = GameObject.Find("Confirm").GetComponent<Button>();
-        cancel = GameObject.Find("Cancel").GetComponent<Button>();
-        To_Shipyard = GameObject.Find("To_ShipYard").GetComponent<Button>();
         mgc_inc.onClick.AddListener(add_mgc);
         mgc_dec.onClick.AddListener(red_mgc);
         mgn_inc.onClick.AddListener(add_mgn);
@@ -195,12 +166,13 @@ public class ShipDesigner : MonoBehaviour
     }
     void compute_value()
     {
+        bulge = trp_bulge.isOn;
         ShipClass = (Constants.ShipClass)Sclass.value;
         MaxWeight = Constants.ClassToCapacity[(int)ShipClass];
         weight_fp = Constants.CannonWeight[mgc] * mgn + Constants.CannonWeight[sgc] * sgn + trp * Constants.trpweight;
         weight_de = (int)((armor+1)* (armor + 1) * (armor + 1) + (mgn * mgc + sgn * sgc + trp + engine + (int)ShipClass)/2.5f) + Mathf.RoundToInt((engine*engine/2.0f)*Mathf.Log((armor*armor+weight_fp+1),3.63f)*Constants.ClassToDrag[(int)ShipClass]);
         totalWeight = weight_de + weight_fp+Constants.ClassToWeight[(int)ShipClass];
-        if (trp_bulge.isOn)
+        if (bulge)
         {
             totalWeight += Constants.ClassToWeight[(int)ShipClass];
         }
@@ -233,6 +205,7 @@ public class ShipDesigner : MonoBehaviour
         Debug.Log("Trying to save design " + Sname.text);
         GameMaster.player.AddDesign(
             new ShipDesign(Sname.text, (Constants.ShipClass)Sclass.value,mgc, mgn, sgc, sgn, trp, AA, armor, engine, bulge, totalWeight, HitPoints,IronCost, ManCost, ConstructionTime));
+        Debug.Log("Design Saved.\nCurrent design#: " + GameMaster.player.getNextDesignID());
     }
 
     void goShipyard()
@@ -277,8 +250,8 @@ public class ShipDesigner : MonoBehaviour
             + " inch Cannon\n" + trp
             + " torpedo tube(s)\nArmor enough to stop " + armor + " inch shell\nMax speed " + engine + " Knots"
             + "\nTotal hitpoints: " + HitPoints
-            + "\nIron Cost:" + IronCost
-            + "\nOperate Manpower" + ManCost
+            + "\nIron Cost: " + IronCost
+            + "\nOperate Manpower: " + ManCost
             + "\nConstruction Time: " + ConstructionTime;
     }
     // Update is called once per frame

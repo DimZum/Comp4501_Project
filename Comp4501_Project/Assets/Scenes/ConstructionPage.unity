@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 33827314}
   - component: {fileID: 33827313}
   m_Layer: 5
-  m_Name: Image
+  m_Name: DB3I
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1539,7 +1539,7 @@ GameObject:
   - component: {fileID: 843051310}
   - component: {fileID: 843051309}
   m_Layer: 5
-  m_Name: Text
+  m_Name: DB4T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1907,7 +1907,7 @@ GameObject:
   - component: {fileID: 1148613207}
   - component: {fileID: 1148613206}
   m_Layer: 5
-  m_Name: Image
+  m_Name: DB1I
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2401,7 +2401,7 @@ GameObject:
   - component: {fileID: 1358044900}
   - component: {fileID: 1358044899}
   m_Layer: 5
-  m_Name: Text
+  m_Name: DB1T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2549,7 +2549,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1367526141}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1367526141
@@ -2992,6 +3003,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb2883fa3c07db429e50e357abd5392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Design1: {fileID: 1367526140}
+  Design2: {fileID: 1152303248}
+  Design3: {fileID: 1757849117}
+  Design4: {fileID: 2139580803}
+  PrevPage: {fileID: 1145290881}
+  NextPage: {fileID: 178659921}
+  D1t: {fileID: 1358044899}
+  D2t: {fileID: 2103697166}
+  D3t: {fileID: 2058700205}
+  D4t: {fileID: 843051309}
+  D1i: {fileID: 1148613206}
+  D2i: {fileID: 1965904774}
+  D3i: {fileID: 33827313}
+  D4i: {fileID: 1893492183}
+  ExitButton: {fileID: 781348776}
+  ToDesign: {fileID: 647283334}
+  YardName: {fileID: 715603710}
+  YardStat: {fileID: 1707222488}
+  YardTime: {fileID: 1081985220}
+  YardShip: {fileID: 192210375}
+  YardPage: {fileID: 2122949233}
 --- !u!1 &1707222486
 GameObject:
   m_ObjectHideFlags: 0
@@ -3299,7 +3331,7 @@ GameObject:
   - component: {fileID: 1893492184}
   - component: {fileID: 1893492183}
   m_Layer: 5
-  m_Name: Image
+  m_Name: DB4I
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3452,7 +3484,7 @@ GameObject:
   - component: {fileID: 1965904775}
   - component: {fileID: 1965904774}
   m_Layer: 5
-  m_Name: Image
+  m_Name: DB2I
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3600,7 +3632,7 @@ GameObject:
   - component: {fileID: 2058700206}
   - component: {fileID: 2058700205}
   m_Layer: 5
-  m_Name: Text
+  m_Name: DB3T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3748,7 +3780,7 @@ GameObject:
   - component: {fileID: 2103697167}
   - component: {fileID: 2103697166}
   m_Layer: 5
-  m_Name: 'Text '
+  m_Name: DB2T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

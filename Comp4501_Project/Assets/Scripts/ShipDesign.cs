@@ -51,7 +51,7 @@ public class ShipDesign
     {
         return ShipClass;
     }
-
+    
     public float getIronCost()
     {
         return IronCost;

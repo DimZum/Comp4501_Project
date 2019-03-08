@@ -39,6 +39,11 @@ public class Player
         return next_ship_id;
     }
 
+    public int getNextDesignID()
+    {
+        return next_design_id;
+    }
+
     public void AddShip(Ship s)
     {
         if (next_ship_id >= Ships.Length)
@@ -58,8 +63,13 @@ public class Player
             return;
         }
         SavedDesign[next_design_id] = d;
-        Debug.Log("Received design of " + SavedDesign[next_design_id].getName());
+        Debug.Log("Player " + ID + " received design of " + SavedDesign[next_design_id].getName()+"\nCurrent design: "+ (next_design_id+1));
         next_design_id++;
+    }
+
+    public ShipDesign[] GetShipDesigns()
+    {
+        return SavedDesign;
     }
 
     void extend_ship_array()

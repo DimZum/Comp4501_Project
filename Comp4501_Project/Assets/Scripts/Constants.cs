@@ -5,6 +5,12 @@ using UnityEngine;
 public class Constants : MonoBehaviour
 {
     public enum ShipClass { Destroyer, LightCruiser, HeavyCruiser, BattleCruiser, Battleship, Dreadnought };
+    public static string[] SHIP_ICONS = { "Sprites/Icon_Destroyer",
+                                          "Sprites/Icon_LCruiser",
+                                          "Sprites/Icon_HCruiser",
+                                          "Sprites/Icon_BattleCruiser",
+                                          "Sprites/Icon_BattleShip",
+                                          "Sprites/Icon_Dreadnought"};
     public static int MAX_CALIBER = 20;
     public static int MIN_CALIBER = 3;
     public static int MAX_SUB_CALIBER = 9;

@@ -7,13 +7,13 @@ public class ShipYard
     Player Owner;
     Queue<ShipDesign>BuildingQueue;
     int YardAvaliable;
-    Ship[] ShipInConstruction;
+    ShipDesign[] ShipInConstruction;
     float[] ShipConstructionTime;
     public ShipYard(Player p)
     {
         Owner = p;
         BuildingQueue = new Queue<ShipDesign>();
-        ShipInConstruction = new Ship[Constants.MAX_BUILD_QUEUE];
+        ShipInConstruction = new ShipDesign[Constants.MAX_BUILD_QUEUE];
         ShipConstructionTime = new float[Constants.MAX_BUILD_QUEUE];
         YardAvaliable = 2;
     }
@@ -30,13 +30,12 @@ public class ShipYard
             {
                 //There is no ship waiting for construction;
                 return;
-            }
-            else
-            {
+            }else{
                 if (ShipInConstruction[i] == null)
                 {
+                    //If there is free shipyard avaliable
                     ShipDesign d = BuildingQueue.Dequeue();
-                    ShipInConstruction[i] = d.ToShip(Owner);
+                    ShipInConstruction[i] = d;
                     ShipConstructionTime[i] = d.getTimeCost();
                 }
             }
@@ -54,8 +53,9 @@ public class ShipYard
                 if (ShipInConstruction[i] != null)
                 {
                     //Construction is finished and the ship should be added to player
-                    Owner.AddShip(ShipInConstruction[i]);
+                    Owner.AddShip(ShipInConstruction[i].ToShip(Owner));
                     ShipInConstruction[i] = null;
+                    ShipConstructionTime[i] = 0;
                 }
             }
         }
@@ -70,6 +70,6 @@ public class ShipYard
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateProgress(Time.deltaTime);
     }
 }
