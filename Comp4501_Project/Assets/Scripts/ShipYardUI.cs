@@ -57,9 +57,12 @@ public class ShipYardUI : MonoBehaviour
         SceneManager.LoadSceneAsync("ShipDesign");
     }
 
-    string getShipName(int index)
+    string getShipInfo(int index)
     {
-        return GameMaster.player.GetShipDesigns()[index].getName();
+        string s = GameMaster.player.GetShipDesigns()[index].getName();
+        s += "\nIron: " + GameMaster.player.GetShipDesigns()[index].getIronCost();
+        s += "\nMP: " + GameMaster.player.GetShipDesigns()[index].getMPCost();
+        return s;
     }
 
     Sprite getShipIcon(int index)
@@ -79,7 +82,7 @@ public class ShipYardUI : MonoBehaviour
         int pageoffset = (CurPage - 1) * 4;
         if (DesignExist(pageoffset))
         {
-            D1t.text = getShipName(pageoffset);
+            D1t.text = getShipInfo(pageoffset);
             D1i.color = new Color32(255, 255, 255, 255);
             D1i.sprite = getShipIcon(pageoffset);
             Design1.interactable = true;
@@ -91,7 +94,7 @@ public class ShipYardUI : MonoBehaviour
         }
         if (DesignExist(pageoffset+1))
         {
-            D2t.text = getShipName(pageoffset + 1);
+            D2t.text = getShipInfo(pageoffset + 1);
             D2i.sprite = getShipIcon(pageoffset + 1);
             D2i.color = new Color32(255, 255, 255, 255);
             Design2.interactable = true;
@@ -103,7 +106,7 @@ public class ShipYardUI : MonoBehaviour
         }
         if (DesignExist(pageoffset+2))
         {
-            D3t.text = getShipName(pageoffset + 2);
+            D3t.text = getShipInfo(pageoffset + 2);
             D3i.sprite = getShipIcon(pageoffset + 2);
             D3i.color = new Color32(255, 255, 255, 255);
             Design3.interactable = true;
@@ -115,7 +118,7 @@ public class ShipYardUI : MonoBehaviour
         }
         if (DesignExist(pageoffset+3))
         {
-            D4t.text = getShipName(pageoffset + 3);
+            D4t.text = getShipInfo(pageoffset + 3);
             D4i.sprite = getShipIcon(pageoffset + 3);
             D4i.color = new Color32(255, 255, 255, 255);
             Design4.interactable = true;

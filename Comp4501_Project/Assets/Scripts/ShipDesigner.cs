@@ -170,15 +170,17 @@ public class ShipDesigner : MonoBehaviour
         ShipClass = (Constants.ShipClass)Sclass.value;
         MaxWeight = Constants.ClassToCapacity[(int)ShipClass];
         weight_fp = Constants.CannonWeight[mgc] * mgn + Constants.CannonWeight[sgc] * sgn + trp * Constants.trpweight;
-        weight_de = (int)((armor+1)* (armor + 1) * (armor + 1) + (mgn * mgc + sgn * sgc + trp + engine + (int)ShipClass)/2.5f) + Mathf.RoundToInt((engine*engine/2.0f)*Mathf.Log((armor*armor+weight_fp+1),3.63f)*Constants.ClassToDrag[(int)ShipClass]);
-        totalWeight = weight_de + weight_fp+Constants.ClassToWeight[(int)ShipClass];
+        float weightArmor = (armor+31) * (armor+31) *(Constants.ClassToWeight[(int)ShipClass]+mgc*mgn*15+sgc*sgn*15+trp*50) / 1500.0f;
+        float weightEngine = (weightArmor + weight_fp) * engine * engine / 900;
+        weight_de = (int)(weightEngine+ weightArmor);
         if (bulge)
         {
-            totalWeight += Constants.ClassToWeight[(int)ShipClass];
+            weight_de += Constants.ClassToWeight[(int)ShipClass];
         }
+        totalWeight = weight_de + weight_fp+Constants.ClassToWeight[(int)ShipClass];
         int weightdif = MaxWeight - totalWeight;
         if (weightdif < 0) weightdif = 1;
-        HitPoints = (int)((1+4.0*weightdif/MaxWeight)*((int)ShipClass+1)*((int)ShipClass+1)*10);
+        HitPoints = (int)((1+2.0*weightdif/MaxWeight)*((int)ShipClass+1)*((int)ShipClass+1)*15);
         IronCost = armor * armor * 10 * (int)ShipClass + engine * 5 * (int)ShipClass + trp * 20 + mgc * mgc * mgn+sgc*sgc*sgn;
         ManCost = Mathf.Max(totalWeight - 500, 0)/25 + mgc * mgn + sgc * sgn +engine;
         ConstructionTime =(totalWeight / 200+IronCost/100)/5+10;
