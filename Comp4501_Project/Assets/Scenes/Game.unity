@@ -124,6 +124,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneMaster
       objectReference: {fileID: 0}
+    - target: {fileID: 378412707024538412, guid: 5c6577d4f269a02468ecfa668d8e310b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 378412707024538415, guid: 5c6577d4f269a02468ecfa668d8e310b,
         type: 3}
       propertyPath: m_LocalPosition.x
