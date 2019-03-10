@@ -33,6 +33,10 @@ public class ShipYardUI : MonoBehaviour
         PrevPage.onClick.AddListener(Ppage);
         NextPage.onClick.AddListener(Npage);
         ToDesign.onClick.AddListener(Tdesign);
+        Design1.onClick.AddListener(DB1_handle);
+        Design2.onClick.AddListener(DB2_handle);
+        Design3.onClick.AddListener(DB3_handle);
+        Design4.onClick.AddListener(DB4_handle);
     }
 
     void Ppage()
@@ -75,6 +79,28 @@ public class ShipYardUI : MonoBehaviour
     bool DesignExist(int index)
     {
         return GameMaster.player.getNextDesignID() > index;
+    }
+
+    void DB1_handle()
+    {
+        GameMaster.player.buildShip(GameMaster.player.GetShipDesigns()[(CurPage - 1) * 4]);
+        Debug.Log("Current queue length: " + GameMaster.player.GetShipYard().getQueueLength());
+        UpdateQueueIcon();
+    }
+    void DB2_handle()
+    {
+        GameMaster.player.buildShip(GameMaster.player.GetShipDesigns()[(CurPage - 1) * 4 + 1]);
+        UpdateQueueIcon();
+    }
+    void DB3_handle()
+    {
+        GameMaster.player.buildShip(GameMaster.player.GetShipDesigns()[(CurPage - 1) * 4 + 2]);
+        UpdateQueueIcon();
+    }
+    void DB4_handle()
+    {
+        GameMaster.player.buildShip(GameMaster.player.GetShipDesigns()[(CurPage - 1) * 4 + 3]);
+        UpdateQueueIcon();
     }
 
 
@@ -134,6 +160,31 @@ public class ShipYardUI : MonoBehaviour
 
     void BuildQueueUpdate()
     {
+        YardShip.text = GameMaster.player.GetShipYard().ConstructionNameString();
+        YardTime.text = GameMaster.player.GetShipYard().ConstructionTimeString();
+        YardStat.text = "";
+        string[] s = { "Not avaliable", "Idle", "Working" };
+        for (int i = 0; i < Constants.MAX_BUILD_QUEUE; i++)
+        {
+            YardStat.text += s[GameMaster.player.GetShipYard().getYardStat(i)]+"\n";
+        }
+    }
+
+    void UpdateQueueIcon()
+    {
+        for (int i = 0; i < Constants.MAX_BUILD_QUEUE; i++)
+        {
+            ShipDesign d = GameMaster.player.GetShipYard().getDesignInConstruction(i);
+            if (d == null)
+            {
+                YardIcons[i].color = new Color32(255, 255, 255, 0);
+            }
+            else
+            {
+                YardIcons[i].sprite = Resources.Load<Sprite>(Constants.SHIP_ICONS[(int)d.getClass()]);
+                YardIcons[i].color = GameMaster.player.getPlayerColor();
+            }
+        }
     }
 
     // Update is called once per frame

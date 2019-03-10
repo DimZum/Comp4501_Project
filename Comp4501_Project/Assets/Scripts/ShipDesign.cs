@@ -65,6 +65,8 @@ public class ShipDesign
         return ConstructionTime;
     }
     
+    public 
+
     void Update()
     {
         

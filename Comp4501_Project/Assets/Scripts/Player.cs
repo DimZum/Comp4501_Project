@@ -37,13 +37,14 @@ public class Player
     }
 
     // Start is called before the first frame update
-    void buildShip(ShipDesign d)
+    public void buildShip(ShipDesign d)
     {
         if (Iron >= d.getIronCost() && ManPower >= d.getMPCost())
         {
-            Iron -= d.getIronCost();
-            ManPower -= d.getMPCost();
+            //Iron -= d.getIronCost();
+            //ManPower -= d.getMPCost();
             ShipYards.BuildShip(d);
+            Debug.Log("Add " + d.getName() + " to construction");
         }
     }
 

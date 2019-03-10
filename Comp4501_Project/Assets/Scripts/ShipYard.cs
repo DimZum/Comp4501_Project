@@ -14,8 +14,12 @@ public class ShipYard
         Owner = p;
         BuildingQueue = new Queue<ShipDesign>();
         ShipInConstruction = new ShipDesign[Constants.MAX_BUILD_QUEUE];
+        for(int i = 0; i < ShipInConstruction.Length; i++)
+        {
+            ShipInConstruction[i] = null;
+        }
         ShipConstructionTime = new float[Constants.MAX_BUILD_QUEUE];
-        YardAvaliable = 2;
+        YardAvaliable = 3;
     }
     public void BuildShip(ShipDesign d)
     {
@@ -49,22 +53,89 @@ public class ShipYard
     public string ConstructionNameString()
     {
         string s = "";
+        for (int i = 0; i < Constants.MAX_BUILD_QUEUE; i++)
+        {
+            if (i >= YardAvaliable)
+            {
+                s += "------\n";
+            }
+            else
+            {
+                if (ShipInConstruction[i] == null)
+                {
+                    s += "------\n";
+                }
+                else
+                {
+                    s += ShipInConstruction[i].getName()+"\n";
+                }
+            }
+        }
         return s;
+    }
+
+    public ShipDesign getDesignInConstruction(int i)
+    {
+        if(i<0||i >= Constants.MAX_BUILD_QUEUE)
+        {
+            return null;
+        }
+        else
+        {
+            return ShipInConstruction[i];
+        }
+    }
+
+    public int getYardStat(int i)
+    {
+        //Return yard status by integer
+        //0 for not avaliable
+        //1 for idle
+        //2 for busy
+        if (i < 0 || i >= Constants.MAX_BUILD_QUEUE)
+        {
+            return 0;
+        }
+        else
+        {
+            if (i>=YardAvaliable)
+            {
+                return 0;
+            }
+            else if (ShipInConstruction[i] == null)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
+        }
+    }
+
+    public int getAvaliableYard()
+    {
+        return YardAvaliable;
     }
 
     void UpdateConstruction()
     {
-        for(int i = 0; i < YardAvaliable; i++)
+        Debug.Log("Called Update Construction");
+        for (int i = 0; i < YardAvaliable; i++)
         {
+            Debug.Log("In the for loop "+i);
             if (BuildingQueue.Count == 0)
             {
                 //There is no ship waiting for construction;
+                Debug.Log("Build queue is empty");
                 return;
             }else{
+                Debug.Log("Currently updateing Shipyard " + i + " empty is " + (ShipInConstruction[i] == null));
                 if (ShipInConstruction[i] == null)
                 {
                     //If there is free shipyard avaliable
                     ShipDesign d = BuildingQueue.Dequeue();
+                    Debug.Log("Dequeueing " + d.getName());
                     ShipInConstruction[i] = d;
                     ShipConstructionTime[i] = d.getTimeCost();
                 }
@@ -110,6 +181,7 @@ public class ShipYard
     // Update is called once per frame
     void Update()
     {
+        UpdateConstruction();
         UpdateProgress(Time.deltaTime);
     }
 }
