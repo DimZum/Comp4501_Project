@@ -77,13 +77,14 @@ public class ShipYardUI : MonoBehaviour
         return GameMaster.player.getNextDesignID() > index;
     }
 
+
     void DesignButtonUpdate()
     {
         int pageoffset = (CurPage - 1) * 4;
         if (DesignExist(pageoffset))
         {
             D1t.text = getShipInfo(pageoffset);
-            D1i.color = new Color32(255, 255, 255, 255);
+            D1i.color = GameMaster.player.getPlayerColor();
             D1i.sprite = getShipIcon(pageoffset);
             Design1.interactable = true;
         }
@@ -96,7 +97,7 @@ public class ShipYardUI : MonoBehaviour
         {
             D2t.text = getShipInfo(pageoffset + 1);
             D2i.sprite = getShipIcon(pageoffset + 1);
-            D2i.color = new Color32(255, 255, 255, 255);
+            D2i.color = GameMaster.player.getPlayerColor();
             Design2.interactable = true;
         }
         else{
@@ -108,7 +109,7 @@ public class ShipYardUI : MonoBehaviour
         {
             D3t.text = getShipInfo(pageoffset + 2);
             D3i.sprite = getShipIcon(pageoffset + 2);
-            D3i.color = new Color32(255, 255, 255, 255);
+            D3i.color = GameMaster.player.getPlayerColor();
             Design3.interactable = true;
         }
         else{
@@ -120,7 +121,7 @@ public class ShipYardUI : MonoBehaviour
         {
             D4t.text = getShipInfo(pageoffset + 3);
             D4i.sprite = getShipIcon(pageoffset + 3);
-            D4i.color = new Color32(255, 255, 255, 255);
+            D4i.color = GameMaster.player.getPlayerColor();
             Design4.interactable = true;
         }
         else{
@@ -131,10 +132,15 @@ public class ShipYardUI : MonoBehaviour
         YardPage.text = CurPage + "/" + MaxPage;
     }
 
+    void BuildQueueUpdate()
+    {
+    }
+
     // Update is called once per frame
     void Update()
     {
         // YardIcons[1].color = new Color32(255, 255, 255, t);
         DesignButtonUpdate();
+        BuildQueueUpdate();
     }
 }

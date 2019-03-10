@@ -22,6 +22,36 @@ public class ShipYard
         BuildingQueue.Enqueue(d);
     }
 
+    public string ConstructionTimeString()
+    {
+        string s="";
+        for (int i = 0; i < Constants.MAX_BUILD_QUEUE; i++)
+        {
+            if (i >= YardAvaliable)
+            {
+                s += "--:--:--\n";
+            }
+            else
+            {
+                if (ShipInConstruction[i] == null)
+                {
+                    s += "--:--:--\n";
+                }
+                else
+                {
+                    float t = ShipConstructionTime[i];
+                    s += Mathf.FloorToInt(t / 3600) + ":" + Mathf.FloorToInt((t % 3600) / 60) + ":" + Mathf.FloorToInt((t % 60))+"\n";
+                }
+            }
+        }
+        return s;
+    }
+    public string ConstructionNameString()
+    {
+        string s = "";
+        return s;
+    }
+
     void UpdateConstruction()
     {
         for(int i = 0; i < YardAvaliable; i++)
@@ -40,6 +70,16 @@ public class ShipYard
                 }
             }
         }
+    }
+
+    public ShipDesign[] getConstructionList()
+    {
+        return ShipInConstruction;
+    }
+
+    public int getQueueLength()
+    {
+        return BuildingQueue.Count;
     }
 
     void UpdateProgress(float deltaT)

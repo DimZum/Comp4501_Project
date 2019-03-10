@@ -7,6 +7,7 @@ public class Player
     int ID;
     int next_ship_id,next_design_id;
     float Iron, ManPower, Exp;
+    public Color32 PlayerColor;
     ShipDesign[] SavedDesign;
     ShipYard ShipYards;
     Ship[] Ships;
@@ -22,6 +23,17 @@ public class Player
         Ships = new Ship[Constants.SHIPARRAYLENGTH_START];
         SavedDesign = new ShipDesign[Constants.MAX_DESIGN_NUM];
         ShipYards = new ShipYard(this);
+        if(ID == 0)
+        {
+            PlayerColor = new Color32(5, 5, 180,255);
+        }else if (ID == 1)
+        {
+            PlayerColor = new Color32(180, 5, 5,255);
+        }
+        else
+        {
+            PlayerColor = new Color32(5, 180, 180, 255);
+        }
     }
 
     // Start is called before the first frame update
@@ -34,6 +46,17 @@ public class Player
             ShipYards.BuildShip(d);
         }
     }
+
+    public Color32 getPlayerColor()
+    {
+        return PlayerColor;
+    }
+
+    public ShipYard GetShipYard()
+    {
+        return ShipYards;
+    }
+
     public int getNextShipID()
     {
         return next_ship_id;
