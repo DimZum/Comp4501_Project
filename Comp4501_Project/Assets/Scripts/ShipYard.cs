@@ -120,7 +120,7 @@ public class ShipYard
 
     void UpdateConstruction()
     {
-        Debug.Log("Called Update Construction");
+        //Debug.Log("Called Update Construction");
         for (int i = 0; i < YardAvaliable; i++)
         {
             Debug.Log("In the for loop "+i);

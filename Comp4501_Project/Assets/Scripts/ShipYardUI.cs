@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ShipYardUI : MonoBehaviour
-{
+public class ShipYardUI : MonoBehaviour {
+
+    GameMaster gm;
+
     public Button Design1, Design2, Design3, Design4,PrevPage,NextPage;
     public Text D1t, D2t, D3t, D4t;
     public Image D1i, D2i, D3i, D4i;
@@ -20,8 +22,9 @@ public class ShipYardUI : MonoBehaviour
     int MaxPage;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+        gm = GameMaster.instance;
+
         YardIcons = new Image[10];
         for (int i = 0; i < 10; i++)
         {
@@ -40,10 +43,9 @@ public class ShipYardUI : MonoBehaviour
         ExitButton.onClick.AddListener(CloseWindow);
     }
 
-    void CloseWindow()
-    {
-        GameMaster.ShipYardUI.SetActive(false);
-        GameMaster.ShipDesignerUI.SetActive(false);
+    void CloseWindow() {
+        gm.ShipYardUI.SetActive(false);
+        gm.ShipDesignerUI.SetActive(false);
     }
 
     void Ppage()
@@ -65,8 +67,8 @@ public class ShipYardUI : MonoBehaviour
 
     void Tdesign()
     {
-        GameMaster.ShipDesignerUI.SetActive(true);
-        GameMaster.ShipYardUI.SetActive(false);
+        gm.ShipDesignerUI.SetActive(true);
+        gm.ShipYardUI.SetActive(false);
     }
 
     string getShipInfo(int index)

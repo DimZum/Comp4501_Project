@@ -5,15 +5,26 @@ using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour {
 
-    //public GameObject gamerOverUI;
+    #region Singleton
+    public static GameMaster instance;
+    private void Awake() {
+        if (instance != null) {
+            Debug.LogError("More than one GM instance in scene!");
+            return;
+        }
 
-    //public PauseMenu pauseMenu; 
-
-    public static GameObject ShipYardUI;
-    public static GameObject ShipDesignerUI;
+        instance = this;
+    }
+    #endregion
 
     public static bool isGameOver;
     public static bool isGamePaused;
+
+    //public GameObject gamerOverUI;
+    //public PauseMenu pauseMenu;
+
+    public GameObject ShipYardUI;
+    public GameObject ShipDesignerUI;
 
     public static Player
         player = new Player(0, 4),
@@ -23,11 +34,6 @@ public class GameMaster : MonoBehaviour {
     void Start() {
         isGameOver = false;
         isGamePaused = false;
-
-        ShipYardUI = GameObject.Find("ShipYardUI");
-        ShipDesignerUI = GameObject.Find("ShipDesignerUI");
-        ShipYardUI.SetActive(false);
-        ShipDesignerUI.SetActive(false);
     }
 
     // Update is called once per frame

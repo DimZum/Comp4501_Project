@@ -6,7 +6,7 @@ public class ShipDesign
 {
     string Classname;
     Constants.ShipClass ShipClass;
- //   int ID;//The id of ship design, not the ship.
+    //int ID;//The id of ship design, not the ship.
     int mgc, mgn, sgc, sgn, trp, AA;
     int armor, speed;
     bool hasbulge;

@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ShipDesigner : MonoBehaviour
-{
+public class ShipDesigner : MonoBehaviour {
+
+    GameMaster gm;
+
     Constants.ShipClass ShipClass;
     int mgc = 3, mgn = 1, sgc = 2, sgn = 0, trp = 0, AA = 0; 
     int armor = 1, engine = 1;
@@ -29,9 +31,12 @@ public class ShipDesigner : MonoBehaviour
     public Button engine_inc, engine_dec;
     public Toggle trp_bulge;
     public Button confirm,cancel,To_Shipyard,ExitButton;
+    
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+
+        gm = GameMaster.instance;
+
         mgc_inc.onClick.AddListener(add_mgc);
         mgc_dec.onClick.AddListener(red_mgc);
         mgn_inc.onClick.AddListener(add_mgn);
@@ -54,8 +59,8 @@ public class ShipDesigner : MonoBehaviour
 
     void CloseWindow()
     {
-        GameMaster.ShipYardUI.SetActive(false);
-        GameMaster.ShipDesignerUI.SetActive(false);
+        gm.ShipYardUI.SetActive(false);
+        gm.ShipDesignerUI.SetActive(false);
     }
 
     void add_mgc()
@@ -219,8 +224,8 @@ public class ShipDesigner : MonoBehaviour
 
     void goShipyard()
     {
-        GameMaster.ShipDesignerUI.SetActive(false);
-        GameMaster.ShipYardUI.SetActive(true);
+        gm.ShipDesignerUI.SetActive(false);
+        gm.ShipYardUI.SetActive(true);
     }
 
     bool is_vowel()
