@@ -5,12 +5,7 @@ using UnityEngine;
 public class Constants : MonoBehaviour
 {
     public enum ShipClass { Destroyer, LightCruiser, HeavyCruiser, BattleCruiser, Battleship, Dreadnought };
-    public static string[] SHIP_ICONS = { "Sprites/Icon_Destroyer",
-                                          "Sprites/Icon_LCruiser",
-                                          "Sprites/Icon_HCruiser",
-                                          "Sprites/Icon_BattleCruiser",
-                                          "Sprites/Icon_BattleShip",
-                                          "Sprites/Icon_Dreadnought"};
+    public static Sprite[] SHIP_ICONS = new Sprite[6];
     public static int MAX_CALIBER = 20;
     public static int MIN_CALIBER = 3;
     public static int MAX_SUB_CALIBER = 9;
@@ -34,4 +29,14 @@ public class Constants : MonoBehaviour
     public static int DEF_START_EXP = 100;
     public static int MAX_DESIGN_NUM = 64;
     public static int SHIPARRAYLENGTH_START = 32;
+
+    void Start()
+    {
+        SHIP_ICONS[0] = Resources.Load<Sprite>("Sprites/Icon_Destroyer");
+        SHIP_ICONS[1] = Resources.Load<Sprite>("Sprites/Icon_LCruiser");
+        SHIP_ICONS[2] = Resources.Load<Sprite>("Sprites/Icon_HCruiser");
+        SHIP_ICONS[3] = Resources.Load<Sprite>("Sprites/Icon_BattleCruiser");
+        SHIP_ICONS[4] = Resources.Load<Sprite>("Sprites/Icon_BattleShip");
+        SHIP_ICONS[5] = Resources.Load<Sprite>("Sprites/Icon_Dreadnought");
+    }
 }

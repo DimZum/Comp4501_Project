@@ -28,7 +28,7 @@ public class ShipDesigner : MonoBehaviour
     public Button armor_inc, armor_dec;
     public Button engine_inc, engine_dec;
     public Toggle trp_bulge;
-    public Button confirm,cancel,To_Shipyard;
+    public Button confirm,cancel,To_Shipyard,ExitButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +49,13 @@ public class ShipDesigner : MonoBehaviour
         confirm.onClick.AddListener(Confirm);
         cancel.onClick.AddListener(Cancel);
         To_Shipyard.onClick.AddListener(goShipyard);
+        ExitButton.onClick.AddListener(CloseWindow);
+    }
+
+    void CloseWindow()
+    {
+        GameMaster.ShipYardUI.SetActive(false);
+        GameMaster.ShipDesignerUI.SetActive(false);
     }
 
     void add_mgc()
@@ -212,7 +219,8 @@ public class ShipDesigner : MonoBehaviour
 
     void goShipyard()
     {
-        SceneManager.LoadSceneAsync("ConstructionPage");
+        GameMaster.ShipDesignerUI.SetActive(false);
+        GameMaster.ShipYardUI.SetActive(true);
     }
 
     bool is_vowel()

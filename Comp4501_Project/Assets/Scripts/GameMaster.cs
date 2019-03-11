@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour {
 
@@ -8,6 +9,8 @@ public class GameMaster : MonoBehaviour {
 
     //public PauseMenu pauseMenu; 
 
+    public static GameObject ShipYardUI;
+    public static GameObject ShipDesignerUI;
     public static bool isGameOver;
     public static bool isGamePaused;
     public static Player
@@ -18,10 +21,17 @@ public class GameMaster : MonoBehaviour {
     void Start() {
         isGameOver = false;
         isGamePaused = false;
+        ShipYardUI = GameObject.Find("ShipYardUI");
+        ShipDesignerUI = GameObject.Find("ShipDesignerUI");
+        ShipYardUI.SetActive(false);
+        ShipDesignerUI.SetActive(true);
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
+        player.Update();
+        enemy.Update();
         if (isGameOver) { return; }
     }
 

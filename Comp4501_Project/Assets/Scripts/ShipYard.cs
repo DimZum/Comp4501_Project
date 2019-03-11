@@ -19,7 +19,7 @@ public class ShipYard
             ShipInConstruction[i] = null;
         }
         ShipConstructionTime = new float[Constants.MAX_BUILD_QUEUE];
-        YardAvaliable = 3;
+        YardAvaliable = Mathf.CeilToInt((p.diff+1)/2);
     }
     public void BuildShip(ShipDesign d)
     {
@@ -179,7 +179,7 @@ public class ShipYard
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         UpdateConstruction();
         UpdateProgress(Time.deltaTime);

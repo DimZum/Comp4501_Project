@@ -11,6 +11,7 @@ public class Player
     ShipDesign[] SavedDesign;
     ShipYard ShipYards;
     Ship[] Ships;
+    public int diff;
 
     public Player(int I,int d)
     {
@@ -23,6 +24,7 @@ public class Player
         Ships = new Ship[Constants.SHIPARRAYLENGTH_START];
         SavedDesign = new ShipDesign[Constants.MAX_DESIGN_NUM];
         ShipYards = new ShipYard(this);
+        diff = d;
         if(ID == 0)
         {
             PlayerColor = new Color32(5, 5, 180,255);
@@ -106,10 +108,9 @@ public class Player
         Ships = newarray;
     }
 
-
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        
+        ShipYards.Update();
     }
 }

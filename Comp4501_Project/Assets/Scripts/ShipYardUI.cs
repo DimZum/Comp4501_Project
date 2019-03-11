@@ -28,7 +28,7 @@ public class ShipYardUI : MonoBehaviour
             YardIcons[i]= GameObject.Find("Type_Icon_"+(i+1).ToString()).GetComponent<Image>();
         }
         CurPage = 1;
-        MaxPage = 2;
+        MaxPage = 1;
 
         PrevPage.onClick.AddListener(Ppage);
         NextPage.onClick.AddListener(Npage);
@@ -37,6 +37,13 @@ public class ShipYardUI : MonoBehaviour
         Design2.onClick.AddListener(DB2_handle);
         Design3.onClick.AddListener(DB3_handle);
         Design4.onClick.AddListener(DB4_handle);
+        ExitButton.onClick.AddListener(CloseWindow);
+    }
+
+    void CloseWindow()
+    {
+        GameMaster.ShipYardUI.SetActive(false);
+        GameMaster.ShipDesignerUI.SetActive(false);
     }
 
     void Ppage()
@@ -58,7 +65,8 @@ public class ShipYardUI : MonoBehaviour
 
     void Tdesign()
     {
-        SceneManager.LoadSceneAsync("ShipDesign");
+        GameMaster.ShipDesignerUI.SetActive(true);
+        GameMaster.ShipYardUI.SetActive(false);
     }
 
     string getShipInfo(int index)
@@ -71,9 +79,7 @@ public class ShipYardUI : MonoBehaviour
 
     Sprite getShipIcon(int index)
     {
-        int c = (int)GameMaster.player.GetShipDesigns()[index].getClass();
-        Debug.Log("Loading Sprite: " + Constants.SHIP_ICONS[c]);
-        return Resources.Load<Sprite>(Constants.SHIP_ICONS[c]);
+        return Constants.SHIP_ICONS[(int)GameMaster.player.GetShipDesigns()[index].getClass()];
     }
 
     bool DesignExist(int index)
@@ -84,28 +90,24 @@ public class ShipYardUI : MonoBehaviour
     void DB1_handle()
     {
         GameMaster.player.buildShip(GameMaster.player.GetShipDesigns()[(CurPage - 1) * 4]);
-        Debug.Log("Current queue length: " + GameMaster.player.GetShipYard().getQueueLength());
-        UpdateQueueIcon();
     }
     void DB2_handle()
     {
         GameMaster.player.buildShip(GameMaster.player.GetShipDesigns()[(CurPage - 1) * 4 + 1]);
-        UpdateQueueIcon();
     }
     void DB3_handle()
     {
         GameMaster.player.buildShip(GameMaster.player.GetShipDesigns()[(CurPage - 1) * 4 + 2]);
-        UpdateQueueIcon();
     }
     void DB4_handle()
     {
         GameMaster.player.buildShip(GameMaster.player.GetShipDesigns()[(CurPage - 1) * 4 + 3]);
-        UpdateQueueIcon();
     }
 
 
     void DesignButtonUpdate()
     {
+        MaxPage = Mathf.CeilToInt(GameMaster.player.getNextDesignID()/4);
         int pageoffset = (CurPage - 1) * 4;
         if (DesignExist(pageoffset))
         {
@@ -166,14 +168,6 @@ public class ShipYardUI : MonoBehaviour
         string[] s = { "Not avaliable", "Idle", "Working" };
         for (int i = 0; i < Constants.MAX_BUILD_QUEUE; i++)
         {
-            YardStat.text += s[GameMaster.player.GetShipYard().getYardStat(i)]+"\n";
-        }
-    }
-
-    void UpdateQueueIcon()
-    {
-        for (int i = 0; i < Constants.MAX_BUILD_QUEUE; i++)
-        {
             ShipDesign d = GameMaster.player.GetShipYard().getDesignInConstruction(i);
             if (d == null)
             {
@@ -181,9 +175,10 @@ public class ShipYardUI : MonoBehaviour
             }
             else
             {
-                YardIcons[i].sprite = Resources.Load<Sprite>(Constants.SHIP_ICONS[(int)d.getClass()]);
+                YardIcons[i].sprite = Constants.SHIP_ICONS[(int)d.getClass()];
                 YardIcons[i].color = GameMaster.player.getPlayerColor();
             }
+            YardStat.text += s[GameMaster.player.GetShipYard().getYardStat(i)]+"\n";
         }
     }
 
