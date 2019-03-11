@@ -11,8 +11,10 @@ public class GameMaster : MonoBehaviour {
 
     public static GameObject ShipYardUI;
     public static GameObject ShipDesignerUI;
+
     public static bool isGameOver;
     public static bool isGamePaused;
+
     public static Player
         player = new Player(0, 4),
         enemy = new Player(1, 0);
@@ -21,10 +23,11 @@ public class GameMaster : MonoBehaviour {
     void Start() {
         isGameOver = false;
         isGamePaused = false;
+
         ShipYardUI = GameObject.Find("ShipYardUI");
         ShipDesignerUI = GameObject.Find("ShipDesignerUI");
         ShipYardUI.SetActive(false);
-        ShipDesignerUI.SetActive(true);
+        ShipDesignerUI.SetActive(false);
     }
 
     // Update is called once per frame
