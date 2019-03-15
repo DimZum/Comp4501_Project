@@ -174,7 +174,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 7cb2912222469634ba17a77055919ea8, type: 3}
     m_FontSize: 150
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 150
     m_Alignment: 1
@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.89411765}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1750,11 +1750,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 378412707024538414, guid: 5c6577d4f269a02468ecfa668d8e310b,
-        type: 3}
-      propertyPath: img
-      value: 
-      objectReference: {fileID: 631873973660510718}
     - target: {fileID: 378412707024538415, guid: 5c6577d4f269a02468ecfa668d8e310b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1810,11 +1805,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1996995827459515173, guid: 5c6577d4f269a02468ecfa668d8e310b,
+    - target: {fileID: 631873973660510718, guid: 5c6577d4f269a02468ecfa668d8e310b,
         type: 3}
-      propertyPath: m_Layer
-      value: 5
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 378412707024538414, guid: 5c6577d4f269a02468ecfa668d8e310b,
+        type: 3}
+      propertyPath: img
+      value: 
+      objectReference: {fileID: 631873973660510718}
     - target: {fileID: 776289684058554651, guid: 5c6577d4f269a02468ecfa668d8e310b,
         type: 3}
       propertyPath: m_Layer
@@ -1825,15 +1825,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1996995827459515173, guid: 5c6577d4f269a02468ecfa668d8e310b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5050823445984818280, guid: 5c6577d4f269a02468ecfa668d8e310b,
         type: 3}
       propertyPath: m_CullTransparentMesh
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 631873973660510718, guid: 5c6577d4f269a02468ecfa668d8e310b,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3527284938351096073, guid: 5c6577d4f269a02468ecfa668d8e310b, type: 3}
