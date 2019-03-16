@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Constants : MonoBehaviour
 {
+    public static float PI = 3.1415926f;
     public enum ShipClass { Destroyer, LightCruiser, HeavyCruiser, BattleCruiser, Battleship, Dreadnought };
     public static Sprite[] SHIP_ICONS = new Sprite[6];
     public static int MAX_CALIBER = 20;
