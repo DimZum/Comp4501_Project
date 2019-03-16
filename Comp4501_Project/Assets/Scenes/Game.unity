@@ -44,14 +44,14 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 10
@@ -1153,8 +1153,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 89894128}
-  m_LocalRotation: {x: -0.40364996, y: 0.000270198, z: 0.00011920793, w: 0.91491354}
-  m_LocalPosition: {x: 550.0262, y: -446.7528, z: -147.80017}
+  m_LocalRotation: {x: -0.33260244, y: 0.035349686, z: 0.012477059, w: 0.9423218}
+  m_LocalPosition: {x: 497.08255, y: -403.40112, z: -193.72263}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
