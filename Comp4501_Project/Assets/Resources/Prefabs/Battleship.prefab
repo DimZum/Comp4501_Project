@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5423860547213704347}
   - component: {fileID: 7052523957382661072}
   - component: {fileID: 108074939186186309}
+  - component: {fileID: 4365100687614328332}
   m_Layer: 0
   m_Name: Battleship
   m_TagString: Untagged
@@ -106,10 +107,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 28
-  m_Speed: 15
-  m_Acceleration: 10
+  m_Speed: 10
+  m_Acceleration: 4
   avoidancePriority: 50
-  m_AngularSpeed: 100
+  m_AngularSpeed: 75
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -143,3 +144,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.046664, y: 10.402872, z: 54.499542}
   m_Center: {x: 0.0000009536743, y: 1.759069, z: 0.14655018}
+--- !u!114 &4365100687614328332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3859346553765505784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2595a4dfb82fb5408ea5a235f918eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
