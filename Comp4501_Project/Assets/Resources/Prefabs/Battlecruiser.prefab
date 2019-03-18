@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 8441074441938558007}
   - component: {fileID: 158232413257257969}
   - component: {fileID: 8111335796971158319}
-  - component: {fileID: 1748789747357888841}
+  - component: {fileID: 3643687411068907572}
+  - component: {fileID: 3143623864207572092}
   m_Layer: 0
   m_Name: Battlecruiser
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730483398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 580.4, y: 8, z: 176}
+  m_LocalPosition: {x: 580.4, y: 7, z: 176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -105,11 +106,11 @@ NavMeshAgent:
   m_GameObject: {fileID: 1730483398}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 17
+  m_Radius: 22
   m_Speed: 15
-  m_Acceleration: 10
+  m_Acceleration: 6
   avoidancePriority: 50
-  m_AngularSpeed: 500
+  m_AngularSpeed: 100
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -130,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284eee0add23d6840ae3cf1b7bd7f840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &1748789747357888841
+--- !u!65 &3643687411068907572
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,5 +142,17 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 5.5, z: 34}
-  m_Center: {x: 0, y: 1, z: 0.35}
+  m_Size: {x: 8.77057, y: 8.189721, z: 45.62123}
+  m_Center: {x: 0, y: 1.9029614, z: 0.5858679}
+--- !u!114 &3143623864207572092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730483398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2595a4dfb82fb5408ea5a235f918eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,46 +1,14 @@
 fileFormatVersion: 2
-guid: db8f7f3223fc0db4c96f5e8fa7baacce
+guid: 1e470cbdff61faa4698ae2e90dfd542a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Mesh01
-    100002: Mesh03
-    100004: Mesh05
-    100006: Mesh07
-    100008: Mesh08
-    100010: Mesh09
-    100012: //RootNode
-    400000: Mesh01
-    400002: Mesh03
-    400004: Mesh05
-    400006: Mesh07
-    400008: Mesh08
-    400010: Mesh09
-    400012: //RootNode
-    2100000: Material__4986
-    2100002: Material__4988
-    2100004: Material__4987
-    2100006: Material__4990
-    2100008: Material__4991
-    2100010: Material__4994
-    2300000: Mesh01
-    2300002: Mesh03
-    2300004: Mesh05
-    2300006: Mesh07
-    2300008: Mesh08
-    2300010: Mesh09
-    3300000: Mesh01
-    3300002: Mesh03
-    3300004: Mesh05
-    3300006: Mesh07
-    3300008: Mesh08
-    3300010: Mesh09
-    4300000: Mesh09
-    4300002: Mesh08
-    4300004: Mesh07
-    4300006: Mesh05
-    4300008: Mesh03
-    4300010: Mesh01
+    100000: //RootNode
+    400000: //RootNode
+    2100000: unnamed
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cube
     7400000: Default Take
     9500000: //RootNode
     2186277476908879412: ImportLogs
@@ -64,7 +32,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -75,7 +43,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 2.5
+    globalScale: 1.5
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -96,7 +64,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 10
+    previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
@@ -121,7 +89,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 0
