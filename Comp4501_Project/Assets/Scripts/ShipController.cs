@@ -11,26 +11,38 @@ public class ShipController : MonoBehaviour {
     Camera cam;
     ShipMotor motor;
 
+    public bool isSelected;
+
     // Start is called before the first frame update
     void Start() {
         cam = Camera.main;
         motor = GetComponent<ShipMotor>();
+
+        isSelected = false;
     }
 
     // Update is called once per frame
     void Update() {
-        /*if (EventSystem.current.IsPointerOverGameObject()) {
-            return;
-        }*/
-
         // Left mouse
         if (Input.GetMouseButton(0)) {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            if (isSelected) {
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 1000, movementMask)) {
-                motor.MoveToPoint(hit.point);
+                if (Physics.Raycast(ray, out hit, 1000, movementMask)) {
+                    motor.MoveToPoint(hit.point);
+                }
             }
         }
+    }
+
+    private void OnMouseDown() {
+        //if (!isSelected) { isSelected = true; }
+
+        ToggleSelection();
+    }
+
+    public void ToggleSelection() {
+        isSelected = !isSelected;
     }
 }

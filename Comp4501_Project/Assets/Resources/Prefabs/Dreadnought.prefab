@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 785262616}
   - component: {fileID: 785262617}
   - component: {fileID: 2538292122563109734}
+  - component: {fileID: 1141698647975507854}
   m_Layer: 0
   m_Name: Dreadnought
   m_TagString: Untagged
@@ -130,6 +131,7 @@ MonoBehaviour:
   movementMask:
     serializedVersion: 2
     m_Bits: 16
+  isSelected: 0
 --- !u!114 &2538292122563109734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,3 +144,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2595a4dfb82fb5408ea5a235f918eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1141698647975507854
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785262613}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.845149, y: 17.68331, z: 78.039444}
+  m_Center: {x: -0.00000047683716, y: 5.3244305, z: 0.03738022}
