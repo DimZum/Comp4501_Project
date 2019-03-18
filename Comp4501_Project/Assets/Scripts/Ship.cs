@@ -20,12 +20,14 @@ public class Ship : MonoBehaviour
     int armor;
     int speed;
     int hp, max_hp;
-    public Ship(int i, Player p, int mgc, int mgn, int sgc, int sgn, int trp,int A,int arm, int spd, int hitpoints)
+    ShipDesign design;
+    Ship target;
+    public Ship(int i, Player p, int mgc, int mgn, int sgc, int sgn, int trp,int A,int arm, int spd, int hitpoints,ShipDesign d)
     {
         ID = i;
         Owner = p;
         main_gun_caliber = mgc;
-        turret_group(mgn);
+        Turret_group(mgn);
         sub_gun_caliber = sgc;
         sub_gun_turret = sgn;
         speed = spd;
@@ -33,8 +35,9 @@ public class Ship : MonoBehaviour
         AntiAir = A;
         max_hp = hitpoints;
         hp = max_hp;
+        design = d;
     }
-    void fire(Ship target)
+    public void Fire()
     {
         if (main_gun_turret_front == 0)
         {
@@ -48,33 +51,58 @@ public class Ship : MonoBehaviour
         float angle = Mathf.Acos(Vector3.Dot(forward, enemyV))*180.00f/Constants.PI;
         Debug.Log("Ship forward: "+forward+", Ship position:"+ gameObject.transform.position+ ", Target position: "+ target.gameObject.transform.position + ", Calculated Angle: " + angle);
 
-        fireFront(angle);
-        fireMiddle(angle);
-        fireBack(angle);
+        FireFront(angle);
+        FireMiddle(angle);
+        FireBack(angle);
     }
 
-    void fireFront(float angle)
+    void FireFront(float angle)
+    {
+        float chance = Hitrate_calc();
+        if (main_gun_turret_front > 0 && Mathf.Abs(angle-180) <firing_arc_front)
+        {
+            for(int i = 0; i < main_gun_turret_front; i++)
+            {
+                if (Random.value * 100 < chance)
+                {
+                    //It is a hit
+                    //Hit effect on target
+                    target.TakeDamage(main_gun_caliber);
+                }
+            }
+        }
+    }
+
+    public void TakeDamage(int caliber)
+    {
+        float damage = (caliber+20)/3;//Base damage
+        float randomnumber = 1.5f-Random.value;
+        damage *= randomnumber;
+
+        hp -= Mathf.RoundToInt(damage);
+    }
+
+    void FireMiddle(float angle)
     {
 
     }
-    void fireMiddle(float angle)
-    {
-
-    }
-    void fireBack(float angle)
+    void FireBack(float angle)
     {
 
     }
 
-    float hitrate_calc(Ship target)
+    void FiringEffect(Vector3 pos)
     {
+        //Add some smoke effect for firing
+    }
 
+    float Hitrate_calc()
+    {
         return 0.0f;
     }
 
 
-
-    void turret_group(int num_turret)
+    void Turret_group(int num_turret)
     {
         /* Compute where the turret should go.
          * Main turrets

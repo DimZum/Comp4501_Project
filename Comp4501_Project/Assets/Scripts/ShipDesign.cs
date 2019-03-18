@@ -38,7 +38,7 @@ public class ShipDesign
     }
 
     public Ship ToShip(Player P){
-       Ship s = new Ship(P.getNextShipID(), P, mgc,mgn,sgc,sgn,trp,AA,armor,speed,HitPoints);
+       Ship s = new Ship(P.getNextShipID(), P, mgc,mgn,sgc,sgn,trp,AA,armor,speed,HitPoints,this);
         return s;
     }
 
