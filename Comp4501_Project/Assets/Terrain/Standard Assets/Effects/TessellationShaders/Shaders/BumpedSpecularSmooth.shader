@@ -6,7 +6,7 @@ Properties {
 	_MainTex ("Base (RGB) Gloss (A)", 2D) = "white" {}
 	_BumpMap ("Normalmap", 2D) = "bump" {}
 
-	_EdgeLength ("Edge length", Range(3,50)) = 10
+	_EdgeCount ("Edge Count", Range(3,50)) = 10
 	_Smoothness ("Smoothness", Range(0,1)) = 0.5
 }
 SubShader { 
@@ -26,12 +26,12 @@ struct appdata {
 	float2 texcoord2 : TEXCOORD2;
 };
 
-float _EdgeLength;
+float _EdgeCount;
 float _Smoothness;
 
 float4 tessEdge (appdata v0, appdata v1, appdata v2)
 {
-	return UnityEdgeLengthBasedTessCull (v0.vertex, v1.vertex, v2.vertex, _EdgeLength, 0.0);
+	return UnityEdgeCountBasedTessCull (v0.vertex, v1.vertex, v2.vertex, _EdgeCount, 0.0);
 }
 
 void disp (inout appdata v)

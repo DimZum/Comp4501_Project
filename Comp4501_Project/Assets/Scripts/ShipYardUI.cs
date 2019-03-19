@@ -73,15 +73,15 @@ public class ShipYardUI : MonoBehaviour {
 
     string getShipInfo(int index)
     {
-        string s = GameMaster.player.GetShipDesigns()[index].getName();
-        s += "\nIron: " + GameMaster.player.GetShipDesigns()[index].getIronCost();
-        s += "\nMP: " + GameMaster.player.GetShipDesigns()[index].getMPCost();
+        string s = GameMaster.player.ShipDesigns[index].getName();
+        s += "\nIron: " + GameMaster.player.ShipDesigns[index].getIronCost();
+        s += "\nMP: " + GameMaster.player.ShipDesigns[index].getMPCost();
         return s;
     }
 
     Sprite getShipIcon(int index)
     {
-        return Constants.SHIP_ICONS[(int)GameMaster.player.GetShipDesigns()[index].getClass()];
+        return Constants.SHIP_ICONS[(int)GameMaster.player.ShipDesigns[index].getClass()];
     }
 
     bool DesignExist(int index)
@@ -91,19 +91,19 @@ public class ShipYardUI : MonoBehaviour {
 
     void DB1_handle()
     {
-        GameMaster.player.buildShip(GameMaster.player.GetShipDesigns()[(CurPage - 1) * 4]);
+        GameMaster.player.buildShip(GameMaster.player.ShipDesigns[(CurPage - 1) * 4]);
     }
     void DB2_handle()
     {
-        GameMaster.player.buildShip(GameMaster.player.GetShipDesigns()[(CurPage - 1) * 4 + 1]);
+        GameMaster.player.buildShip(GameMaster.player.ShipDesigns[(CurPage - 1) * 4 + 1]);
     }
     void DB3_handle()
     {
-        GameMaster.player.buildShip(GameMaster.player.GetShipDesigns()[(CurPage - 1) * 4 + 2]);
+        GameMaster.player.buildShip(GameMaster.player.ShipDesigns[(CurPage - 1) * 4 + 2]);
     }
     void DB4_handle()
     {
-        GameMaster.player.buildShip(GameMaster.player.GetShipDesigns()[(CurPage - 1) * 4 + 3]);
+        GameMaster.player.buildShip(GameMaster.player.ShipDesigns[(CurPage - 1) * 4 + 3]);
     }
 
 

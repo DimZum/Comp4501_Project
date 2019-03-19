@@ -8,7 +8,7 @@ Properties {
 	_BumpMap ("Normalmap", 2D) = "bump" {}
 	_ParallaxMap ("Heightmap (A)", 2D) = "black" {}
 
-	_EdgeLength ("Edge length", Range(3,50)) = 10
+	_EdgeCount ("Edge Count", Range(3,50)) = 10
 }
 SubShader { 
 	Tags { "RenderType"="Opaque" }
@@ -27,12 +27,12 @@ struct appdata {
 	float2 texcoord2 : TEXCOORD2;
 };
 
-float _EdgeLength;
+float _EdgeCount;
 float _Parallax;
 
 float4 tessEdge (appdata v0, appdata v1, appdata v2)
 {
-	return UnityEdgeLengthBasedTessCull (v0.vertex, v1.vertex, v2.vertex, _EdgeLength, _Parallax * 1.5f);
+	return UnityEdgeCountBasedTessCull (v0.vertex, v1.vertex, v2.vertex, _EdgeCount, _Parallax * 1.5f);
 }
 
 sampler2D _ParallaxMap;

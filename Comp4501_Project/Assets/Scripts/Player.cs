@@ -8,10 +8,14 @@ public class Player
     int next_ship_id,next_design_id;
     float Iron, ManPower, Exp;
     public Color32 PlayerColor;
-    ShipDesign[] SavedDesign;
     ShipYard ShipYards;
-    Ship[] Ships;
     public int diff;
+    
+    List<GameObject> ships;
+    List<ShipDesign> shipDesigns;
+    public List<ShipDesign> ShipDesigns {
+        get { return shipDesigns; }
+    }
 
     public Player(int I,int d)
     {
@@ -21,10 +25,13 @@ public class Player
         Iron = Constants.DEF_START_IRON + d * 1000;
         ManPower = Constants.DEF_START_MP + d * 200;
         Exp = Constants.DEF_START_EXP + d * 50;
-        Ships = new Ship[Constants.SHIPARRAYLENGTH_START];
-        SavedDesign = new ShipDesign[Constants.MAX_DESIGN_NUM];
+
+        ships = new List<GameObject>();
+        shipDesigns = new List<ShipDesign>();
+
         ShipYards = new ShipYard(this);
         diff = d;
+
         if(ID == 0)
         {
             PlayerColor = new Color32(5, 5, 180,255);
@@ -70,42 +77,23 @@ public class Player
         return next_design_id;
     }
 
-    public void AddShip(Ship s)
-    {
-        if (next_ship_id >= Ships.Length)
-        {
-            extend_ship_array();
-        }
-        Ships[next_ship_id] = s;
+    public void AddShip(GameObject ship) {
+        ship.GetComponent<Ship>().ID = next_ship_id;
+        ships.Add(ship);
         next_ship_id++;
     }
 
     public void AddDesign(ShipDesign d)
     {
-        if (next_design_id >= SavedDesign.Length)
+        if (next_design_id >= shipDesigns.Count)
         {
             Debug.Log("Error, design full");
             //Should extend the array to store more design, but for now just return;
             return;
         }
-        SavedDesign[next_design_id] = d;
-        Debug.Log("Player " + ID + " received design of " + SavedDesign[next_design_id].getName()+"\nCurrent design: "+ (next_design_id+1));
+        shipDesigns[next_design_id] = d;
+        Debug.Log("Player " + ID + " received design of " + shipDesigns[next_design_id].getName()+"\nCurrent design: "+ (next_design_id+1));
         next_design_id++;
-    }
-
-    public ShipDesign[] GetShipDesigns()
-    {
-        return SavedDesign;
-    }
-
-    void extend_ship_array()
-    {
-        Ship[] newarray = new Ship[Ships.Length*2];
-        for(int i = 0;i<Ships.Length;i++)
-        {
-            newarray[i]=Ships[i];
-        }
-        Ships = newarray;
     }
 
     // Update is called once per frame

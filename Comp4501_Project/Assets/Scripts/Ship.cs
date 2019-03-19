@@ -5,30 +5,40 @@ using UnityEngine;
 public class Ship : MonoBehaviour {
 
     // Ship identity
-    int ID;
-    Player Owner;
+    private int p_id;
+    public int ID {
+        get { return p_id; }
+        set { p_id = value; }
+    }
+    private Player p_owner;
+    public Player Owner {
+        get { return p_owner; }
+        set { p_owner = value; }
+    }
 
-    ShipStats stats;
+    public ShipStats stats;
 
-    int main_gun_caliber;
-    int main_gun_turret_front;
-    float firing_arc_front;
-    int main_gun_turret_side;
-    float firing_arc_side;
-    int main_gun_turret_back;
-    float firing_arc_back;
-    int sub_gun_caliber;
-    int sub_gun_turret;
-    int torpedo;
-    int AntiAir;
+    public int main_gun_caliber;
+    public int main_gun_turret_front;
+    public float firing_arc_front;
+    public int main_gun_turret_side;
+    public float firing_arc_side;
+    public int main_gun_turret_back;
+    public float firing_arc_back;
+    public int sub_gun_caliber;
+    public int sub_gun_turret;
+    public int torpedo;
+    public int AntiAir;
 
     ShipDesign design;
     Ship target;
+    
+    private void Start() {
+        
+    }
 
-    public Ship(int i, Player p, int mgc, int mgn, int sgc, int sgn, int trp,int A,int arm, int spd, int hitpoints,ShipDesign d)
-    {
-        ID = i;
-        Owner = p;
+    // Initialize variables
+    public void Init(int mgc, int mgn, int sgc, int sgn, int trp, int A, int arm, int spd, int hitpoints, ShipDesign d) {
         main_gun_caliber = mgc;
         Turret_group(mgn);
         sub_gun_caliber = sgc;
@@ -48,6 +58,7 @@ public class Ship : MonoBehaviour {
         {
             return; //This means the ship is not armed so it cant fire
         }
+
         Vector3 forward = gameObject.transform.forward;
         Vector3 enemyV = target.gameObject.transform.position - gameObject.transform.position;
         float distance = enemyV.magnitude;

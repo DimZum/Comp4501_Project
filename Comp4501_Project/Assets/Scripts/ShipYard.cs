@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class ShipYard
 {
+    ResourceManager rm = ResourceManager.instance;
+
     Player Owner;
     Queue<ShipDesign>BuildingQueue;
     int YardAvaliable;
     ShipDesign[] ShipInConstruction;
     float[] ShipConstructionTime;
+
     public ShipYard(Player p)
     {
         Owner = p;
         BuildingQueue = new Queue<ShipDesign>();
         ShipInConstruction = new ShipDesign[Constants.MAX_BUILD_QUEUE];
-        for(int i = 0; i < ShipInConstruction.Length; i++)
+
+        for (int i = 0; i < ShipInConstruction.Length; i++)
         {
             ShipInConstruction[i] = null;
         }
+
         ShipConstructionTime = new float[Constants.MAX_BUILD_QUEUE];
         YardAvaliable = Mathf.CeilToInt((p.diff+1)/2);
     }
@@ -131,8 +136,7 @@ public class ShipYard
                 return;
             }else{
                 Debug.Log("Currently updateing Shipyard " + i + " empty is " + (ShipInConstruction[i] == null));
-                if (ShipInConstruction[i] == null)
-                {
+                if (ShipInConstruction[i] == null) {
                     //If there is free shipyard avaliable
                     ShipDesign d = BuildingQueue.Dequeue();
                     Debug.Log("Dequeueing " + d.getName());
@@ -153,18 +157,22 @@ public class ShipYard
         return BuildingQueue.Count;
     }
 
-    void UpdateProgress(float deltaT)
-    {
-        for (int i = 0; i < YardAvaliable; i++)
-        {
-            if (ShipConstructionTime[i]>0)
-            {
+    void UpdateProgress(float deltaT) {
+        for (int i = 0; i < YardAvaliable; i++) {
+            if (ShipConstructionTime[i]>0) {
                 ShipConstructionTime[i] -= deltaT;
-            }else{
-                if (ShipInConstruction[i] != null)
-                {
+            } else {
+                if (ShipInConstruction[i] != null) {
+                    // Create gameobject from prefab
+                    GameObject prefab = rm.GetShipPrefab(ShipInConstruction[i].getClass());
+                    GameObject ship = GameObject.Instantiate(prefab) as GameObject;
+
+                    // Initialization of ship variables
+                    ShipInConstruction[i].InitializeShip(ship);
+                    ship.GetComponent<Ship>().Owner = Owner;
+
                     //Construction is finished and the ship should be added to player
-                    Owner.AddShip(ShipInConstruction[i].ToShip(Owner));
+                    Owner.AddShip(ship);
                     ShipInConstruction[i] = null;
                     ShipConstructionTime[i] = 0;
                 }

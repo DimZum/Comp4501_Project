@@ -37,9 +37,8 @@ public class ShipDesign
         ConstructionTime = Tcost;
     }
 
-    public Ship ToShip(Player P){
-       Ship s = new Ship(P.getNextShipID(), P, mgc,mgn,sgc,sgn,trp,AA,armor,speed,HitPoints,this);
-        return s;
+    public void InitializeShip(GameObject s){
+        s.GetComponent<Ship>().Init(mgc, mgn, sgc, sgn, trp, AA, armor, speed, HitPoints, this);
     }
 
     public string getName()
@@ -65,9 +64,7 @@ public class ShipDesign
         return ConstructionTime;
     }
     
-    public 
-
-    void Update()
+    public void Update()
     {
         
     }

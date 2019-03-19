@@ -58,7 +58,7 @@ namespace UnityStandardAssets.Utility
 			}
 			Debug.Log (materialInstancesReplaced+" material instances replaced");
 			Debug.Log (materialsReplaced+" materials replaced");
-			for(int n=0; n<oldMaterials.Count; ++n)
+			for(int n=0; n<oldMaterials.Length; ++n)
 			{
 				Debug.Log (oldMaterials[n].name+" ("+oldMaterials[n].shader.name+")"+" replaced with "+newMaterials[n].name+" ("+newMaterials[n].shader.name+")");
 			}
@@ -107,7 +107,7 @@ namespace UnityStandardAssets.Utility.Inspector
             var props = new string[] {"original", "replacement", "-"};
             var widths = new float[] {.45f, .45f, .1f};
             const float lineHeight = 18;
-            bool changedLength = false;
+            bool changedCount = false;
             if (items.arraySize > 0)
             {
                 for (int i = -1; i < items.arraySize; ++i)
@@ -139,7 +139,7 @@ namespace UnityStandardAssets.Utility.Inspector
                                         case "-":
                                             items.DeleteArrayElementAtIndex(i);
                                             items.DeleteArrayElementAtIndex(i);
-                                            changedLength = true;
+                                            changedCount = true;
                                             break;
                                         case "v":
                                             if (i > 0)
@@ -165,7 +165,7 @@ namespace UnityStandardAssets.Utility.Inspector
                     }
 
                     y += lineHeight + k_Spacing;
-                    if (changedLength)
+                    if (changedCount)
                     {
                         break;
                     }

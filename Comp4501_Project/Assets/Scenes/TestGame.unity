@@ -7404,6 +7404,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1470966807}
   - component: {fileID: 1470966806}
+  - component: {fileID: 1470966809}
+  - component: {fileID: 1470966808}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -7439,6 +7441,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1470966808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470966805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 000e4edeb45a7b442ba587c6b3a7044e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoutPrefab: {fileID: 4298457374830253949, guid: 5e1ebee1da867cf4cbeee83f5c165788,
+    type: 3}
+  destroyerPrefab: {fileID: 1914550990092521803, guid: bf4a43cf087a22544b648dc60a72aac4,
+    type: 3}
+  lightCruiserPrefab: {fileID: 715605344891188666, guid: 1464d1b40fa433441bf732be47b5c8d5,
+    type: 3}
+  heavyCruiserPrefab: {fileID: 1113581460, guid: e53a87efc58d8854fa8cb010f52545f0,
+    type: 3}
+  battlecruiserPrefab: {fileID: 1730483398, guid: b5f7e375d4c57ba48ac0f519953234d5,
+    type: 3}
+  battleshipPrefab: {fileID: 3859346553765505784, guid: c35aa5b720412fa439a45bf081d3a6f5,
+    type: 3}
+  dreadnoughtPrefab: {fileID: 785262613, guid: 2b6073302a38c9248944dc0d922b5eae, type: 3}
+--- !u!114 &1470966809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470966805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea8f29331cf94d4cbfb5c59ac2ac486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1505261198
 GameObject:
   m_ObjectHideFlags: 0

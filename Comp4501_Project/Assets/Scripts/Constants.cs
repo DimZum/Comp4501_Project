@@ -7,6 +7,7 @@ public class Constants : MonoBehaviour
     public static float PI = 3.1415926f;
     public enum ShipClass { Destroyer, LightCruiser, HeavyCruiser, BattleCruiser, Battleship, Dreadnought };
     public static Sprite[] SHIP_ICONS = new Sprite[6];
+
     public static int MAX_CALIBER = 20;
     public static int MIN_CALIBER = 3;
     public static int MAX_SUB_CALIBER = 9;
@@ -29,8 +30,8 @@ public class Constants : MonoBehaviour
     public static int DEF_START_MP = 500;
     public static int DEF_START_EXP = 100;
     public static int MAX_DESIGN_NUM = 64;
-    public static int SHIPARRAYLENGTH_START = 32;
-
+    public static int SHIPARRAYCount_START = 32;
+    
     void Start()
     {
         SHIP_ICONS[0] = Resources.Load<Sprite>("Sprites/Icon_Destroyer");
@@ -39,5 +40,6 @@ public class Constants : MonoBehaviour
         SHIP_ICONS[3] = Resources.Load<Sprite>("Sprites/Icon_BattleCruiser");
         SHIP_ICONS[4] = Resources.Load<Sprite>("Sprites/Icon_BattleShip");
         SHIP_ICONS[5] = Resources.Load<Sprite>("Sprites/Icon_Dreadnought");
+        
     }
 }
