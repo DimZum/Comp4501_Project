@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ship : MonoBehaviour
-{
+public class Ship : MonoBehaviour {
+
+    // Ship identity
     int ID;
     Player Owner;
+
+    ShipStats stats;
+
     int main_gun_caliber;
     int main_gun_turret_front;
     float firing_arc_front;
@@ -17,11 +21,10 @@ public class Ship : MonoBehaviour
     int sub_gun_turret;
     int torpedo;
     int AntiAir;
-    int armor;
-    int speed;
-    int hp, max_hp;
+
     ShipDesign design;
     Ship target;
+
     public Ship(int i, Player p, int mgc, int mgn, int sgc, int sgn, int trp,int A,int arm, int spd, int hitpoints,ShipDesign d)
     {
         ID = i;
@@ -30,13 +33,15 @@ public class Ship : MonoBehaviour
         Turret_group(mgn);
         sub_gun_caliber = sgc;
         sub_gun_turret = sgn;
-        speed = spd;
         torpedo = trp;
         AntiAir = A;
-        max_hp = hitpoints;
-        hp = max_hp;
         design = d;
+
+        stats.MaxHealth = hitpoints;
+        stats.CurrentHealth = hitpoints;
+        stats.Speed = spd;
     }
+
     public void Fire()
     {
         if (main_gun_turret_front == 0)
@@ -67,19 +72,10 @@ public class Ship : MonoBehaviour
                 {
                     //It is a hit
                     //Hit effect on target
-                    target.TakeDamage(main_gun_caliber);
+                    target.stats.TakeDamage(main_gun_caliber);
                 }
             }
         }
-    }
-
-    public void TakeDamage(int caliber)
-    {
-        float damage = (caliber+20)/3;//Base damage
-        float randomnumber = 1.5f-Random.value;
-        damage *= randomnumber;
-
-        hp -= Mathf.RoundToInt(damage);
     }
 
     void FireMiddle(float angle)

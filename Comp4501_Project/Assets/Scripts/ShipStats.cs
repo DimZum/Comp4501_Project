@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipStats : MonoBehaviour {
+public class ShipStats {
 
-    private int maxHealth;
+    private int p_maxHealth;
+    public int MaxHealth {
+        set { this.p_maxHealth = value; }
+    }
+
     private int p_currentHealth;
     public int CurrentHealth {
         get { return p_currentHealth; }
@@ -27,11 +31,13 @@ public class ShipStats : MonoBehaviour {
         //p_currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage) {
-        damage -= this.Armor;
+    public void TakeDamage(int caliber) {
+        float damage = (caliber + 20) / 3; //Base damage
+
+        damage = Mathf.RoundToInt(damage);
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
-        CurrentHealth -= damage;
+        CurrentHealth -= (int)damage;
 
         if (CurrentHealth <= 0) {
             Die();
