@@ -27,9 +27,8 @@ public class ShipController : MonoBehaviour {
         if (Input.GetMouseButton(0)) {
             if (isSelected) {
                 Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
 
-                if (Physics.Raycast(ray, out hit, 1000, movementMask)) {
+                if (Physics.Raycast(ray, out RaycastHit hit, 1000, movementMask)) {
                     motor.MoveToPoint(hit.point);
                 }
             }

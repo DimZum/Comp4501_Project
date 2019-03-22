@@ -2,26 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class ShipStats {
 
-    private int p_maxHealth;
+    [SerializeField] private int p_maxHealth;
     public int MaxHealth {
         set { this.p_maxHealth = value; }
     }
 
-    private int p_currentHealth;
+    [SerializeField] private int p_currentHealth;
     public int CurrentHealth {
         get { return p_currentHealth; }
         set { this.p_currentHealth = value; }
     }
 
-    private int p_armor;
+    [SerializeField] private int p_armor;
     public int Armor {
         get { return p_armor; }
         set { this.p_armor = value; }
     }
 
-    private int p_speed;
+    [SerializeField] private int p_speed;
     public int Speed {
         get { return p_speed; }
         set { this.p_speed = value; }
