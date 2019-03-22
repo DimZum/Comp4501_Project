@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: 1914550990092621795}
   - component: {fileID: 1914550990092621794}
   - component: {fileID: 3473428201719780352}
+  - component: {fileID: 2689281891312559866}
   m_Layer: 0
   m_Name: Destroyer
   m_TagString: Untagged
@@ -363,6 +364,7 @@ MonoBehaviour:
   movementMask:
     serializedVersion: 2
     m_Bits: 16
+  isSelected: 0
 --- !u!195 &1914550990092621795
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -409,6 +411,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2595a4dfb82fb5408ea5a235f918eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    p_maxHealth: 0
+    p_currentHealth: 0
+    p_armor: 0
+    p_speed: 0
+  main_gun_caliber: 0
+  main_gun_turret_front: 0
+  firing_arc_front: 0
+  main_gun_turret_side: 0
+  firing_arc_side: 0
+  main_gun_turret_back: 0
+  firing_arc_back: 0
+  sub_gun_caliber: 0
+  sub_gun_turret: 0
+  torpedo: 0
+  AntiAir: 0
+--- !u!65 &2689281891312559866
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914550990092521803}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7, y: 7, z: 27.5}
+  m_Center: {x: 0, y: 4, z: 0.7}
 --- !u!1 &1914550990092521805
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +451,6 @@ GameObject:
   - component: {fileID: 1914550990092225901}
   - component: {fileID: 1914550990093520205}
   - component: {fileID: 1914550990094520205}
-  - component: {fileID: 1914550990092621793}
   m_Layer: 0
   m_Name: Mesh09
   m_TagString: Untagged
@@ -487,19 +517,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1914550990092621793
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914550990092521805}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 70, y: 285, z: 75}
-  m_Center: {x: 0, y: -25, z: 45}
 --- !u!1 &1914550990092521807
 GameObject:
   m_ObjectHideFlags: 0
