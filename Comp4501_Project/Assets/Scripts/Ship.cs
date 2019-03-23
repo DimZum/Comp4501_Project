@@ -54,7 +54,7 @@ public class Ship : MonoBehaviour {
 
     public void Fire()
     {
-        if (main_gun_turret_front == 0)
+        if (main_gun_turret_front + main_gun_turret_side + main_gun_turret_back == 0)
         {
             return; //This means the ship is not armed so it cant fire
         }
@@ -67,15 +67,15 @@ public class Ship : MonoBehaviour {
         float angle = Mathf.Acos(Vector3.Dot(forward, enemyV))*180.00f/Constants.PI;
         Debug.Log("Ship forward: "+forward+", Ship position:"+ gameObject.transform.position+ ", Target position: "+ target.gameObject.transform.position + ", Calculated Angle: " + angle);
 
-        FireFront(angle);
-        FireMiddle(angle);
-        FireBack(angle);
+        float chance = Hitrate_calc();
+        FireFront(angle, chance);
+        FireMiddle(angle, chance);
+        FireBack(angle, chance);
     }
 
-    void FireFront(float angle)
+    void FireFront(float angle,float chance)
     {
-        float chance = Hitrate_calc();
-        if (main_gun_turret_front > 0 && Mathf.Abs(angle-180) <firing_arc_front)
+        if (main_gun_turret_front > 0 && Mathf.Abs(angle) <firing_arc_front/2)
         {
             for(int i = 0; i < main_gun_turret_front; i++)
             {
@@ -89,13 +89,35 @@ public class Ship : MonoBehaviour {
         }
     }
 
-    void FireMiddle(float angle)
+    void FireMiddle(float angle, float chance)
     {
-
+        if (main_gun_turret_side > 0 && Mathf.Abs(angle-90) < firing_arc_side / 2)
+        {
+            for (int i = 0; i < main_gun_turret_side; i++)
+            {
+                if (Random.value * 100 < chance)
+                {
+                    //It is a hit
+                    //Hit effect on target
+                    target.stats.TakeDamage(main_gun_caliber);
+                }
+            }
+        }
     }
-    void FireBack(float angle)
+    void FireBack(float angle, float chance)
     {
-
+        if (main_gun_turret_back > 0 && angle < firing_arc_back / 2)
+        {
+            for (int i = 0; i < main_gun_turret_side; i++)
+            {
+                if (Random.value * 100 < chance)
+                {
+                    //It is a hit
+                    //Hit effect on target
+                    target.stats.TakeDamage(main_gun_caliber);
+                }
+            }
+        }
     }
 
     void FiringEffect(Vector3 pos)
@@ -105,7 +127,8 @@ public class Ship : MonoBehaviour {
 
     float Hitrate_calc()
     {
-        return 0.0f;
+        float hitrate = Constants.BASIC_HIT_RATE;
+        return hitrate;
     }
 
 

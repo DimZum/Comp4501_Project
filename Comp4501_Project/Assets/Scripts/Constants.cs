@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Constants : MonoBehaviour
 {
-    public static float PI = 3.1415926f;
+    public static float PI = 3.14159265f;
     public enum ShipClass { Destroyer, LightCruiser, HeavyCruiser, BattleCruiser, Battleship, Dreadnought };
     public static Sprite[] SHIP_ICONS = new Sprite[6];
-
+    public static float BASIC_HIT_RATE = 0.150f;
     public static int MAX_CALIBER = 20;
     public static int MIN_CALIBER = 3;
     public static int MAX_SUB_CALIBER = 9;
@@ -40,6 +40,5 @@ public class Constants : MonoBehaviour
         SHIP_ICONS[3] = Resources.Load<Sprite>("Sprites/Icon_BattleCruiser");
         SHIP_ICONS[4] = Resources.Load<Sprite>("Sprites/Icon_BattleShip");
         SHIP_ICONS[5] = Resources.Load<Sprite>("Sprites/Icon_Dreadnought");
-        
     }
 }
