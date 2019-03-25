@@ -130,9 +130,8 @@ public class Ship : MonoBehaviour {
         float hitrate = Constants.BASIC_HIT_RATE;
         hitrate *= getDistModifier(caliber);
         hitrate *= getDirectionModifier();
-
-        float Speed_modifier;
-
+        hitrate *= getSpeedModifier();
+        hitrate *= getSizeModifier();
         return hitrate;
     }
 
@@ -149,6 +148,14 @@ public class Ship : MonoBehaviour {
         return Dist_modifier;
     }
 
+    public float getSizeModifier()
+    {
+        float SizeModifier = 1.0f;
+        SizeModifier *= (float)design.getClass()+22.5f/25.0f;
+        SizeModifier *= (float)target.design.getClass() + 10.0f / 12.5f;
+        return SizeModifier;
+    }
+
     public float getDirectionModifier()
     {
         Vector3 targetHeading = new Vector3(0, target.transform.rotation.y, 0);
@@ -158,7 +165,14 @@ public class Ship : MonoBehaviour {
         float Direction_modifier = 1.125f - Mathf.Abs(Vector3.Dot(targetHeading, targetDirection)) / 4.00f;
         return Direction_modifier;
     }
-
+    
+    public float getSpeedModifier()
+    {
+        float speed_modifier = 1.00f;
+        speed_modifier *= 45.00f/target.stats.Speed+20.00f;
+        speed_modifier *= 70.00f/stats.Speed+45.00f;
+        return speed_modifier;
+    }
 
     void Turret_group(int num_turret)
     {
