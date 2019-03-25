@@ -82,7 +82,7 @@ public class Ship : MonoBehaviour {
                 if (Random.value * 100 < chance)
                 {
                     //It is a hit
-                    //Hit effect on target
+                    //Hit effect on p_target
                     target.stats.TakeDamage(main_gun_caliber);
                 }
             }
@@ -98,7 +98,7 @@ public class Ship : MonoBehaviour {
                 if (Random.value * 100 < chance)
                 {
                     //It is a hit
-                    //Hit effect on target
+                    //Hit effect on p_target
                     target.stats.TakeDamage(main_gun_caliber);
                 }
             }
@@ -113,7 +113,7 @@ public class Ship : MonoBehaviour {
                 if (Random.value * 100 < chance)
                 {
                     //It is a hit
-                    //Hit effect on target
+                    //Hit effect on p_target
                     target.stats.TakeDamage(main_gun_caliber);
                 }
             }

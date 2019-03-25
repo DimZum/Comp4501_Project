@@ -147,7 +147,7 @@ namespace UnityStandardAssets.Utility.Inspector
                         (int) TimedObjectActivator.Action.ReloadLevel)
                     {
                         EditorGUI.PropertyField(actionRect, entry.FindPropertyRelative("action"), GUIContent.none);
-                        EditorGUI.PropertyField(targetRect, entry.FindPropertyRelative("target"), GUIContent.none);
+                        EditorGUI.PropertyField(targetRect, entry.FindPropertyRelative("p_target"), GUIContent.none);
                     }
                     else
                     {

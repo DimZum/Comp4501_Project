@@ -24,7 +24,7 @@ public class ShipController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         // Left mouse
-        if (Input.GetMouseButton(0)) {
+        if (Input.GetMouseButton(1)) {
             if (isSelected) {
                 Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
