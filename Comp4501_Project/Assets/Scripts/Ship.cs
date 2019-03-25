@@ -75,7 +75,7 @@ public class Ship : MonoBehaviour {
 
     void FireFront(float angle,float chance)
     {
-        if (main_gun_turret_front > 0 && Mathf.Abs(angle) <firing_arc_front/2)
+        if (main_gun_turret_front > 0 && Mathf.Abs(angle) <firing_arc_front)
         {
             for(int i = 0; i < main_gun_turret_front; i++)
             {
@@ -91,7 +91,7 @@ public class Ship : MonoBehaviour {
 
     void FireMiddle(float angle, float chance)
     {
-        if (main_gun_turret_side > 0 && Mathf.Abs(angle-90) < firing_arc_side / 2)
+        if (main_gun_turret_side > 0 && Mathf.Abs(angle-90) < firing_arc_side)
         {
             for (int i = 0; i < main_gun_turret_side; i++)
             {
@@ -106,7 +106,7 @@ public class Ship : MonoBehaviour {
     }
     void FireBack(float angle, float chance)
     {
-        if (main_gun_turret_back > 0 && angle < firing_arc_back / 2)
+        if (main_gun_turret_back > 0 && angle < firing_arc_back)
         {
             for (int i = 0; i < main_gun_turret_side; i++)
             {
@@ -128,6 +128,8 @@ public class Ship : MonoBehaviour {
     float Hitrate_calc()
     {
         float hitrate = Constants.BASIC_HIT_RATE;
+        Vector3 targetHeading = new Vector3 (0, target.transform.rotation.y,0);
+        Vector3 targetDirection = target.gameObject.transform.position - gameObject.transform.position;
         return hitrate;
     }
 
@@ -180,35 +182,35 @@ public class Ship : MonoBehaviour {
                 break;
             case 4:
                 main_gun_turret_front = 2;
-                firing_arc_front = 135;
+                firing_arc_front = 130;
                 main_gun_turret_side = 0;
                 firing_arc_side = 0;
                 main_gun_turret_back = 2;
-                firing_arc_back = 135;
+                firing_arc_back = 130;
                 break;
             case 5:
                 main_gun_turret_front = 2;
-                firing_arc_front = 130;
+                firing_arc_front = 120;
                 main_gun_turret_side = 1;
                 firing_arc_side = 70;
                 main_gun_turret_back = 2;
-                firing_arc_back = 130;
+                firing_arc_back = 120;
                 break;
             case 6:
                 main_gun_turret_front = 2;
-                firing_arc_front = 125;
+                firing_arc_front = 115;
                 main_gun_turret_side = 2;
                 firing_arc_side = 65;
                 main_gun_turret_back = 2;
-                firing_arc_back = 125;
+                firing_arc_back = 1115;
                 break;
             case 7:
                 main_gun_turret_front = 3;
-                firing_arc_front = 120;
+                firing_arc_front = 105;
                 main_gun_turret_side = 2;
                 firing_arc_side = 65;
                 main_gun_turret_back = 2;
-                firing_arc_back = 120;
+                firing_arc_back = 110;
                 break;
         }
     }
