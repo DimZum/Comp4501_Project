@@ -67,7 +67,7 @@ public class Ship : MonoBehaviour {
         float angle = Mathf.Acos(Vector3.Dot(forward, enemyV))*180.00f/Constants.PI;
         Debug.Log("Ship forward: "+forward+", Ship position:"+ gameObject.transform.position+ ", Target position: "+ target.gameObject.transform.position + ", Calculated Angle: " + angle);
 
-        float chance = Hitrate_calc();
+        float chance = Hitrate_calc(main_gun_caliber);
         FireFront(angle, chance);
         FireMiddle(angle, chance);
         FireBack(angle, chance);
@@ -125,12 +125,38 @@ public class Ship : MonoBehaviour {
         //Add some smoke effect for firing
     }
 
-    float Hitrate_calc()
+    float Hitrate_calc(int caliber)
     {
         float hitrate = Constants.BASIC_HIT_RATE;
-        Vector3 targetHeading = new Vector3 (0, target.transform.rotation.y,0);
-        Vector3 targetDirection = target.gameObject.transform.position - gameObject.transform.position;
+        hitrate *= getDistModifier(caliber);
+        hitrate *= getDirectionModifier();
+
+        float Speed_modifier;
+
         return hitrate;
+    }
+
+    public float getDistModifier()
+    {
+        //Maingun is default option.
+        return getDistModifier(main_gun_caliber);
+    }
+    public float getDistModifier(int caliber)
+    {
+        Vector3 targetDirection = target.gameObject.transform.position - gameObject.transform.position;
+        float targetDist = targetDirection.magnitude;
+        float Dist_modifier = 1.05f - Mathf.Abs(1 - (targetDist / Constants.CannonIdealRange[caliber]));
+        return Dist_modifier;
+    }
+
+    public float getDirectionModifier()
+    {
+        Vector3 targetHeading = new Vector3(0, target.transform.rotation.y, 0);
+        Vector3 targetDirection = target.gameObject.transform.position - gameObject.transform.position;
+        targetHeading = targetHeading.normalized;
+        targetDirection = targetDirection.normalized;
+        float Direction_modifier = 1.125f - Mathf.Abs(Vector3.Dot(targetHeading, targetDirection)) / 4.00f;
+        return Direction_modifier;
     }
 
 

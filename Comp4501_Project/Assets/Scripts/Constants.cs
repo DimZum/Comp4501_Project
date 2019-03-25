@@ -24,6 +24,13 @@ public class Constants : MonoBehaviour
                                          50,80,120,200,350,
                                          500,700,950,1200,1500,
                                          1800,2100,2400,2700,3100,3500};
+    public static float[] CannonIdealRange =
+    {
+        0.50f, 2.00f, 2.25f, 2.50f, 2.75f,
+        3.00f, 3.25f, 3.50f, 3.75f, 4.00f,
+        5.00f, 5.50f, 6.00f, 6.50f, 7.00f,
+        8.00f, 8.25f, 9.00f, 9.50f, 10.00f
+    };
     public static int trpweight = 50;
     public static int MAX_BUILD_QUEUE = 10;
     public static int DEF_START_IRON = 2500;
