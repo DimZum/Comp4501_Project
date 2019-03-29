@@ -79,6 +79,7 @@ public class Ship : MonoBehaviour {
         {
             for(int i = 0; i < main_gun_turret_front; i++)
             {
+
                 if (Random.value * 100 < chance)
                 {
                     //It is a hit
@@ -144,7 +145,8 @@ public class Ship : MonoBehaviour {
     {
         Vector3 targetDirection = target.gameObject.transform.position - gameObject.transform.position;
         float targetDist = targetDirection.magnitude;
-        float Dist_modifier = 1.05f - Mathf.Abs(1 - (targetDist / Constants.CannonIdealRange[caliber]));
+        float distancedifference = (targetDist / Constants.CannonIdealRange[caliber]);
+        float Dist_modifier = 1.05f - (distancedifference* distancedifference);
         return Dist_modifier;
     }
 

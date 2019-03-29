@@ -33,13 +33,30 @@ public class ShipStats {
     }
 
     public void TakeDamage(int caliber) {
-        float damage = (caliber + 20) / 3; //Base damage
+        float damage = (caliber*caliber + 20) / 10; //Base damage
+        float randomValue = (Random.value + Random.value + Random.value + Random.value) * caliber /2.00f; 
+        // get a random value between 0 and twice the caliber.
+        // the random value is trend to the center.
+        if(randomValue < Armor * 0.5)
+        {
+            //The shell didn't penetrate through so did no damage
+            damage = 0;
+        }else if (randomValue < Armor)
+        {
+            //The shell hits non effective area and did half damage
+            damage /= 2;
+        }else if (randomValue < Armor * 1.5f)
+        {
+            //The shell hits regular place and deal normal damage
+        }
+        else
+        {
+            //The shell hits very hard and penetrate all the way to the middle of ship body, deal massive damage.
+            damage *= randomValue / Armor;
+        }
 
-        damage = Mathf.RoundToInt(damage);
-        damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
-        CurrentHealth -= (int)damage;
-
+        CurrentHealth -= Mathf.RoundToInt(damage);
         if (CurrentHealth <= 0) {
             Die();
         }
