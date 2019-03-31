@@ -29,7 +29,7 @@ public class GameMaster : MonoBehaviour {
     public static Player player, enemy;
 
     // Start is called before the first frame update
-    void Awake() {
+    void Start() {
         isGameOver = false;
         isGamePaused = false;
 
