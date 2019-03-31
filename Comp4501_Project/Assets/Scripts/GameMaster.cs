@@ -26,14 +26,15 @@ public class GameMaster : MonoBehaviour {
     public GameObject ShipYardUI;
     public GameObject ShipDesignerUI;
 
-    public static Player
-        player = new Player(0, 4),
-        enemy = new Player(1, 0);
+    public static Player player, enemy;
 
     // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         isGameOver = false;
         isGamePaused = false;
+
+        player = new Player(0, 4);
+        enemy = new Player(1, 0);
     }
 
     // Update is called once per frame

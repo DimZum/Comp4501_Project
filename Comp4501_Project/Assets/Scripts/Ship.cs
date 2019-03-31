@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour {
 
+    GameMaster gm;
+
     // Ship identity
     private int p_id;
     public int ID {
@@ -34,7 +36,7 @@ public class Ship : MonoBehaviour {
     Ship target;
     
     private void Start() {
-        
+        gm = GameMaster.instance;
     }
 
     // Initialize variables

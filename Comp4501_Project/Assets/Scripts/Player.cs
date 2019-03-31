@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player
-{
+public class Player {
+    GameMaster gm;
+
     int ID;
     int next_ship_id,next_design_id;
     float Iron, ManPower, Exp;
@@ -17,8 +18,9 @@ public class Player
         get { return shipDesigns; }
     }
 
-    public Player(int I,int d)
-    {
+    public Player(int I,int d) {
+        gm = GameMaster.instance;
+
         ID = I;
         next_ship_id = 0;
         next_design_id = 0;
