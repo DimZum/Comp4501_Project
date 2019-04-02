@@ -212,7 +212,7 @@ public class Player {
             //Attack
             foreach (GameObject o in ships)
             {
-                o.GetComponent<Ship>().SetMove(GameMaster.player.BasePos);
+                o.GetComponent<Ship>().SetMove(gm.player.BasePos);
             }
         }
     }
