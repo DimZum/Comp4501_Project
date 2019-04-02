@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 785262617}
   - component: {fileID: 2538292122563109734}
   - component: {fileID: 1141698647975507854}
+  - component: {fileID: 1852236996}
+  - component: {fileID: 2198057979314504718}
   m_Layer: 0
   m_Name: Dreadnought
   m_TagString: Untagged
@@ -33,7 +35,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 567.6, y: 3, z: 176}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 8922848408249099469}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -144,6 +147,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2595a4dfb82fb5408ea5a235f918eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  stats: {fileID: 0}
+  main_gun_caliber: 0
+  main_gun_turret_front: 0
+  firing_arc_front: 0
+  main_gun_turret_side: 0
+  firing_arc_side: 0
+  main_gun_turret_back: 0
+  firing_arc_back: 0
+  sub_gun_caliber: 0
+  sub_gun_turret: 0
+  torpedo: 0
+  AntiAir: 0
 --- !u!65 &1141698647975507854
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -157,3 +173,63 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 11.845149, y: 17.68331, z: 78.039444}
   m_Center: {x: -0.00000047683716, y: 5.3244305, z: 0.03738022}
+--- !u!114 &1852236996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785262613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d74f6c4e9b1b1943a1fc3156a343e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p_maxHealth: 0
+  p_currentHealth: 0
+  p_armor: 0
+  p_speed: 0
+--- !u!114 &2198057979314504718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785262613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa8f002eec2145478e03d1d781546b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 1208605977595744, guid: c57cc772a0320a44a9edff155f712f2b, type: 3}
+  target: {fileID: 8922848408249099469}
+--- !u!1 &2326258069598763192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8922848408249099469}
+  m_Layer: 0
+  m_Name: Health UI Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8922848408249099469
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2326258069598763192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 785262620}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

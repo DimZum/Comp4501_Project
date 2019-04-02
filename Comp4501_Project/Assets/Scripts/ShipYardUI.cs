@@ -73,48 +73,48 @@ public class ShipYardUI : MonoBehaviour {
 
     string getShipInfo(int index)
     {
-        string s = GameMaster.player.ShipDesigns[index].getName();
-        s += "\nIron: " + GameMaster.player.ShipDesigns[index].getIronCost();
-        s += "\nMP: " + GameMaster.player.ShipDesigns[index].getMPCost();
+        string s = gm.player.ShipDesigns[index].getName();
+        s += "\nIron: " + gm.player.ShipDesigns[index].getIronCost();
+        s += "\nMP: " + gm.player.ShipDesigns[index].getMPCost();
         return s;
     }
 
     Sprite getShipIcon(int index)
     {
-        return Constants.SHIP_ICONS[(int)GameMaster.player.ShipDesigns[index].getClass()];
+        return Constants.SHIP_ICONS[(int)gm.player.ShipDesigns[index].getClass()];
     }
 
     bool DesignExist(int index)
     {
-        return GameMaster.player.getNextDesignID() > index;
+        return gm.player.getNextDesignID() > index;
     }
 
     void DB1_handle()
     {
-        GameMaster.player.buildShip(GameMaster.player.ShipDesigns[(CurPage - 1) * 4]);
+        gm.player.buildShip(gm.player.ShipDesigns[(CurPage - 1) * 4]);
     }
     void DB2_handle()
     {
-        GameMaster.player.buildShip(GameMaster.player.ShipDesigns[(CurPage - 1) * 4 + 1]);
+        gm.player.buildShip(gm.player.ShipDesigns[(CurPage - 1) * 4 + 1]);
     }
     void DB3_handle()
     {
-        GameMaster.player.buildShip(GameMaster.player.ShipDesigns[(CurPage - 1) * 4 + 2]);
+        gm.player.buildShip(gm.player.ShipDesigns[(CurPage - 1) * 4 + 2]);
     }
     void DB4_handle()
     {
-        GameMaster.player.buildShip(GameMaster.player.ShipDesigns[(CurPage - 1) * 4 + 3]);
+        gm.player.buildShip(gm.player.ShipDesigns[(CurPage - 1) * 4 + 3]);
     }
 
 
     void DesignButtonUpdate()
     {
-        MaxPage = Mathf.CeilToInt(GameMaster.player.getNextDesignID()/4);
+        MaxPage = Mathf.CeilToInt(gm.player.getNextDesignID()/4);
         int pageoffset = (CurPage - 1) * 4;
         if (DesignExist(pageoffset))
         {
             D1t.text = getShipInfo(pageoffset);
-            D1i.color = GameMaster.player.getPlayerColor();
+            D1i.color = gm.player.getPlayerColor();
             D1i.sprite = getShipIcon(pageoffset);
             Design1.interactable = true;
         }
@@ -127,7 +127,7 @@ public class ShipYardUI : MonoBehaviour {
         {
             D2t.text = getShipInfo(pageoffset + 1);
             D2i.sprite = getShipIcon(pageoffset + 1);
-            D2i.color = GameMaster.player.getPlayerColor();
+            D2i.color = gm.player.getPlayerColor();
             Design2.interactable = true;
         }
         else{
@@ -139,7 +139,7 @@ public class ShipYardUI : MonoBehaviour {
         {
             D3t.text = getShipInfo(pageoffset + 2);
             D3i.sprite = getShipIcon(pageoffset + 2);
-            D3i.color = GameMaster.player.getPlayerColor();
+            D3i.color = gm.player.getPlayerColor();
             Design3.interactable = true;
         }
         else{
@@ -151,7 +151,7 @@ public class ShipYardUI : MonoBehaviour {
         {
             D4t.text = getShipInfo(pageoffset + 3);
             D4i.sprite = getShipIcon(pageoffset + 3);
-            D4i.color = GameMaster.player.getPlayerColor();
+            D4i.color = gm.player.getPlayerColor();
             Design4.interactable = true;
         }
         else{
@@ -164,13 +164,13 @@ public class ShipYardUI : MonoBehaviour {
 
     void BuildQueueUpdate()
     {
-        YardShip.text = GameMaster.player.GetShipYard().ConstructionNameString();
-        YardTime.text = GameMaster.player.GetShipYard().ConstructionTimeString();
+        YardShip.text = gm.player.GetShipYard().ConstructionNameString();
+        YardTime.text = gm.player.GetShipYard().ConstructionTimeString();
         YardStat.text = "";
         string[] s = { "Not avaliable", "Idle", "Working" };
         for (int i = 0; i < Constants.MAX_BUILD_QUEUE; i++)
         {
-            ShipDesign d = GameMaster.player.GetShipYard().getDesignInConstruction(i);
+            ShipDesign d = gm.player.GetShipYard().getDesignInConstruction(i);
             if (d == null)
             {
                 YardIcons[i].color = new Color32(255, 255, 255, 0);
@@ -178,9 +178,9 @@ public class ShipYardUI : MonoBehaviour {
             else
             {
                 YardIcons[i].sprite = Constants.SHIP_ICONS[(int)d.getClass()];
-                YardIcons[i].color = GameMaster.player.getPlayerColor();
+                YardIcons[i].color = gm.player.getPlayerColor();
             }
-            YardStat.text += s[GameMaster.player.GetShipYard().getYardStat(i)]+"\n";
+            YardStat.text += s[gm.player.GetShipYard().getYardStat(i)]+"\n";
         }
     }
 

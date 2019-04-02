@@ -34,7 +34,6 @@ public class ShipDesigner : MonoBehaviour {
     
     // Start is called before the first frame update
     void Start() {
-
         gm = GameMaster.instance;
 
         mgc_inc.onClick.AddListener(add_mgc);
@@ -213,7 +212,7 @@ public class ShipDesigner : MonoBehaviour {
     void Cancel()
     {
         //Testing
-        Debug.Log(GameMaster.player.getNextShipID());
+        Debug.Log(gm.player.getNextShipID());
     }
 
     void Confirm()
@@ -221,9 +220,9 @@ public class ShipDesigner : MonoBehaviour {
         //ShipDesign(int maingc, int maingn, int subgc, int subgn, int trpdo, int A, int arm, int eng
         //              , bool bulge, int tweight, int HP,int Icost,int Mcost, int Tcost)
         Debug.Log("Trying to save design " + Sname.text);
-        GameMaster.player.AddDesign(
+        gm.player.AddDesign(
             new ShipDesign(Sname.text, (Constants.ShipClass)Sclass.value,mgc, mgn, sgc, sgn, trp, AA, armor, engine, bulge, totalWeight, HitPoints,IronCost, ManCost, ConstructionTime));
-        Debug.Log("Design Saved.\nCurrent design#: " + GameMaster.player.getNextDesignID());
+        Debug.Log("Design Saved.\nCurrent design#: " + gm.player.getNextDesignID());
     }
 
     public ShipDesign CreateDesignWithValues(string n, Constants.ShipClass sc,int maingc, int maingn, int subgc, int subgn, int t, int AntiA, int arm, int speed, bool b)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Stats))]
 public class Ship : MonoBehaviour {
 
     GameMaster gm;
@@ -18,7 +19,7 @@ public class Ship : MonoBehaviour {
         set { p_owner = value; }
     }
 
-    public ShipStats stats;
+    public Stats stats;
 
     public int main_gun_caliber;
     public int main_gun_turret_front;
@@ -37,6 +38,7 @@ public class Ship : MonoBehaviour {
     
     private void Start() {
         gm = GameMaster.instance;
+        stats = GetComponent<Stats>();
     }
 
     // Initialize variables
