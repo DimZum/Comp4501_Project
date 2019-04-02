@@ -31,16 +31,19 @@ public class Ship : MonoBehaviour {
     public int sub_gun_turret;
     public int torpedo;
     public int AntiAir;
+    ShipMotor motor;
 
     ShipDesign design;
     Ship target;
     
     private void Start() {
         gm = GameMaster.instance;
+        motor = gameObject.GetComponent<ShipMotor>();
     }
 
     // Initialize variables
-    public void Init(int mgc, int mgn, int sgc, int sgn, int trp, int A, int arm, int spd, int hitpoints, ShipDesign d) {
+    public void Init(int mgc, int mgn, int sgc, int sgn, int trp, int A, int arm, int spd, int hitpoints, ShipDesign d)
+    {
         main_gun_caliber = mgc;
         Turret_group(mgn);
         sub_gun_caliber = sgc;
@@ -52,6 +55,11 @@ public class Ship : MonoBehaviour {
         stats.MaxHealth = hitpoints;
         stats.CurrentHealth = hitpoints;
         stats.Speed = spd;
+    }
+
+    public void SetMove(Vector3 pos)
+    {
+        motor.MoveToPoint(pos);
     }
 
     public void Fire()

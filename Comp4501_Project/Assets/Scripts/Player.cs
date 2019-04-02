@@ -10,7 +10,9 @@ public class Player {
     float Iron, ManPower, Exp;
     public Color32 PlayerColor;
     ShipYard ShipYards;
+    public Vector3 BasePos;
     public int diff;
+    float timer;
     
     List<GameObject> ships;
     List<ShipDesign> shipDesigns;
@@ -18,7 +20,7 @@ public class Player {
         get { return shipDesigns; }
     }
 
-    public Player(int I,int d) {
+    public Player(int I,int d,Vector3 pos) {
         gm = GameMaster.instance;
 
         ID = I;
@@ -28,11 +30,13 @@ public class Player {
         ManPower = Constants.DEF_START_MP + d * 200;
         Exp = Constants.DEF_START_EXP + d * 50;
 
+        BasePos = pos;
         ships = new List<GameObject>();
         shipDesigns = new List<ShipDesign>();
 
         ShipYards = new ShipYard(this);
         diff = d;
+        timer = 0;
 
         ShipDesigner designer = new ShipDesigner();
         AddDesign(designer.CreateDesignWithValues("Destroyer", Constants.ShipClass.Destroyer, 5, 3, 0, 0, 4, 0, 2, 34, false));
@@ -110,6 +114,12 @@ public class Player {
     public void Update()
     {
         ResourceIncome(Time.deltaTime);
+        if (timer > 5)
+        {
+            timer = 0;
+            AI_Control();
+        }
+        timer += Time.deltaTime;
         ShipYards.Update();
     }
 
@@ -152,6 +162,7 @@ public class Player {
 
         if(R < 20){
             //do nothing
+            timer = -5;
             return;
         }
         else if(R < 70){
@@ -160,22 +171,32 @@ public class Player {
             if (s < 35)
             {
                 //Build Destroyer
-            }else if(s < 55)
+                buildShip(GameMaster.player.ShipDesigns[1]);
+            }
+            else if(s < 55)
             {
                 //build Light Cruiser;
-            }else if (s < 70)
+                buildShip(GameMaster.player.ShipDesigns[2]);
+            }
+            else if (s < 70)
             {
                 //build Heavy cruiser
-            }else if (s < 80)
+                buildShip(GameMaster.player.ShipDesigns[3]);
+            }
+            else if (s < 80)
             {
                 //Build BattleCruiser
-            }else if (s < 90)
+                buildShip(GameMaster.player.ShipDesigns[4]);
+            }
+            else if (s < 90)
             {
                 //Build BattleShip
+                buildShip(GameMaster.player.ShipDesigns[5]);
             }
             else
             {
                 //Build Dreadnought
+                buildShip(GameMaster.player.ShipDesigns[6]);
             }
         }
         else if (R<80)
@@ -189,7 +210,10 @@ public class Player {
         else
         {
             //Attack
-
+            foreach (GameObject o in ships)
+            {
+                o.GetComponent<Ship>().SetMove(GameMaster.player.BasePos);
+            }
         }
     }
 }
