@@ -73,6 +73,8 @@ public class Ship : MonoBehaviour {
         FireFront(angle, chance);
         FireMiddle(angle, chance);
         FireBack(angle, chance);
+        //Give player experience each time a ship fires
+        p_owner.ExpIncome(0.01f * (int)design.getClass());
     }
 
     void FireFront(float angle,float chance)

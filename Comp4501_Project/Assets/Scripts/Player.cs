@@ -34,7 +34,15 @@ public class Player {
         ShipYards = new ShipYard(this);
         diff = d;
 
-        if(ID == 0)
+        ShipDesigner designer = new ShipDesigner();
+        AddDesign(designer.CreateDesignWithValues("Destroyer", Constants.ShipClass.Destroyer, 5, 3, 0, 0, 4, 0, 2, 34, false));
+        AddDesign(designer.CreateDesignWithValues("Light Cruiser", Constants.ShipClass.LightCruiser, 6, 4, 3, 3, 3, 0, 4, 33, false));
+        AddDesign(designer.CreateDesignWithValues("Heavy Cruiser", Constants.ShipClass.HeavyCruiser, 8, 4, 4, 4, 0, 0, 6, 30, true));
+        AddDesign(designer.CreateDesignWithValues("Battle Cruiser", Constants.ShipClass.BattleCruiser, 12, 4, 5, 4, 0, 0, 8, 30, true));
+        AddDesign(designer.CreateDesignWithValues("BattleShip", Constants.ShipClass.Battleship, 15, 4, 5, 5, 0, 0, 12, 28, true));
+        AddDesign(designer.CreateDesignWithValues("Dreadnought", Constants.ShipClass.Battleship, 19, 4, 8, 5, 0, 0, 18, 25, true));
+
+        if (ID == 0)
         {
             PlayerColor = new Color32(5, 5, 180,255);
         }else if (ID == 1)
@@ -52,8 +60,8 @@ public class Player {
     {
         if (Iron >= d.getIronCost() && ManPower >= d.getMPCost())
         {
-            //Iron -= d.getIronCost();
-            //ManPower -= d.getMPCost();
+            Iron -= d.getIronCost();
+            ManPower -= d.getMPCost();
             ShipYards.BuildShip(d);
             Debug.Log("Add " + d.getName() + " to construction");
         }
@@ -101,6 +109,87 @@ public class Player {
     // Update is called once per frame
     public void Update()
     {
+        ResourceIncome(Time.deltaTime);
         ShipYards.Update();
+    }
+
+    void ResourceIncome(float deltaT)
+    {
+        Iron += 5 * deltaT;
+        ManPower += 2 * deltaT;
+    }
+
+    public void ExpIncome(float amount)
+    {
+        Exp += amount;
+    }
+
+    public void ExpandShipYard()
+    {
+        if(Iron >= ShipYards.GetResourceForNextYard())
+        {
+            Iron -= ShipYards.GetResourceForNextYard();
+            ShipYards.UnlockNextYard();
+        }
+    }
+
+    void AI_Control()
+    {
+        if (ID == 0)
+        {
+            //the human player has ID=0
+            return;
+        }
+
+
+        /*  Random value for AI
+         *  20% do nothing
+         *  50% build more ship
+         *  10% try build more shipyard
+         *  0~20% Attack player with all ships
+         */
+        float R = Random.value*100;
+
+        if(R < 20){
+            //do nothing
+            return;
+        }
+        else if(R < 70){
+            //Build more ship
+            float s = Random.value * 100;
+            if (s < 35)
+            {
+                //Build Destroyer
+            }else if(s < 55)
+            {
+                //build Light Cruiser;
+            }else if (s < 70)
+            {
+                //build Heavy cruiser
+            }else if (s < 80)
+            {
+                //Build BattleCruiser
+            }else if (s < 90)
+            {
+                //Build BattleShip
+            }
+            else
+            {
+                //Build Dreadnought
+            }
+        }
+        else if (R<80)
+        {
+            //Build shipYard 
+            if (Iron >= ShipYards.GetResourceForNextYard())
+            {
+                ExpandShipYard();
+            }
+        }
+        else
+        {
+            //Attack
+
+        }
     }
 }

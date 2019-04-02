@@ -178,8 +178,6 @@ public class ShipDesigner : MonoBehaviour {
     }
     void compute_value()
     {
-        bulge = trp_bulge.isOn;
-        ShipClass = (Constants.ShipClass)Sclass.value;
         MaxWeight = Constants.ClassToCapacity[(int)ShipClass];
         weight_fp = Constants.CannonWeight[mgc] * mgn + Constants.CannonWeight[sgc] * sgn + trp * Constants.trpweight;
         float weightArmor = (armor+31) * (armor+31) *(Constants.ClassToWeight[(int)ShipClass]+mgc*mgn*15+sgc*sgn*15+trp*50) / 1500.0f;
@@ -206,6 +204,12 @@ public class ShipDesigner : MonoBehaviour {
         }
     }
 
+    void getInfo()
+    {
+        bulge = trp_bulge.isOn;
+        ShipClass = (Constants.ShipClass)Sclass.value;
+    }
+
     void Cancel()
     {
         //Testing
@@ -220,6 +224,22 @@ public class ShipDesigner : MonoBehaviour {
         GameMaster.player.AddDesign(
             new ShipDesign(Sname.text, (Constants.ShipClass)Sclass.value,mgc, mgn, sgc, sgn, trp, AA, armor, engine, bulge, totalWeight, HitPoints,IronCost, ManCost, ConstructionTime));
         Debug.Log("Design Saved.\nCurrent design#: " + GameMaster.player.getNextDesignID());
+    }
+
+    public ShipDesign CreateDesignWithValues(string n, Constants.ShipClass sc,int maingc, int maingn, int subgc, int subgn, int t, int AntiA, int arm, int speed, bool b)
+    {
+        ShipClass = sc;
+        mgc = maingc;
+        mgn = maingn;
+        sgc = subgc;
+        sgn = subgn;
+        trp = t;
+        AA = AntiA;
+        armor = arm;
+        engine = speed;
+        bulge = b;
+        compute_value();
+        return new ShipDesign(n, (Constants.ShipClass)Sclass.value, mgc, mgn, sgc, sgn, trp, AA, armor, engine, bulge, totalWeight, HitPoints, IronCost, ManCost, ConstructionTime);
     }
 
     void goShipyard()
@@ -272,6 +292,7 @@ public class ShipDesigner : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        getInfo();
         compute_value();
         display_value();
     }

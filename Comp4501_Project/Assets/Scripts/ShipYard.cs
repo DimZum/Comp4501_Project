@@ -186,6 +186,19 @@ public class ShipYard
         
     }
 
+    public int GetResourceForNextYard()
+    {
+        return 300+YardAvaliable * 250;
+    }
+
+    public void UnlockNextYard()
+    {
+        if(YardAvaliable< Constants.MAX_BUILD_QUEUE-1)
+        {
+            YardAvaliable++;
+        }
+    }
+
     // Update is called once per frame
     public void Update()
     {

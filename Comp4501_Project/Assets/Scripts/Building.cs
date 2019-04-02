@@ -6,6 +6,7 @@ public class Building : MonoBehaviour {
 
     public int health;
     public int armor;
+    public int Type;
     
     // Start is called before the first frame update
     void Start() {
