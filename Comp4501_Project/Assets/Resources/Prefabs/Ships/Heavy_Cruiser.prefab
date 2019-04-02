@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 2095307604279616868}
   - component: {fileID: 5955077185417573361}
   - component: {fileID: 5793892737094920981}
+  - component: {fileID: 679303393}
+  - component: {fileID: 8379712352228808998}
   m_Layer: 0
   m_Name: Heavy_Cruiser
   m_TagString: Untagged
@@ -33,7 +35,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 467.9, y: 7, z: 176}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 9131641305052975456}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,6 +100,7 @@ MonoBehaviour:
   movementMask:
     serializedVersion: 2
     m_Bits: 16
+  isSelected: 0
 --- !u!195 &8809071216088254189
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -156,3 +160,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2595a4dfb82fb5408ea5a235f918eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  stats: {fileID: 0}
+  main_gun_caliber: 0
+  main_gun_turret_front: 0
+  firing_arc_front: 0
+  main_gun_turret_side: 0
+  firing_arc_side: 0
+  main_gun_turret_back: 0
+  firing_arc_back: 0
+  sub_gun_caliber: 0
+  sub_gun_turret: 0
+  torpedo: 0
+  AntiAir: 0
+--- !u!114 &679303393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113581460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d74f6c4e9b1b1943a1fc3156a343e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p_maxHealth: 0
+  p_currentHealth: 0
+  p_armor: 0
+  p_speed: 0
+--- !u!114 &8379712352228808998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113581460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa8f002eec2145478e03d1d781546b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 1208605977595744, guid: c57cc772a0320a44a9edff155f712f2b, type: 3}
+  target: {fileID: 9131641305052975456}
+--- !u!1 &1772524892765554678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9131641305052975456}
+  m_Layer: 0
+  m_Name: Health UI Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9131641305052975456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772524892765554678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1113581463}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

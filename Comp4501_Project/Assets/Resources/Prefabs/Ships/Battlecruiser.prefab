@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 8111335796971158319}
   - component: {fileID: 3643687411068907572}
   - component: {fileID: 3143623864207572092}
+  - component: {fileID: 1139786201}
+  - component: {fileID: 3418818309965170863}
   m_Layer: 0
   m_Name: Battlecruiser
   m_TagString: Untagged
@@ -33,7 +35,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 580.4, y: 7, z: 176}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 8797426641889392253}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,6 +100,7 @@ MonoBehaviour:
   movementMask:
     serializedVersion: 2
     m_Bits: 16
+  isSelected: 0
 --- !u!195 &158232413257257969
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -156,3 +160,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2595a4dfb82fb5408ea5a235f918eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  stats: {fileID: 0}
+  main_gun_caliber: 0
+  main_gun_turret_front: 0
+  firing_arc_front: 0
+  main_gun_turret_side: 0
+  firing_arc_side: 0
+  main_gun_turret_back: 0
+  firing_arc_back: 0
+  sub_gun_caliber: 0
+  sub_gun_turret: 0
+  torpedo: 0
+  AntiAir: 0
+--- !u!114 &1139786201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730483398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d74f6c4e9b1b1943a1fc3156a343e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p_maxHealth: 0
+  p_currentHealth: 0
+  p_armor: 0
+  p_speed: 0
+--- !u!114 &3418818309965170863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730483398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa8f002eec2145478e03d1d781546b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 1208605977595744, guid: c57cc772a0320a44a9edff155f712f2b, type: 3}
+  target: {fileID: 8797426641889392253}
+--- !u!1 &7268541044123202503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8797426641889392253}
+  m_Layer: 0
+  m_Name: Health UI Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8797426641889392253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268541044123202503}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 7.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1730483401}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

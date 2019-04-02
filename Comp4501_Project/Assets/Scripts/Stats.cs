@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class ShipStats {
+public class Stats : MonoBehaviour {
 
     [SerializeField] private int p_maxHealth;
     public int MaxHealth {
+        get { return this.p_maxHealth; }
         set { this.p_maxHealth = value; }
     }
 
     [SerializeField] private int p_currentHealth;
     public int CurrentHealth {
-        get { return p_currentHealth; }
+        get { return this.p_currentHealth; }
         set { this.p_currentHealth = value; }
     }
 
     [SerializeField] private int p_armor;
     public int Armor {
-        get { return p_armor; }
+        get { return this.p_armor; }
         set { this.p_armor = value; }
     }
 
@@ -28,8 +28,14 @@ public class ShipStats {
         set { this.p_speed = value; }
     }
 
+    public event System.Action<int, int> OnHealthChanged;
+
+    public bool isSelected;
+
     private void Awake() {
-        //p_currentHealth = maxHealth;
+        CurrentHealth = MaxHealth;
+
+        isSelected = false;
     }
 
     public void TakeDamage(int caliber) {
@@ -54,15 +60,23 @@ public class ShipStats {
             //The shell hits very hard and penetrate all the way to the middle of ship body, deal massive damage.
             damage *= randomValue / Armor;
         }
-
-
+        
         CurrentHealth -= Mathf.RoundToInt(damage);
+
+        if (OnHealthChanged != null) {
+            OnHealthChanged(MaxHealth, CurrentHealth);
+        }
+
         if (CurrentHealth <= 0) {
             Die();
         }
     }
 
-    public void Die() {
+    public void ToggleIsSelected() {
+        isSelected = !isSelected;
+    }
 
+    public void Die() {
+        GameObject.Destroy(this, 3f);
     }
 }

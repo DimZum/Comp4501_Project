@@ -26,7 +26,7 @@ public class GameMaster : MonoBehaviour {
     public GameObject ShipYardUI;
     public GameObject ShipDesignerUI;
 
-    public static Player player, enemy;
+    public Player player, enemy;
 
     // Start is called before the first frame update
     void Start() {
