@@ -171,32 +171,32 @@ public class Player {
             if (s < 35)
             {
                 //Build Destroyer
-                buildShip(GameMaster.player.ShipDesigns[1]);
+                buildShip(ShipDesigns[1]);
             }
             else if(s < 55)
             {
                 //build Light Cruiser;
-                buildShip(GameMaster.player.ShipDesigns[2]);
+                buildShip(ShipDesigns[2]);
             }
             else if (s < 70)
             {
                 //build Heavy cruiser
-                buildShip(GameMaster.player.ShipDesigns[3]);
+                buildShip(ShipDesigns[3]);
             }
             else if (s < 80)
             {
                 //Build BattleCruiser
-                buildShip(GameMaster.player.ShipDesigns[4]);
+                buildShip(ShipDesigns[4]);
             }
             else if (s < 90)
             {
                 //Build BattleShip
-                buildShip(GameMaster.player.ShipDesigns[5]);
+                buildShip(ShipDesigns[5]);
             }
             else
             {
                 //Build Dreadnought
-                buildShip(GameMaster.player.ShipDesigns[6]);
+                buildShip(ShipDesigns[6]);
             }
         }
         else if (R<80)
