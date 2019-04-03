@@ -39,6 +39,7 @@ public class Ship : MonoBehaviour {
 
     float mainguntimer;
     float subguntimer;
+    float idletimer;
     
     private void Start() {
         gm = GameMaster.instance;
@@ -56,6 +57,9 @@ public class Ship : MonoBehaviour {
         torpedo = trp;
         AntiAir = A;
         design = d;
+        mainguntimer = 0;
+        subguntimer = 0;
+        idletimer = 0;
 
         stats.MaxHealth = hitpoints;
         stats.CurrentHealth = hitpoints;
@@ -327,10 +331,11 @@ public class Ship : MonoBehaviour {
 
     public void Update()
     {
-        if(target == null)
+        if (target == null || idletimer > 20) ;
         {
             FindTarget();
         }
+        idletimer += Time.deltaTime;
         if(target != null)
         {
             Vector3 targetDirection = target.gameObject.transform.position - gameObject.transform.position;
@@ -341,12 +346,14 @@ public class Ship : MonoBehaviour {
                 {
                     Fire();
                     mainguntimer = (10 + main_gun_caliber) / 2;
+                    idletimer = 0;
                 }
 
                 if (subguntimer <= 0)
                 {
                     FireSub();
                     subguntimer = (10 + sub_gun_caliber) / 2;
+                    idletimer = 0;
                 }
             }
         }
