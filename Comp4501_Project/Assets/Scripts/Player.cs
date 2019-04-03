@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player {
     GameMaster gm;
 
-    int ID;
+    public int ID;
     int next_ship_id,next_design_id;
     float Iron, ManPower, Exp;
     public Color32 PlayerColor;
@@ -18,6 +18,11 @@ public class Player {
     List<ShipDesign> shipDesigns;
     public List<ShipDesign> ShipDesigns {
         get { return shipDesigns; }
+    }
+
+    public List<GameObject> Ships
+    {
+        get { return ships; }
     }
 
     public Player(int I,int d,Vector3 pos) {

@@ -214,7 +214,34 @@ public class Ship : MonoBehaviour {
 
     void FindTarget()
     {
-
+        float Closest = 0;
+        GameObject CloseShip = null;
+        if (p_owner.ID == 0)
+        {
+            foreach (GameObject O in gm.enemy.Ships)
+            {
+                float dist = Vector3.Distance(O.transform.position, transform.position);
+                if (Closest==0 || dist < Closest)
+                {
+                    CloseShip = O;
+                    Closest = dist;
+                }
+            }
+            target = CloseShip.GetComponent<Ship>();
+        }
+        else
+        {
+            foreach (GameObject O in gm.player.Ships)
+            {
+                float dist = Vector3.Distance(O.transform.position, transform.position);
+                if (Closest == 0 || dist < Closest)
+                {
+                    CloseShip = O;
+                    Closest = dist;
+                }
+            }
+            target = CloseShip.GetComponent<Ship>();
+        }
     }
 
     void Turret_group(int num_turret)
