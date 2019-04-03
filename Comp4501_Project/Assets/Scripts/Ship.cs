@@ -331,7 +331,7 @@ public class Ship : MonoBehaviour {
 
     public void Update()
     {
-        if (target == null || idletimer > 20) ;
+        if (target == null || idletimer > 10) ;
         {
             FindTarget();
         }
