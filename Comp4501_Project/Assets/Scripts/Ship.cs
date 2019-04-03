@@ -346,15 +346,14 @@ public class Ship : MonoBehaviour {
                 {
                     Fire();
                     mainguntimer = (10 + main_gun_caliber) / 2;
-                    idletimer = 0;
                 }
 
                 if (subguntimer <= 0)
                 {
                     FireSub();
                     subguntimer = (10 + sub_gun_caliber) / 2;
-                    idletimer = 0;
                 }
+                idletimer = 0;
             }
         }
         if (mainguntimer > 0)
