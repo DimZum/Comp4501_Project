@@ -36,6 +36,9 @@ public class Ship : MonoBehaviour {
 
     ShipDesign design;
     Ship target;
+
+    float mainguntimer;
+    float subguntimer;
     
     private void Start() {
         gm = GameMaster.instance;
@@ -84,7 +87,26 @@ public class Ship : MonoBehaviour {
         FireMiddle(angle, chance);
         FireBack(angle, chance);
         //Give player experience each time a ship fires
-        p_owner.ExpIncome(0.01f * (int)design.getClass());
+        p_owner.ExpIncome(0.01f * (int)design.getClass()+5);
+    }
+
+    void FireSub()
+    {
+        float chance = Hitrate_calc(sub_gun_caliber);
+        Vector3 targetDirection = target.gameObject.transform.position - gameObject.transform.position;
+        float targetDist = targetDirection.magnitude;
+        if (targetDist > Constants.CannonIdealRange[sub_gun_caliber]*1.5)
+        {
+            for (int i = 0; i < sub_gun_turret; i++)
+            {
+                if (Random.value * 100 < chance)
+                {
+                    //It is a hit
+                    //Hit effect on p_target
+                    target.stats.TakeDamage(main_gun_caliber);
+                }
+            }
+        }
     }
 
     void FireFront(float angle,float chance)
@@ -190,6 +212,11 @@ public class Ship : MonoBehaviour {
         return speed_modifier;
     }
 
+    void FindTarget()
+    {
+
+    }
+
     void Turret_group(int num_turret)
     {
         /* Compute where the turret should go.
@@ -268,6 +295,41 @@ public class Ship : MonoBehaviour {
                 main_gun_turret_back = 2;
                 firing_arc_back = 110;
                 break;
+        }
+    }
+
+    public void Update()
+    {
+        if(target == null)
+        {
+            FindTarget();
+        }
+        if(target != null)
+        {
+            Vector3 targetDirection = target.gameObject.transform.position - gameObject.transform.position;
+            float targetDist = targetDirection.magnitude;
+            if (targetDist > Constants.CannonIdealRange[main_gun_caliber] * 1.5)
+            {
+                if (mainguntimer <= 0)
+                {
+                    Fire();
+                    mainguntimer = (10 + main_gun_caliber) / 2;
+                }
+
+                if (subguntimer <= 0)
+                {
+                    FireSub();
+                    subguntimer = (10 + sub_gun_caliber) / 2;
+                }
+            }
+        }
+        if (mainguntimer > 0)
+        {
+            mainguntimer -= Time.deltaTime;
+        }
+        if (subguntimer > 0)
+        {
+            subguntimer -= Time.deltaTime;
         }
     }
 }
