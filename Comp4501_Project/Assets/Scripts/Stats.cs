@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Stats : MonoBehaviour {
+
+    public NavMeshAgent agent;
 
     [SerializeField] private int p_maxHealth;
     public int MaxHealth {
@@ -36,6 +39,12 @@ public class Stats : MonoBehaviour {
         CurrentHealth = MaxHealth;
 
         isSelected = false;
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.K)) {
+            Die();
+        }
     }
 
     public void TakeDamage(int caliber) {
@@ -77,6 +86,6 @@ public class Stats : MonoBehaviour {
     }
 
     public void Die() {
-        GameObject.Destroy(this, 3f);
+        GameObject.Destroy(this.gameObject, .5f);
     }
 }

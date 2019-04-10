@@ -44,7 +44,7 @@ public class Ship : MonoBehaviour {
     private void Start() {
         gm = GameMaster.instance;
         motor = gameObject.GetComponent<ShipMotor>();
-        stats = GetComponent<Stats>();
+        //stats = GetComponent<Stats>();
     }
 
     // Initialize variables
@@ -64,6 +64,7 @@ public class Ship : MonoBehaviour {
         stats.MaxHealth = hitpoints;
         stats.CurrentHealth = hitpoints;
         stats.Speed = spd;
+        stats.agent.speed = spd;
     }
 
     public void SetMove(Vector3 pos)
@@ -331,7 +332,8 @@ public class Ship : MonoBehaviour {
 
     public void Update()
     {
-        if (target == null || idletimer > 10) ;
+        /*
+        if (target == null || idletimer > 10)
         {
             FindTarget();
         }
@@ -364,5 +366,6 @@ public class Ship : MonoBehaviour {
         {
             subguntimer -= Time.deltaTime;
         }
+        */
     }
 }

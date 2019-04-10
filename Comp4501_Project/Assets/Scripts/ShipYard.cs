@@ -22,12 +22,13 @@ public class ShipYard
         {
             ShipInConstruction[i] = null;
         }
-
+        //Debug.Log("Player " + p.ID + " dif" + p.diff);
         ShipConstructionTime = new float[Constants.MAX_BUILD_QUEUE];
         YardAvaliable = Mathf.CeilToInt((p.diff+1)/2);
     }
     public void BuildShip(ShipDesign d)
     {
+        Debug.Log("added " + d.getName());
         BuildingQueue.Enqueue(d);
     }
 
@@ -128,18 +129,18 @@ public class ShipYard
         //Debug.Log("Called Update Construction");
         for (int i = 0; i < YardAvaliable; i++)
         {
-            Debug.Log("In the for loop "+i);
+            //Debug.Log("In the for loop "+i);
             if (BuildingQueue.Count == 0)
             {
                 //There is no ship waiting for construction;
-                Debug.Log("Build queue is empty");
+                //Debug.Log("Build queue is empty");
                 return;
             }else{
-                Debug.Log("Currently updateing Shipyard " + i + " empty is " + (ShipInConstruction[i] == null));
+                //Debug.Log("Currently updateing Shipyard " + i + " empty is " + (ShipInConstruction[i] == null));
                 if (ShipInConstruction[i] == null) {
                     //If there is free shipyard avaliable
                     ShipDesign d = BuildingQueue.Dequeue();
-                    Debug.Log("Dequeueing " + d.getName());
+                    //Debug.Log("Dequeueing " + d.getName());
                     ShipInConstruction[i] = d;
                     ShipConstructionTime[i] = d.getTimeCost();
                 }

@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class Player {
     GameMaster gm;
-
-    public int ID;
-    int next_ship_id,next_design_id;
-    float Iron, ManPower, Exp;
-    public Color32 PlayerColor;
-    ShipYard ShipYards;
-    public Vector3 BasePos;
-    public int diff;
-    float timer;
+    ResourceManager rm;
     
     List<GameObject> ships;
     List<ShipDesign> shipDesigns;
@@ -20,13 +12,31 @@ public class Player {
         get { return shipDesigns; }
     }
 
-    public List<GameObject> Ships
-    {
+    public List<GameObject> Ships {
         get { return ships; }
     }
+    
+    public GameObject baseObj;
+    public Vector3 basePos;
+    int baseOffset_x = 125; // Used to position the shipyard and factory
+
+    public GameObject factory;
+    public Vector3 factoryPos;
+
+    public GameObject shipyard;
+    public Vector3 shipyardPos;
+    
+    public int ID;
+    int next_ship_id, next_design_id;
+    public float Iron, ManPower, Exp;
+    public Color32 PlayerColor;
+    ShipYard ShipYards;
+    public int diff;
+    float timer;
 
     public Player(int I,int d,Vector3 pos) {
         gm = GameMaster.instance;
+        rm = ResourceManager.instance;
 
         ID = I;
         next_ship_id = 0;
@@ -35,14 +45,15 @@ public class Player {
         ManPower = Constants.DEF_START_MP + d * 200;
         Exp = Constants.DEF_START_EXP + d * 50;
 
-        BasePos = pos;
+        basePos = pos;
         ships = new List<GameObject>();
         shipDesigns = new List<ShipDesign>();
 
-        ShipYards = new ShipYard(this);
         diff = d;
         timer = 0;
+        ShipYards = new ShipYard(this);
 
+        /*
         ShipDesigner designer = new ShipDesigner();
         AddDesign(designer.CreateDesignWithValues("Destroyer", Constants.ShipClass.Destroyer, 5, 3, 0, 0, 4, 0, 2, 34, false));
         AddDesign(designer.CreateDesignWithValues("Light Cruiser", Constants.ShipClass.LightCruiser, 6, 4, 3, 3, 3, 0, 4, 33, false));
@@ -50,6 +61,7 @@ public class Player {
         AddDesign(designer.CreateDesignWithValues("Battle Cruiser", Constants.ShipClass.BattleCruiser, 12, 4, 5, 4, 0, 0, 8, 30, true));
         AddDesign(designer.CreateDesignWithValues("BattleShip", Constants.ShipClass.Battleship, 15, 4, 5, 5, 0, 0, 12, 28, true));
         AddDesign(designer.CreateDesignWithValues("Dreadnought", Constants.ShipClass.Battleship, 19, 4, 8, 5, 0, 0, 18, 25, true));
+        */
 
         if (ID == 0)
         {
@@ -62,6 +74,20 @@ public class Player {
         {
             PlayerColor = new Color32(5, 180, 180, 255);
         }
+
+        CreateBase();
+    }
+
+    // Creates all building gameobjects
+    public void CreateBase() {
+        baseObj = GameObject.Instantiate<GameObject>(rm.basePrefab);
+        baseObj.transform.position = basePos;
+        
+        factory = GameObject.Instantiate<GameObject>(rm.factoryPrefab);
+        factory.transform.position = new Vector3(basePos.x + baseOffset_x, factory.transform.position.y, basePos.z);
+
+        shipyard = GameObject.Instantiate<GameObject>(rm.shipyardPrefab);
+        shipyard.transform.position = new Vector3(factory.transform.position.x + baseOffset_x, shipyard.transform.position.y, basePos.z - 20);
     }
 
     // Start is called before the first frame update
@@ -104,25 +130,19 @@ public class Player {
 
     public void AddDesign(ShipDesign d)
     {
-        if (next_design_id >= shipDesigns.Count)
-        {
-            Debug.Log("Error, design full");
-            //Should extend the array to store more design, but for now just return;
-            return;
-        }
-        shipDesigns[next_design_id] = d;
+        shipDesigns.Add(d);
         Debug.Log("Player " + ID + " received design of " + shipDesigns[next_design_id].getName()+"\nCurrent design: "+ (next_design_id+1));
         next_design_id++;
     }
 
     // Update is called once per frame
-    public void Update()
+    public void UpdatePlayer()
     {
         ResourceIncome(Time.deltaTime);
         if (timer > 5)
         {
             timer = 0;
-            AI_Control();
+            //AI_Control();
         }
         timer += Time.deltaTime;
         ShipYards.Update();
@@ -148,6 +168,7 @@ public class Player {
         }
     }
 
+    /*
     void AI_Control()
     {
         if (ID == 0)
@@ -162,7 +183,7 @@ public class Player {
          *  50% build more ship
          *  10% try build more shipyard
          *  0~20% Attack player with all ships
-         */
+         
         float R = Random.value*100;
 
         if(R < 20){
@@ -217,8 +238,9 @@ public class Player {
             //Attack
             foreach (GameObject o in ships)
             {
-                o.GetComponent<Ship>().SetMove(gm.player.BasePos);
+                o.GetComponent<Ship>().SetMove(gm.player.basePos);
             }
         }
     }
+    */
 }

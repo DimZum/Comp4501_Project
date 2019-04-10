@@ -22,7 +22,7 @@ public class HealthUI : MonoBehaviour {
 	void Start () {
         stats = GetComponent<Stats>();
 
-        cam = Camera.main.transform;
+        //cam = Camera.main.transform;
 
 		foreach (Canvas c in FindObjectsOfType<Canvas>()) {
             if (c.renderMode == RenderMode.WorldSpace) {

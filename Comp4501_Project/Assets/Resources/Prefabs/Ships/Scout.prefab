@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 5405606652130446399}
   - component: {fileID: 4948305688681250116}
   - component: {fileID: 1304935682986835678}
-  - component: {fileID: 9114450138377860641}
   - component: {fileID: 1213681981}
+  - component: {fileID: 9114450138377860641}
   - component: {fileID: 1190827993332423516}
   m_Layer: 0
   m_Name: Scout
@@ -110,8 +110,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 4298457374830253949}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 12.5
-  m_Speed: 50
+  m_Radius: 14
+  m_Speed: 55
   m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 300
@@ -119,8 +119,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 4.5
-  m_BaseOffset: 1
+  m_Height: 6
+  m_BaseOffset: 1.25
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &4948305688681250116
@@ -148,31 +148,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.3, y: 3.25, z: 16.5}
   m_Center: {x: 0, y: 0.75, z: -0.1}
---- !u!114 &9114450138377860641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4298457374830253949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2595a4dfb82fb5408ea5a235f918eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gm: {fileID: 0}
-  stats: {fileID: 0}
-  main_gun_caliber: 0
-  main_gun_turret_front: 0
-  firing_arc_front: 0
-  main_gun_turret_side: 0
-  firing_arc_side: 0
-  main_gun_turret_back: 0
-  firing_arc_back: 0
-  sub_gun_caliber: 0
-  sub_gun_turret: 0
-  torpedo: 0
-  AntiAir: 0
 --- !u!114 &1213681981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +164,31 @@ MonoBehaviour:
   p_currentHealth: 0
   p_armor: 0
   p_speed: 0
+  isSelected: 0
+--- !u!114 &9114450138377860641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298457374830253949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2595a4dfb82fb5408ea5a235f918eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 1213681981}
+  main_gun_caliber: 0
+  main_gun_turret_front: 0
+  firing_arc_front: 0
+  main_gun_turret_side: 0
+  firing_arc_side: 0
+  main_gun_turret_back: 0
+  firing_arc_back: 0
+  sub_gun_caliber: 0
+  sub_gun_turret: 0
+  torpedo: 0
+  AntiAir: 0
 --- !u!114 &1190827993332423516
 MonoBehaviour:
   m_ObjectHideFlags: 0

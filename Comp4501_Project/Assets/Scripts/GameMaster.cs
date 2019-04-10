@@ -17,6 +17,8 @@ public class GameMaster : MonoBehaviour {
     }
     #endregion
 
+    public Camera mainCam;
+
     public static bool isGameOver;
     public static bool isGamePaused;
 
@@ -28,24 +30,31 @@ public class GameMaster : MonoBehaviour {
 
     public Player player, enemy;
 
+    public Transform playerSpawnpoint;
+    public Transform[] enemySpawnpoints;
+
     // Start is called before the first frame update
     void Start() {
+        mainCam.transform.position = new Vector3(playerSpawnpoint.position.x, mainCam.transform.position.y, playerSpawnpoint.position.z);
+
         isGameOver = false;
         isGamePaused = false;
 
-        player = new Player(0, 4);
-        enemy = new Player(1, 0);
+        player = new Player(0, 4, playerSpawnpoint.position);
+        enemy = new Player(1, 0, enemySpawnpoints[Random.Range(0, enemySpawnpoints.Length)].position);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        player.Update();
-        enemy.Update();
+    void Update() {
         if (isGameOver) { return; }
+
+        player.UpdatePlayer();
+        enemy.UpdatePlayer();
     }
 
     public void EndGame() {
         isGameOver = true;
+
+        Debug.Log("Your base has been destroyed");
     }
 }

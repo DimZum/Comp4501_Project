@@ -86,6 +86,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 1498322725}
+  shipyardUI: {fileID: 0}
+  shipBuildingUI: {fileID: 0}
 --- !u!114 &1498322725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +104,7 @@ MonoBehaviour:
   p_currentHealth: 0
   p_armor: 0
   p_speed: 0
+  isSelected: 0
 --- !u!114 &6617063798808099034
 MonoBehaviour:
   m_ObjectHideFlags: 0

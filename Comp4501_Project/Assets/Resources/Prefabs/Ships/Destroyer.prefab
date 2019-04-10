@@ -320,10 +320,10 @@ GameObject:
   - component: {fileID: 1914550990092621792}
   - component: {fileID: 1914550990092621795}
   - component: {fileID: 1914550990092621794}
+  - component: {fileID: 668110098}
   - component: {fileID: 3473428201719780352}
   - component: {fileID: 2689281891312559866}
   - component: {fileID: 668110097}
-  - component: {fileID: 668110098}
   m_Layer: 0
   m_Name: Destroyer
   m_TagString: Untagged
@@ -377,8 +377,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 1914550990092521803}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 13.5
-  m_Speed: 35
+  m_Radius: 15
+  m_Speed: 45
   m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 200
@@ -386,8 +386,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 5.5
-  m_BaseOffset: -1.25
+  m_Height: 8
+  m_BaseOffset: -1.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1914550990092621794
@@ -402,6 +402,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284eee0add23d6840ae3cf1b7bd7f840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &668110098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914550990092521803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d74f6c4e9b1b1943a1fc3156a343e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 1914550990092621795}
+  p_maxHealth: 0
+  p_currentHealth: 0
+  p_armor: 0
+  p_speed: 0
+  isSelected: 0
 --- !u!114 &3473428201719780352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,8 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2595a4dfb82fb5408ea5a235f918eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gm: {fileID: 0}
-  stats: {fileID: 0}
+  stats: {fileID: 668110098}
   main_gun_caliber: 0
   main_gun_turret_front: 0
   firing_arc_front: 0
@@ -454,22 +471,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiPrefab: {fileID: 1208605977595744, guid: c57cc772a0320a44a9edff155f712f2b, type: 3}
   target: {fileID: 990820840647428282}
---- !u!114 &668110098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914550990092521803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d74f6c4e9b1b1943a1fc3156a343e10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  p_maxHealth: 0
-  p_currentHealth: 0
-  p_armor: 0
-  p_speed: 0
 --- !u!1 &1914550990092521805
 GameObject:
   m_ObjectHideFlags: 0

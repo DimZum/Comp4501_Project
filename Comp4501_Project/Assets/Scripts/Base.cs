@@ -6,6 +6,7 @@ using UnityEngine;
 public class Base : MonoBehaviour {
 
     GameMaster gm;
+    ResourceManager rm;
 
     private Player p_owner;
     public Player Owner {
@@ -15,10 +16,14 @@ public class Base : MonoBehaviour {
 
     public Stats stats;
 
+    public GameObject baseUI;
+
     // Start is called before the first frame update
     void Start() {
         gm = GameMaster.instance;
-        stats = GetComponent<Stats>();
+        rm = ResourceManager.instance;
+
+        baseUI = rm.baseUI;
 
         stats.MaxHealth = 200;
         stats.Armor = 50;
@@ -30,20 +35,28 @@ public class Base : MonoBehaviour {
         if (stats.isSelected) {
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 stats.ToggleIsSelected();
+                ToggleBaseUI();
             }
         }
     }
 
     private void OnMouseDown() {
-        if (p_owner == gm.player) {
+        //if (p_owner == gm.player) {
+        if (true) {
             stats.ToggleIsSelected();
 
-            // Toggle menu UI
+            ToggleBaseUI();
         }
+    }
+
+    public void ToggleBaseUI() {
+        baseUI.SetActive(!baseUI.activeSelf);
     }
 
     // Destroy base - forfeit the game
     public void Surrender() {
+        ToggleBaseUI();
+
         stats.Die();
         gm.EndGame();
     }

@@ -16,7 +16,14 @@ public class ResourceManager : MonoBehaviour {
     }
     #endregion
 
-
+    // GameObjects
+    public GameObject baseUI;
+    public GameObject shipyardMenuUI;
+    public GameObject shipyardUI;
+    public GameObject factoryMenuUI;
+    public GameObject shipDesignerUI;
+    
+    // Ships
     public GameObject scoutPrefab;
     public GameObject destroyerPrefab;
     public GameObject lightCruiserPrefab;
@@ -25,16 +32,21 @@ public class ResourceManager : MonoBehaviour {
     public GameObject battleshipPrefab;
     public GameObject dreadnoughtPrefab;
 
+    // Buildings
+    public GameObject basePrefab;
+    public GameObject shipyardPrefab;
+    public GameObject factoryPrefab;
+
+    // Humanoid
+    public GameObject humanoidPrefab;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         
     }
 

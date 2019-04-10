@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 785262615}
   - component: {fileID: 785262616}
   - component: {fileID: 785262617}
+  - component: {fileID: 1852236996}
   - component: {fileID: 2538292122563109734}
   - component: {fileID: 1141698647975507854}
-  - component: {fileID: 1852236996}
   - component: {fileID: 2198057979314504718}
   m_Layer: 0
   m_Name: Dreadnought
@@ -106,8 +106,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 785262613}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 27
-  m_Speed: 5
+  m_Radius: 35
+  m_Speed: 15
   m_Acceleration: 2
   avoidancePriority: 50
   m_AngularSpeed: 50
@@ -115,8 +115,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 12
-  m_BaseOffset: 1.5
+  m_Height: 17
+  m_BaseOffset: 2.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &785262617
@@ -135,6 +135,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16
   isSelected: 0
+--- !u!114 &1852236996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785262613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d74f6c4e9b1b1943a1fc3156a343e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 785262616}
+  p_maxHealth: 0
+  p_currentHealth: 0
+  p_armor: 0
+  p_speed: 0
+  isSelected: 0
 --- !u!114 &2538292122563109734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,8 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2595a4dfb82fb5408ea5a235f918eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gm: {fileID: 0}
-  stats: {fileID: 0}
+  stats: {fileID: 1852236996}
   main_gun_caliber: 0
   main_gun_turret_front: 0
   firing_arc_front: 0
@@ -171,24 +188,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.845149, y: 17.68331, z: 78.039444}
-  m_Center: {x: -0.00000047683716, y: 5.3244305, z: 0.03738022}
---- !u!114 &1852236996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785262613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d74f6c4e9b1b1943a1fc3156a343e10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  p_maxHealth: 0
-  p_currentHealth: 0
-  p_armor: 0
-  p_speed: 0
+  m_Size: {x: 18, y: 20, z: 115}
+  m_Center: {x: 0, y: 5.5, z: 0}
 --- !u!114 &2198057979314504718
 MonoBehaviour:
   m_ObjectHideFlags: 0

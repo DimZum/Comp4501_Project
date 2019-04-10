@@ -212,17 +212,17 @@ public class ShipDesigner : MonoBehaviour {
     void Cancel()
     {
         //Testing
-        Debug.Log(gm.player.getNextShipID());
+        //Debug.Log(gm.player.getNextShipID());
     }
 
     void Confirm()
     {
         //ShipDesign(int maingc, int maingn, int subgc, int subgn, int trpdo, int A, int arm, int eng
         //              , bool bulge, int tweight, int HP,int Icost,int Mcost, int Tcost)
-        Debug.Log("Trying to save design " + Sname.text);
+        //Debug.Log("Trying to save design " + Sname.text);
         gm.player.AddDesign(
             new ShipDesign(Sname.text, (Constants.ShipClass)Sclass.value,mgc, mgn, sgc, sgn, trp, AA, armor, engine, bulge, totalWeight, HitPoints,IronCost, ManCost, ConstructionTime));
-        Debug.Log("Design Saved.\nCurrent design#: " + gm.player.getNextDesignID());
+        //Debug.Log("Design Saved.\nCurrent design#: " + gm.player.getNextDesignID());
     }
 
     public ShipDesign CreateDesignWithValues(string n, Constants.ShipClass sc,int maingc, int maingn, int subgc, int subgn, int t, int AntiA, int arm, int speed, bool b)
@@ -237,7 +237,7 @@ public class ShipDesigner : MonoBehaviour {
         armor = arm;
         engine = speed;
         bulge = b;
-        compute_value();
+        //compute_value();
         return new ShipDesign(n, (Constants.ShipClass)Sclass.value, mgc, mgn, sgc, sgn, trp, AA, armor, engine, bulge, totalWeight, HitPoints, IronCost, ManCost, ConstructionTime);
     }
 
@@ -289,10 +289,11 @@ public class ShipDesigner : MonoBehaviour {
             + "\nConstruction Time: " + ConstructionTime;
     }
     // Update is called once per frame
-    void Update()
-    {
-        getInfo();
-        compute_value();
-        display_value();
+    void Update() {
+        if (gameObject.activeSelf) {
+            getInfo();
+            compute_value();
+            display_value();
+        }
     }
 }

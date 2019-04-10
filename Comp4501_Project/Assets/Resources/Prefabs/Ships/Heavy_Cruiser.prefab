@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 8809071216088254189}
   - component: {fileID: 2095307604279616868}
   - component: {fileID: 5955077185417573361}
-  - component: {fileID: 5793892737094920981}
   - component: {fileID: 679303393}
+  - component: {fileID: 5793892737094920981}
   - component: {fileID: 8379712352228808998}
   m_Layer: 0
   m_Name: Heavy_Cruiser
@@ -110,8 +110,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 1113581460}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 19.5
-  m_Speed: 20
+  m_Radius: 22
+  m_Speed: 30
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 125
@@ -119,8 +119,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 5
-  m_BaseOffset: 1
+  m_Height: 6
+  m_BaseOffset: 1.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &2095307604279616868
@@ -148,31 +148,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.199644, y: 6.3036795, z: 39.343403}
   m_Center: {x: 0.00000059604645, y: 1.5536455, z: 0}
---- !u!114 &5793892737094920981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113581460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2595a4dfb82fb5408ea5a235f918eae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gm: {fileID: 0}
-  stats: {fileID: 0}
-  main_gun_caliber: 0
-  main_gun_turret_front: 0
-  firing_arc_front: 0
-  main_gun_turret_side: 0
-  firing_arc_side: 0
-  main_gun_turret_back: 0
-  firing_arc_back: 0
-  sub_gun_caliber: 0
-  sub_gun_turret: 0
-  torpedo: 0
-  AntiAir: 0
 --- !u!114 &679303393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,10 +160,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d74f6c4e9b1b1943a1fc3156a343e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 8809071216088254189}
   p_maxHealth: 0
   p_currentHealth: 0
   p_armor: 0
   p_speed: 0
+  isSelected: 0
+--- !u!114 &5793892737094920981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113581460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2595a4dfb82fb5408ea5a235f918eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 679303393}
+  main_gun_caliber: 0
+  main_gun_turret_front: 0
+  firing_arc_front: 0
+  main_gun_turret_side: 0
+  firing_arc_side: 0
+  main_gun_turret_back: 0
+  firing_arc_back: 0
+  sub_gun_caliber: 0
+  sub_gun_turret: 0
+  torpedo: 0
+  AntiAir: 0
 --- !u!114 &8379712352228808998
 MonoBehaviour:
   m_ObjectHideFlags: 0

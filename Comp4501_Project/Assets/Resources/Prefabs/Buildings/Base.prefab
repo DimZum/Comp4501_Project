@@ -2774,6 +2774,9 @@ GameObject:
   - component: {fileID: 9173692158729325124}
   - component: {fileID: 9173692158729720009}
   - component: {fileID: 9173692158729720008}
+  - component: {fileID: 1322302034}
+  - component: {fileID: 1322302035}
+  - component: {fileID: 1322302036}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -2826,6 +2829,52 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -3.2, y: 18, z: -1}
   m_TimeToStationary: 0.5
+--- !u!114 &1322302034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9173692158729688676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d74f6c4e9b1b1943a1fc3156a343e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  p_maxHealth: 0
+  p_currentHealth: 0
+  p_armor: 0
+  p_speed: 0
+  isSelected: 0
+--- !u!114 &1322302035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9173692158729688676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa8f002eec2145478e03d1d781546b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 1208605977595744, guid: c57cc772a0320a44a9edff155f712f2b, type: 3}
+  target: {fileID: 7110025753737116473}
+--- !u!114 &1322302036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9173692158729688676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2283c05f19f4ee247a142c571d90ca16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 1322302034}
+  baseUI: {fileID: 0}
 --- !u!1 &9173692158729688678
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Stats))]
 public class Factory : MonoBehaviour {
 
     GameMaster gm;
+    ResourceManager rm;
 
     private Player p_owner;
     public Player Owner {
@@ -15,10 +17,16 @@ public class Factory : MonoBehaviour {
 
     public Stats stats;
 
+    public GameObject factoryUI;
+    public GameObject shipDesignerUI;
+
     // Start is called before the first frame update
     void Start() {
         gm = GameMaster.instance;
-        stats.GetComponent<Stats>();
+        rm = ResourceManager.instance;
+
+        factoryUI = rm.factoryMenuUI;
+        shipDesignerUI = rm.shipDesignerUI;
 
         stats.MaxHealth = 100;
         stats.Armor = 30;
@@ -29,16 +37,43 @@ public class Factory : MonoBehaviour {
     void Update() {
         if (stats.isSelected) {
             if (Input.GetKeyDown(KeyCode.Escape)) {
-                stats.isSelected = false;
+                stats.ToggleIsSelected();
+
+                if (factoryUI.activeSelf) {
+                    ToggleFactoryUI();
+                }
+
+                if (shipDesignerUI.activeSelf) {
+                    ToggleShipDesignerUI();
+                }
             }
         }
     }
 
     private void OnMouseDown() {
-        if (p_owner == gm.player) {
+        //if (p_owner == gm.player) {
+        if (true) {
             stats.ToggleIsSelected();
 
-            // Toggle menu UI
+            ToggleFactoryUI();
         }
+    }
+
+    public void ToggleFactoryUI() {
+        factoryUI.SetActive(!factoryUI.activeSelf);
+    }
+
+    public void ToggleShipDesignerUI() {
+        shipDesignerUI.SetActive(!shipDesignerUI.activeSelf);
+    }
+
+    public void Destroy() {
+        ToggleFactoryUI();
+        stats.Die();
+    }
+
+    public void Design() {
+        ToggleFactoryUI();
+        ToggleShipDesignerUI();
     }
 }

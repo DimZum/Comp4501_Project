@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 5819781906118491232}
   - component: {fileID: 708324091}
   - component: {fileID: 708324093}
-  - component: {fileID: 708324092}
+  - component: {fileID: 5448190184006456815}
   m_Layer: 0
   m_Name: Factory
   m_TagString: Untagged
@@ -249,12 +249,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d74f6c4e9b1b1943a1fc3156a343e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
   p_maxHealth: 0
   p_currentHealth: 0
   p_armor: 0
   p_speed: 0
   isSelected: 0
---- !u!114 &708324092
+--- !u!114 &5448190184006456815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -267,3 +268,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 708324093}
+  factoryUI: {fileID: 0}
+  shipDesignerUI: {fileID: 0}
