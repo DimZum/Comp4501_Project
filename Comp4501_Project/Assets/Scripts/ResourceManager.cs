@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour {
 
@@ -18,10 +19,15 @@ public class ResourceManager : MonoBehaviour {
 
     // GameObjects
     public GameObject baseUI;
+    public Text baseInfo;
+
     public GameObject shipyardMenuUI;
     public GameObject shipyardUI;
+    public Text shipyardInfo;
+
     public GameObject factoryMenuUI;
     public GameObject shipDesignerUI;
+    public Text factoryInfo;
     
     // Ships
     public GameObject scoutPrefab;

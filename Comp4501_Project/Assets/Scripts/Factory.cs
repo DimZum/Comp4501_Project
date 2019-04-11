@@ -19,6 +19,7 @@ public class Factory : MonoBehaviour {
 
     public GameObject factoryUI;
     public GameObject shipDesignerUI;
+    public Text info;
 
     // Start is called before the first frame update
     void Start() {
@@ -27,8 +28,10 @@ public class Factory : MonoBehaviour {
 
         factoryUI = rm.factoryMenuUI;
         shipDesignerUI = rm.shipDesignerUI;
+        info = rm.factoryInfo;
 
         stats.MaxHealth = 100;
+        stats.CurrentHealth = stats.MaxHealth;
         stats.Armor = 30;
         stats.Speed = 0;
     }
@@ -47,7 +50,12 @@ public class Factory : MonoBehaviour {
                     ToggleShipDesignerUI();
                 }
             }
+
+            info.text = "Owner:  " + Owner.ID + "\n"
+                + "Health:  " + stats.CurrentHealth + "/" + stats.MaxHealth + "\n"
+                + "Armor:  " + stats.Armor;
         }
+
     }
 
     private void OnMouseDown() {

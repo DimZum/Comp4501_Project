@@ -17,6 +17,8 @@ public class GameMaster : MonoBehaviour {
     }
     #endregion
 
+    public SceneMaster sm;
+
     public Camera mainCam;
 
     public static bool isGameOver;
@@ -54,7 +56,7 @@ public class GameMaster : MonoBehaviour {
 
     public void EndGame() {
         isGameOver = true;
-
         Debug.Log("Your base has been destroyed");
+        sm.SceneToLoad(SceneMaster.gameover);
     }
 }

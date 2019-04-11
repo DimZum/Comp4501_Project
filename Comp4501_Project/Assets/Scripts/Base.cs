@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Stats))]
 public class Base : MonoBehaviour {
@@ -17,6 +18,7 @@ public class Base : MonoBehaviour {
     public Stats stats;
 
     public GameObject baseUI;
+    public Text info;
 
     // Start is called before the first frame update
     void Start() {
@@ -24,8 +26,10 @@ public class Base : MonoBehaviour {
         rm = ResourceManager.instance;
 
         baseUI = rm.baseUI;
+        info = rm.baseInfo;
 
         stats.MaxHealth = 200;
+        stats.CurrentHealth = stats.MaxHealth;
         stats.Armor = 50;
         stats.Speed = 0;
     }
@@ -37,6 +41,10 @@ public class Base : MonoBehaviour {
                 stats.ToggleIsSelected();
                 ToggleBaseUI();
             }
+
+            info.text = "Owner:  " + Owner.ID + "\n"
+                + "Health:  " + stats.CurrentHealth + "/" + stats.MaxHealth + "\n"
+                + "Armor:  " + stats.Armor;
         }
     }
 

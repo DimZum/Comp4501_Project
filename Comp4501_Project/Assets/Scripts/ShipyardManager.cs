@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Stats))]
 public class ShipyardManager : MonoBehaviour {
@@ -18,6 +19,7 @@ public class ShipyardManager : MonoBehaviour {
 
     public GameObject shipyardUI;
     public GameObject shipBuildingUI;
+    public Text info;
 
     // Start is called before the first frame update
     void Start() {
@@ -26,8 +28,10 @@ public class ShipyardManager : MonoBehaviour {
 
         shipyardUI = rm.shipyardMenuUI;
         shipBuildingUI = rm.shipyardUI;
+        info = rm.shipyardInfo;
 
         stats.MaxHealth = 100;
+        stats.CurrentHealth = stats.MaxHealth;
         stats.Armor = 30;
         stats.Speed = 0;
     }
@@ -46,6 +50,10 @@ public class ShipyardManager : MonoBehaviour {
                     ToggleShipBuildingUI();
                 }
             }
+
+            info.text = "Owner:  " + Owner.ID + "\n"
+                + "Health:  " + stats.CurrentHealth + "/" + stats.MaxHealth + "\n"
+                + "Armor:  " + stats.Armor;
         }
     }
 

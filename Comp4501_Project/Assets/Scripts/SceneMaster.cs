@@ -13,6 +13,7 @@ public class SceneMaster : MonoBehaviour {
     public static string howToPlay = "HowToPlay";
     public static string game = "Game";
     public static string options = "Settings";
+    public static string gameover = "GameOver";
 
     public Image img;
     public AnimationCurve curve;

@@ -13,9 +13,9 @@ TO RUN GAME
 -----------
 Run game from the MainMenu scene then click Play
 
--------------
-GAME CONTROLS
--------------
+-----------
+HOW TO PLAY
+-----------
 Ship Control
 - left click on a ship to select/deselect it
 - left click on any number of ships (currently the only way to multi-select ships)
@@ -31,3 +31,9 @@ Humanoid control
 - AI is not yet implemented so manual control is enabled
 - similar to the ship control, left click on the humanoid to select/deselect
 - right click anywhere on the map and the humanoid will move towards that position
+
+Designing a ship
+- click on the factory -> design ship -> pick values and hit confirm
+
+Building a ship
+- go to shipyard -> build ship -> click a ship you want to build and wait

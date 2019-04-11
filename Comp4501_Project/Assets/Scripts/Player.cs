@@ -82,12 +82,20 @@ public class Player {
     public void CreateBase() {
         baseObj = GameObject.Instantiate<GameObject>(rm.basePrefab);
         baseObj.transform.position = basePos;
+        baseObj.GetComponent<Base>().Owner = this;
         
         factory = GameObject.Instantiate<GameObject>(rm.factoryPrefab);
         factory.transform.position = new Vector3(basePos.x + baseOffset_x, factory.transform.position.y, basePos.z);
+        factory.GetComponent<Factory>().Owner = this;
 
         shipyard = GameObject.Instantiate<GameObject>(rm.shipyardPrefab);
         shipyard.transform.position = new Vector3(factory.transform.position.x + baseOffset_x, shipyard.transform.position.y, basePos.z - 20);
+        shipyard.GetComponent<ShipyardManager>().Owner = this;
+
+        if (ID == 1) {
+            GameObject humanoid = GameObject.Instantiate<GameObject>(rm.humanoidPrefab);
+            humanoid.transform.position = new Vector3(humanoid.transform.position.x, humanoid.transform.position.y, shipyard.transform.position.z + 350);
+        }
     }
 
     // Start is called before the first frame update

@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Stats : MonoBehaviour {
 
+    AudioManager am;
+
     public NavMeshAgent agent;
 
     [SerializeField] private int p_maxHealth;
@@ -35,10 +37,15 @@ public class Stats : MonoBehaviour {
 
     public bool isSelected;
 
+    [SerializeField] string explosionSound = "Explosion";
+
     private void Awake() {
-        CurrentHealth = MaxHealth;
 
         isSelected = false;
+    }
+
+    private void Start() {
+        am = AudioManager.instance;
     }
 
     private void Update() {
@@ -86,6 +93,7 @@ public class Stats : MonoBehaviour {
     }
 
     public void Die() {
+        am.PlaySound(explosionSound);
         GameObject.Destroy(this.gameObject, .5f);
     }
 }

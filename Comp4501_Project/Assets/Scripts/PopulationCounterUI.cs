@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ExperienceCounterUI : MonoBehaviour {
-
+public class PopulationCounterUI : MonoBehaviour {
     GameMaster gm;
 
     public Text text;
@@ -12,19 +11,11 @@ public class ExperienceCounterUI : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         gm = GameMaster.instance;
-
-        StartCoroutine(IncreaseExperience());
+        
     }
 
     // Update is called once per frame
     void Update() {
-        text.text = "Experience: " + gm.player.Exp;
-    }
-
-    IEnumerator IncreaseExperience() {
-        while (!GameMaster.isGameOver) {
-            yield return new WaitForSeconds(1);
-            gm.player.Exp++;
-        }
+        text.text = "Population: " + (int)gm.player.ManPower;
     }
 }
