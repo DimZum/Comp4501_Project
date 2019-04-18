@@ -53,15 +53,11 @@ public class Player {
         timer = 0;
         ShipYards = new ShipYard(this);
 
-        /*
-        ShipDesigner designer = new ShipDesigner();
-        AddDesign(designer.CreateDesignWithValues("Destroyer", Constants.ShipClass.Destroyer, 5, 3, 0, 0, 4, 0, 2, 34, false));
-        AddDesign(designer.CreateDesignWithValues("Light Cruiser", Constants.ShipClass.LightCruiser, 6, 4, 3, 3, 3, 0, 4, 33, false));
-        AddDesign(designer.CreateDesignWithValues("Heavy Cruiser", Constants.ShipClass.HeavyCruiser, 8, 4, 4, 4, 0, 0, 6, 30, true));
-        AddDesign(designer.CreateDesignWithValues("Battle Cruiser", Constants.ShipClass.BattleCruiser, 12, 4, 5, 4, 0, 0, 8, 30, true));
-        AddDesign(designer.CreateDesignWithValues("BattleShip", Constants.ShipClass.Battleship, 15, 4, 5, 5, 0, 0, 12, 28, true));
-        AddDesign(designer.CreateDesignWithValues("Dreadnought", Constants.ShipClass.Battleship, 19, 4, 8, 5, 0, 0, 18, 25, true));
-        */
+
+        AddDesign(new ShipDesign("Destroyer", Constants.ShipClass.Destroyer, 5, 3, 0, 0, 4, 0, 2, 34, false, 1800, 13, 100, 50, 15));
+        AddDesign(new ShipDesign("Light Cruiser", Constants.ShipClass.LightCruiser, 6, 4, 3, 3, 3, 0, 4, 33, false, 3800, 25, 250, 150, 35));
+        AddDesign(new ShipDesign("Heavy Cruiser", Constants.ShipClass.HeavyCruiser, 8, 4, 4, 4, 0, 0, 6, 30, true, 5800, 50, 500, 300, 45));
+        
 
         if (ID == 0)
         {
@@ -151,7 +147,7 @@ public class Player {
         if (timer > 5)
         {
             timer = 0;
-            //AI_Control();
+            AI_Control();
         }
         timer += Time.deltaTime;
         ShipYards.Update();
@@ -176,8 +172,7 @@ public class Player {
             ShipYards.UnlockNextYard();
         }
     }
-
-    /*
+    
     void AI_Control()
     {
         if (ID == 0)
@@ -192,7 +187,7 @@ public class Player {
          *  50% build more ship
          *  10% try build more shipyard
          *  0~20% Attack player with all ships
-         
+         */
         float R = Random.value*100;
 
         if(R < 20){
@@ -206,32 +201,32 @@ public class Player {
             if (s < 35)
             {
                 //Build Destroyer
-                buildShip(ShipDesigns[1]);
+                buildShip(ShipDesigns[0]);
             }
             else if(s < 55)
             {
                 //build Light Cruiser;
-                buildShip(ShipDesigns[2]);
+                buildShip(ShipDesigns[1]);
             }
             else if (s < 70)
             {
                 //build Heavy cruiser
-                buildShip(ShipDesigns[3]);
+                buildShip(ShipDesigns[2]);
             }
             else if (s < 80)
             {
                 //Build BattleCruiser
-                buildShip(ShipDesigns[4]);
+                buildShip(ShipDesigns[1]);
             }
             else if (s < 90)
             {
                 //Build BattleShip
-                buildShip(ShipDesigns[5]);
+                buildShip(ShipDesigns[0]);
             }
             else
             {
                 //Build Dreadnought
-                buildShip(ShipDesigns[6]);
+                buildShip(ShipDesigns[2]);
             }
         }
         else if (R<80)
@@ -247,9 +242,8 @@ public class Player {
             //Attack
             foreach (GameObject o in ships)
             {
-                o.GetComponent<Ship>().SetMove(gm.player.basePos);
+                o.GetComponent<Ship>().SetMove(gm.player.baseObj.transform.position);
             }
         }
     }
-    */
 }

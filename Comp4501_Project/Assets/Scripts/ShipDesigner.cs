@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class ShipDesigner : MonoBehaviour {
 
     GameMaster gm;
-
     Constants.ShipClass ShipClass;
     int mgc = 3, mgn = 1, sgc = 2, sgn = 0, trp = 0, AA = 0; 
     int armor = 1, engine = 1;
@@ -54,6 +53,7 @@ public class ShipDesigner : MonoBehaviour {
         cancel.onClick.AddListener(Cancel);
         To_Shipyard.onClick.AddListener(goShipyard);
         ExitButton.onClick.AddListener(CloseWindow);
+
     }
 
     void CloseWindow()
@@ -237,7 +237,8 @@ public class ShipDesigner : MonoBehaviour {
         armor = arm;
         engine = speed;
         bulge = b;
-        //compute_value();
+        compute_value();
+        Debug.Log("Call CDWV");
         return new ShipDesign(n, (Constants.ShipClass)Sclass.value, mgc, mgn, sgc, sgn, trp, AA, armor, engine, bulge, totalWeight, HitPoints, IronCost, ManCost, ConstructionTime);
     }
 
