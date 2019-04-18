@@ -86,8 +86,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 1498322725}
-  shipyardUI: {fileID: 0}
-  shipBuildingUI: {fileID: 0}
+  shipyardUI: {fileID: 7613573002146599407, guid: c26f9f2c63a6baf4cbccd3437e37e75f,
+    type: 3}
+  shipBuildingUI: {fileID: 547764123518523277, guid: 80496b9b7d57b7f4c9d0d973c326b713,
+    type: 3}
+  info: {fileID: 0}
 --- !u!114 &1498322725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,11 +103,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d74f6c4e9b1b1943a1fc3156a343e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
   p_maxHealth: 0
   p_currentHealth: 0
   p_armor: 0
   p_speed: 0
   isSelected: 0
+  explosionSound: Explosion
 --- !u!114 &6617063798808099034
 MonoBehaviour:
   m_ObjectHideFlags: 0
