@@ -166,12 +166,14 @@ public class ShipYard
                 if (ShipInConstruction[i] != null) {
                     // Create gameobject from prefab
                     GameObject prefab = rm.GetShipPrefab(ShipInConstruction[i].getClass());
-                    GameObject ship = GameObject.Instantiate(prefab) as GameObject;
+                    GameObject ship = GameObject.Instantiate(prefab,Owner.basePos, Quaternion.identity) as GameObject;
 
                     // Initialization of ship variables
                     ShipInConstruction[i].InitializeShip(ship);
                     ship.GetComponent<Ship>().Owner = Owner;
-                    ship.transform.position = Owner.basePos;
+                    Debug.Log("Owner: " + Owner.ID + ", Base Pos:" + Owner.basePos);
+                    Debug.Log("Ship: " + ship.name + ", ShipPos :" + ship.transform.position);
+                    //ship.transform.position = Owner.basePos;
 
                     //Construction is finished and the ship should be added to player
                     Owner.AddShip(ship);
