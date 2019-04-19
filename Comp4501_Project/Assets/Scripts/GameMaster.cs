@@ -37,7 +37,7 @@ public class GameMaster : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        mainCam.transform.position = new Vector3(playerSpawnpoint.position.x, mainCam.transform.position.y, playerSpawnpoint.position.z);
+        mainCam.transform.position = new Vector3(playerSpawnpoint.position.x, mainCam.transform.position.y, playerSpawnpoint.position.z - 200);
 
         isGameOver = false;
         isGamePaused = false;

@@ -53,8 +53,9 @@ public class CameraController : MonoBehaviour {
             #endregion
         }
 
+
         // Move comera when mouse is close to window border
-        if (Input.mousePosition.y >= Screen.height - panBorderThickness) {
+        /*if (Input.mousePosition.y >= Screen.height - panBorderThickness) {
             transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
         }
         if (Input.mousePosition.x <= panBorderThickness) {
@@ -65,7 +66,7 @@ public class CameraController : MonoBehaviour {
         }
         if (Input.mousePosition.x >= Screen.width - panBorderThickness) {
             transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
-        }
+        }*/
 
         // Zoom in/out
         float scroll = Input.GetAxis("Mouse ScrollWheel");

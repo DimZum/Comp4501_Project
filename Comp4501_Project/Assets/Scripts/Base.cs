@@ -18,15 +18,17 @@ public class Base : MonoBehaviour {
     public Stats stats;
 
     public GameObject baseUI;
-    public Text info;
+    Text info;
 
     // Start is called before the first frame update
     void Start() {
         gm = GameMaster.instance;
         rm = ResourceManager.instance;
 
-        baseUI = rm.baseUI;
-        info = rm.baseInfo;
+        if (Owner.ID == gm.player.ID) {
+            baseUI = rm.baseUI;
+            info = rm.baseInfo;
+        }
 
         stats.MaxHealth = 200;
         stats.CurrentHealth = stats.MaxHealth;
@@ -42,15 +44,14 @@ public class Base : MonoBehaviour {
                 ToggleBaseUI();
             }
 
-            info.text = "Owner:  " + Owner.ID + "\n"
+            /*info.text = "Owner:  " + Owner.ID + "\n"
                 + "Health:  " + stats.CurrentHealth + "/" + stats.MaxHealth + "\n"
-                + "Armor:  " + stats.Armor;
+                + "Armor:  " + stats.Armor;*/
         }
     }
 
     private void OnMouseDown() {
-        //if (p_owner == gm.player) {
-        if (true) {
+        if (p_owner.ID == gm.player.ID) {
             stats.ToggleIsSelected();
 
             ToggleBaseUI();
@@ -58,7 +59,9 @@ public class Base : MonoBehaviour {
     }
 
     public void ToggleBaseUI() {
-        baseUI.SetActive(!baseUI.activeSelf);
+        if (Owner.ID == gm.player.ID) {
+            baseUI.SetActive(!baseUI.activeSelf);
+        }
     }
 
     // Destroy base - forfeit the game

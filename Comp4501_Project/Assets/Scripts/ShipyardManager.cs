@@ -19,16 +19,18 @@ public class ShipyardManager : MonoBehaviour {
 
     public GameObject shipyardUI;
     public GameObject shipBuildingUI;
-    public Text info;
+    Text info;
 
     // Start is called before the first frame update
     void Start() {
         gm = GameMaster.instance;
         rm = ResourceManager.instance;
 
-        shipyardUI = rm.shipyardMenuUI;
-        shipBuildingUI = rm.shipyardUI;
-        info = rm.shipyardInfo;
+        if (Owner.ID == gm.player.ID) {
+            shipyardUI = rm.shipyardMenuUI;
+            shipBuildingUI = rm.shipyardUI;
+            info = rm.shipyardInfo;
+        }
 
         stats.MaxHealth = 100;
         stats.CurrentHealth = stats.MaxHealth;
@@ -51,15 +53,14 @@ public class ShipyardManager : MonoBehaviour {
                 }
             }
 
-            info.text = "Owner:  " + Owner.ID + "\n"
+            /*info.text = "Owner:  " + Owner.ID + "\n"
                 + "Health:  " + stats.CurrentHealth + "/" + stats.MaxHealth + "\n"
-                + "Armor:  " + stats.Armor;
+                + "Armor:  " + stats.Armor;*/
         }
     }
 
     private void OnMouseDown() {
-        //if (p_owner == gm.player) {
-        if (true) {
+        if (p_owner.ID == gm.player.ID) {
             stats.ToggleIsSelected();
 
             ToggleShipyardUI();
@@ -68,7 +69,9 @@ public class ShipyardManager : MonoBehaviour {
     
     // Opens shipyard UI
     public void ToggleShipyardUI() {
-        shipyardUI.SetActive(!shipyardUI.activeSelf);
+        if (Owner.ID == gm.player.ID) {
+            shipyardUI.SetActive(!shipyardUI.activeSelf);
+        }
     }
 
     public void ToggleShipBuildingUI() {

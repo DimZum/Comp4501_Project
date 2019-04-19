@@ -19,7 +19,7 @@ public class Factory : MonoBehaviour {
 
     public GameObject factoryUI;
     public GameObject shipDesignerUI;
-    public Text info;
+    Text info;
 
     // Start is called before the first frame update
     void Start() {
@@ -51,16 +51,15 @@ public class Factory : MonoBehaviour {
                 }
             }
 
-            info.text = "Owner:  " + Owner.ID + "\n"
+            /*info.text = "Owner:  " + Owner.ID + "\n"
                 + "Health:  " + stats.CurrentHealth + "/" + stats.MaxHealth + "\n"
-                + "Armor:  " + stats.Armor;
+                + "Armor:  " + stats.Armor;*/
         }
 
     }
 
     private void OnMouseDown() {
-        //if (p_owner == gm.player) {
-        if (true) {
+        if (Owner.ID == gm.player.ID) {
             stats.ToggleIsSelected();
 
             ToggleFactoryUI();
@@ -68,7 +67,9 @@ public class Factory : MonoBehaviour {
     }
 
     public void ToggleFactoryUI() {
-        factoryUI.SetActive(!factoryUI.activeSelf);
+        if (Owner.ID == gm.player.ID) {
+            factoryUI.SetActive(!factoryUI.activeSelf);
+        }
     }
 
     public void ToggleShipDesignerUI() {

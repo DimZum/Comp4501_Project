@@ -269,8 +269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 708324093}
-  factoryUI: {fileID: 7516659342344442792, guid: fc8b5f0cf009e284f849089df123e11d,
-    type: 3}
+  factoryUI: {fileID: 0}
   shipDesignerUI: {fileID: 6743199512986086575, guid: b51e89fe1c5c00d4fae4e877a29bc1be,
     type: 3}
-  info: {fileID: 0}

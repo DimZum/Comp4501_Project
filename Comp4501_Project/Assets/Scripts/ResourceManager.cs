@@ -14,17 +14,29 @@ public class ResourceManager : MonoBehaviour {
         }
 
         instance = this;
+
+        baseUI = Instantiate(baseUIPrefab) as GameObject;
+        baseUI.SetActive(false);
+
+        shipyardMenuUI = Instantiate(shipyardMenuUIPrefab) as GameObject;
+        shipyardMenuUI.SetActive(false);
+
+        factoryMenuUI = Instantiate(factoryMenuUIPrefab) as GameObject;
+        factoryMenuUI.SetActive(false);
     }
     #endregion
 
     // GameObjects
+    public GameObject baseUIPrefab;
     public GameObject baseUI;
     public Text baseInfo;
 
+    public GameObject shipyardMenuUIPrefab;
     public GameObject shipyardMenuUI;
     public GameObject shipyardUI;
     public Text shipyardInfo;
 
+    public GameObject factoryMenuUIPrefab;
     public GameObject factoryMenuUI;
     public GameObject shipDesignerUI;
     public Text factoryInfo;
@@ -48,7 +60,7 @@ public class ResourceManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        
+
     }
 
     // Update is called once per frame
