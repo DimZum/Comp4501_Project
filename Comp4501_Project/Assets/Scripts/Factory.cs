@@ -24,11 +24,12 @@ public class Factory : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         gm = GameMaster.instance;
+        gm.ShipDesignerUI = shipDesignerUI;
         rm = ResourceManager.instance;
 
-        factoryUI = rm.factoryMenuUI;
-        shipDesignerUI = rm.shipDesignerUI;
-        info = rm.factoryInfo;
+        //factoryUI = rm.factoryMenuUI;
+        //shipDesignerUI = rm.shipDesignerUI;
+        //info = rm.factoryInfo;
 
         stats.MaxHealth = 100;
         stats.CurrentHealth = stats.MaxHealth;

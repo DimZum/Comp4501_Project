@@ -24,13 +24,12 @@ public class ShipyardManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         gm = GameMaster.instance;
+        gm.ShipYardUI = shipBuildingUI;
         rm = ResourceManager.instance;
 
-        if (Owner.ID == gm.player.ID) {
-            shipyardUI = rm.shipyardMenuUI;
-            shipBuildingUI = rm.shipyardUI;
-            info = rm.shipyardInfo;
-        }
+        //shipyardUI = rm.shipyardMenuUI;
+        //shipBuildingUI = rm.shipyardUI;
+        //info = rm.shipyardInfo;
 
         stats.MaxHealth = 100;
         stats.CurrentHealth = stats.MaxHealth;
