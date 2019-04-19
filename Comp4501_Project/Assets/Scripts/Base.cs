@@ -18,7 +18,7 @@ public class Base : MonoBehaviour {
     public Stats stats;
 
     public GameObject baseUI;
-    Text info;
+    public Text info;
 
     // Start is called before the first frame update
     void Start() {
@@ -44,9 +44,9 @@ public class Base : MonoBehaviour {
                 ToggleBaseUI();
             }
 
-            /*info.text = "Owner:  " + Owner.ID + "\n"
+            info.text = "Owner:  " + Owner.ID + "\n"
                 + "Health:  " + stats.CurrentHealth + "/" + stats.MaxHealth + "\n"
-                + "Armor:  " + stats.Armor;*/
+                + "Armor:  " + stats.Armor;
         }
     }
 

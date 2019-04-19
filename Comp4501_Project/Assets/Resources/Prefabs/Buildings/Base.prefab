@@ -3486,6 +3486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 1322302034}
   baseUI: {fileID: 331125082140240051}
+  info: {fileID: 1242569457548924098}
 --- !u!1 &9173692158729688678
 GameObject:
   m_ObjectHideFlags: 0

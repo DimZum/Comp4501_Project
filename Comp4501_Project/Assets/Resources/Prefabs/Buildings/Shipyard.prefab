@@ -40,7 +40,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4936511
@@ -4364,6 +4364,7 @@ MonoBehaviour:
   stats: {fileID: 1498322725}
   shipyardUI: {fileID: 8883177122400014886}
   shipBuildingUI: {fileID: 4936507}
+  info: {fileID: 3724244374108012447}
 --- !u!114 &1498322725
 MonoBehaviour:
   m_ObjectHideFlags: 0

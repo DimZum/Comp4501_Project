@@ -19,7 +19,7 @@ public class ShipyardManager : MonoBehaviour {
 
     public GameObject shipyardUI;
     public GameObject shipBuildingUI;
-    Text info;
+    public Text info;
 
     // Start is called before the first frame update
     void Start() {
@@ -52,9 +52,9 @@ public class ShipyardManager : MonoBehaviour {
                 }
             }
 
-            /*info.text = "Owner:  " + Owner.ID + "\n"
+            info.text = "Owner:  " + Owner.ID + "\n"
                 + "Health:  " + stats.CurrentHealth + "/" + stats.MaxHealth + "\n"
-                + "Armor:  " + stats.Armor;*/
+                + "Armor:  " + stats.Armor;
         }
     }
 
