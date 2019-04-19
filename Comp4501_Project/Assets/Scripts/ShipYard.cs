@@ -171,6 +171,7 @@ public class ShipYard
                     // Initialization of ship variables
                     ShipInConstruction[i].InitializeShip(ship);
                     ship.GetComponent<Ship>().Owner = Owner;
+                    ship.transform.position = Owner.basePos;
 
                     //Construction is finished and the ship should be added to player
                     Owner.AddShip(ship);
