@@ -17,6 +17,8 @@ public class ShipController : MonoBehaviour {
 
     public bool isSelected;
 
+    public float rangeOfFire = 60f;
+
     // Start is called before the first frame update
     void Start() {
         gm = GameMaster.instance;
@@ -25,6 +27,10 @@ public class ShipController : MonoBehaviour {
 
         cam = Camera.main;
         motor = GetComponent<ShipMotor>();
+        if (ship.GetComponent<Ship>().Owner.ID == gm.enemy.ID) {
+            motor.target = gm.player.baseObj.transform;
+        }
+
 
         isSelected = false;
     }
@@ -36,6 +42,14 @@ public class ShipController : MonoBehaviour {
             go = EventSystem.current.gameObject;
         } else {
             go = null;
+        }
+
+        if (ship.GetComponent<Ship>().Owner.ID == gm.enemy.ID) {
+            if (motor.target != null) {
+                if (Vector3.Distance(this.transform.position, motor.target.position) <= rangeOfFire) {
+                    motor.target.GetComponent<Stats>().TakeDamage(50);
+                }
+            }
         }
 
         // Left mouse

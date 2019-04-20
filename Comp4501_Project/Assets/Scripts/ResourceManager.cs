@@ -18,16 +18,16 @@ public class ResourceManager : MonoBehaviour {
     #endregion
 
     // GameObjects
-    public GameObject baseUI;
-    public Text baseInfo;
+    //public GameObject baseUI;
+    //public Text baseInfo;
 
-    public GameObject shipyardMenuUI;
-    public GameObject shipyardUI;
-    public Text shipyardInfo;
+    //public GameObject shipyardMenuUI;
+    //public GameObject shipyardUI;
+    //public Text shipyardInfo;
 
-    public GameObject factoryMenuUI;
-    public GameObject shipDesignerUI;
-    public Text factoryInfo;
+    //public GameObject factoryMenuUI;
+    //public GameObject shipDesignerUI;
+    //public Text factoryInfo;
     
     // Ships
     public GameObject scoutPrefab;

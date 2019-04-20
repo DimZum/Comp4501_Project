@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class ShipMotor : MonoBehaviour {
 
+    public Transform target;
     NavMeshAgent agent;
 
     // Start is called before the first frame update
@@ -15,7 +16,9 @@ public class ShipMotor : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        
+        if (target != null) {
+            agent.SetDestination(target.position);
+        }
     }
 
     public void MoveToPoint(Vector3 point) {

@@ -25,10 +25,10 @@ public class Base : MonoBehaviour {
         gm = GameMaster.instance;
         rm = ResourceManager.instance;
 
-        if (Owner.ID == gm.player.ID) {
+        /*if (Owner.ID == gm.player.ID) {
             baseUI = rm.baseUI;
             info = rm.baseInfo;
-        }
+        }*/
 
         stats.MaxHealth = 200;
         stats.CurrentHealth = stats.MaxHealth;
@@ -51,7 +51,7 @@ public class Base : MonoBehaviour {
     }
 
     private void OnMouseDown() {
-        if (p_owner.ID == gm.player.ID) {
+        if (Owner.ID == gm.player.ID) {
             stats.ToggleIsSelected();
 
             ToggleBaseUI();

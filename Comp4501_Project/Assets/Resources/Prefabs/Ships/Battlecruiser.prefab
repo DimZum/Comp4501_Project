@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 8441074441938558007}
   - component: {fileID: 158232413257257969}
   - component: {fileID: 8111335796971158319}
-  - component: {fileID: 3643687411068907572}
   - component: {fileID: 1139786201}
   - component: {fileID: 3143623864207572092}
   - component: {fileID: 3418818309965170863}
+  - component: {fileID: 865622247790025729}
   m_Layer: 0
   m_Name: Battlecruiser
   m_TagString: Untagged
@@ -135,19 +135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284eee0add23d6840ae3cf1b7bd7f840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &3643687411068907572
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1730483398}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 8.77057, y: 8.189721, z: 45.62123}
-  m_Center: {x: 0, y: 1.9029614, z: 0.5858679}
 --- !u!114 &1139786201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +153,7 @@ MonoBehaviour:
   p_armor: 0
   p_speed: 0
   isSelected: 0
+  explosionSound: Explosion
 --- !u!114 &3143623864207572092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +192,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiPrefab: {fileID: 1208605977595744, guid: c57cc772a0320a44a9edff155f712f2b, type: 3}
   target: {fileID: 8797426641889392253}
+--- !u!65 &865622247790025729
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730483398}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.643107, y: 12.739565, z: 70.966354}
+  m_Center: {x: 0, y: 2.960162, z: 0.91135025}
 --- !u!1 &7268541044123202503
 GameObject:
   m_ObjectHideFlags: 0

@@ -91,10 +91,10 @@ GameObject:
   - component: {fileID: 5264118635430470159}
   - component: {fileID: 3880023611512566374}
   - component: {fileID: 8808508802360529348}
-  - component: {fileID: 6866892185672712726}
   - component: {fileID: 1007360004}
   - component: {fileID: 7394152931624478904}
   - component: {fileID: 7581710316042853159}
+  - component: {fileID: 7368498944279646627}
   m_Layer: 0
   m_Name: Light_Cruiser
   m_TagString: Untagged
@@ -215,19 +215,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 715605344891188666}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6866892185672712726
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715605344891188666}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 7, y: 4, z: 38}
-  m_Center: {x: 0, y: 0.75, z: 0.1}
 --- !u!114 &1007360004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,6 +272,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiPrefab: {fileID: 1208605977595744, guid: c57cc772a0320a44a9edff155f712f2b, type: 3}
   target: {fileID: 7800930239739036058}
+--- !u!65 &7368498944279646627
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715605344891188666}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11, y: 7, z: 59}
+  m_Center: {x: 0, y: 1.25, z: -0.25}
 --- !u!1 &715605344891188668
 GameObject:
   m_ObjectHideFlags: 0

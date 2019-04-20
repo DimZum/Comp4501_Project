@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour {
     private Vector3 originalPos;
     private bool isCameraLocked;
 
-    public float panSpeed = 300f;
+    public float panSpeed = 500f;
     public float panBorderThickness = 15f;
 
     public float scrollSpeed = 50f;

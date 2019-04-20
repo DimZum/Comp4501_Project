@@ -778,7 +778,7 @@ PrefabInstance:
     - target: {fileID: 378412707024538415, guid: 5c6577d4f269a02468ecfa668d8e310b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 378412707024538415, guid: 5c6577d4f269a02468ecfa668d8e310b,
         type: 3}
@@ -984,7 +984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e6ad43f1cdba340be637fa3ecbbb38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeed: 300
+  panSpeed: 500
   panBorderThickness: 15
   scrollSpeed: 50
 --- !u!81 &877846547
@@ -1049,7 +1049,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
 --- !u!1 &928566075
 GameObject:
@@ -2044,7 +2044,7 @@ PrefabInstance:
     - target: {fileID: 3256843629386292639, guid: 3feb68c33f4e4334bbf7a9018ab42c3c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3256843629386292639, guid: 3feb68c33f4e4334bbf7a9018ab42c3c,
         type: 3}
