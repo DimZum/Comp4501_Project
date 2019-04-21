@@ -48,6 +48,10 @@ public class Base : MonoBehaviour {
                 + "Health:  " + stats.CurrentHealth + "/" + stats.MaxHealth + "\n"
                 + "Armor:  " + stats.Armor;
         }
+
+        if (stats.CurrentHealth <= 0) {
+            gm.EndGame();
+        }
     }
 
     private void OnMouseDown() {

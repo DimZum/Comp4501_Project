@@ -18,7 +18,7 @@ public class Player {
     
     public GameObject baseObj;
     public Vector3 basePos;
-    int baseOffset_x = 125; // Used to position the shipyard and factory
+    int baseOffset_x = 150; // Used to position the shipyard and factory
 
     public GameObject factory;
     public Vector3 factoryPos;

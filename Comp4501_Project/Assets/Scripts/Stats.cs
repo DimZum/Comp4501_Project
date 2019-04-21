@@ -94,6 +94,6 @@ public class Stats : MonoBehaviour {
 
     public void Die() {
         am.PlaySound(explosionSound);
-        GameObject.Destroy(this.gameObject, .5f);
+        GameObject.Destroy(this.gameObject, 1.5f);
     }
 }

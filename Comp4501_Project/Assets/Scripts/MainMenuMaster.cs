@@ -34,9 +34,9 @@ public class MainMenuMaster : MonoBehaviour {
     public void Quit() {
         PlayButtonPressedSound();
         // For use in editor
-        if (UnityEditor.EditorApplication.isPlaying) {
+        /*if (UnityEditor.EditorApplication.isPlaying) {
             UnityEditor.EditorApplication.isPlaying = false;
-        }
+        }*/
 
         Application.Quit();
     }

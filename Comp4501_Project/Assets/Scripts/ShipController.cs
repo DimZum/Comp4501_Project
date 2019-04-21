@@ -17,7 +17,7 @@ public class ShipController : MonoBehaviour {
 
     public bool isSelected;
 
-    public float rangeOfFire = 60f;
+    public float rangeOfFire = 200f;
 
     // Start is called before the first frame update
     void Start() {
@@ -47,7 +47,7 @@ public class ShipController : MonoBehaviour {
         if (ship.GetComponent<Ship>().Owner.ID == gm.enemy.ID) {
             if (motor.target != null) {
                 if (Vector3.Distance(this.transform.position, motor.target.position) <= rangeOfFire) {
-                    motor.target.GetComponent<Stats>().TakeDamage(50);
+                    motor.target.GetComponent<Stats>().TakeDamage(45);
                 }
             }
         }

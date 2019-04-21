@@ -365,8 +365,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48357764}
-  m_LocalRotation: {x: -0.57357645, y: 0, z: 0, w: 0.81915206}
-  m_LocalPosition: {x: 550, y: -585.86, z: 50}
+  m_LocalRotation: {x: -0.5246552, y: 0.00076831534, z: 0.00047349662, w: 0.8513143}
+  m_LocalPosition: {x: 500.63217, y: -909.9474, z: -157.09375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1568,7 +1568,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075428475}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -656, y: 9, z: -640}
+  m_LocalPosition: {x: -670, y: 9, z: -680}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1256956728}
@@ -1677,14 +1677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000e4edeb45a7b442ba587c6b3a7044e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseUI: {fileID: 0}
-  baseInfo: {fileID: 0}
-  shipyardMenuUI: {fileID: 0}
-  shipyardUI: {fileID: 0}
-  shipyardInfo: {fileID: 0}
-  factoryMenuUI: {fileID: 0}
-  shipDesignerUI: {fileID: 0}
-  factoryInfo: {fileID: 0}
   scoutPrefab: {fileID: 4298457374830253949, guid: 5e1ebee1da867cf4cbeee83f5c165788,
     type: 3}
   destroyerPrefab: {fileID: 1914550990092521803, guid: bf4a43cf087a22544b648dc60a72aac4,
@@ -1882,8 +1874,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530693422}
-  m_LocalRotation: {x: 0.36934948, y: 0.0019489635, z: 0.0007745863, w: -0.9292882}
-  m_LocalPosition: {x: -92.201355, y: -1126.0001, z: -1483.342}
+  m_LocalRotation: {x: -0.5246552, y: 0.00076831534, z: 0.00047349662, w: 0.8513143}
+  m_LocalPosition: {x: -499.36783, y: -909.9474, z: -1157.0938}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 758136992}
